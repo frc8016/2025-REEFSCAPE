@@ -2,8 +2,8 @@ import numpy as np
 import math as m
 
 # Dictionary of AprilTag IDs to their (x, y, z, alpha, beta) coordinates
-# alpha is the yaw angle, beta is the pitch angle in radians
-# positive yaw is to the right, positive pitch is down
+# Alpha is the yaw angle, beta is the pitch angle in radians
+# Positive yaw is to the right, positive pitch is down
 
 apriltag_cords = {
     1:  (657.37,  025.80,  58.50,  2.19911,  0.000000),
@@ -30,9 +30,9 @@ apriltag_cords = {
     22: (193.10,  130.17,  12.13,  5.23599,  0.000000),
 }
 
-# creates a pitch-yaw transformation matrix as 4x4 numpy array
+#Creates a pitch-yaw transformation matrix as 4x4 numpy array
 def pitch_yaw_transform(alpha, beta):
-    # Returns a 4x4 affine transformation matrix that rotates by alpha and beta
+    #Returns a 4x4 affine transformation matrix that rotates by alpha and beta
     return np.array(
         [ [m.cos(alpha)*m.cos(beta), -m.sin(alpha), m.cos(alpha)*m.sin(beta), 0],
          
@@ -40,10 +40,10 @@ def pitch_yaw_transform(alpha, beta):
 
           [-m.sin(beta),              0,            m.cos(beta)             , 0],
           
-          [0,                         0,            0                        , 1]
+          [0,                         0,            0                       , 1]
         ]
     )
-# creates a translation matrix as 4x4 numpy array
+#Creates a translation matrix as 4x4 numpy array
 def translation_matrix(translation):
     return np.array(
         [ [1, 0, 0, translation[0]],
@@ -53,21 +53,21 @@ def translation_matrix(translation):
         ]
     )
 
-# combines the pitch-yaw transformation and translation matrix
+#Combines the pitch-yaw transformation and translation matrix
 def transform(pose):
     x, y, z, alpha, beta = pose
     return  pitch_yaw_transform(alpha, beta) @ translation_matrix((x, y, z))
 
-# swaps the z and y axis of a 4x4 matrix to account for camera basis(with z pointing out of the camera)
-def swap_z_y_axis(matrix):
+#Swaps the z and y axis of a 4x4 matrix to account for camera basis(with z pointing out of the camera)
+def swap_zy_row(matrix):
     swap_matrix = np.array([
         [1, 0, 0, 0],
         [0, 0, 1, 0],
         [0, 1, 0, 0],
         [0, 0, 0, 1]
     ])
-    return swap_matrix @ matrix @ swap_matrix
+    return swap_matrix @ matrix
 
-# extracts the 2d pose from a 4x4 transformation matrix because robot has no vertical movment or pitch
+#Extracts the 2d pose from a 4x4 transformation matrix because robot has no vertical movment or pitch
 def extract_2d(transformation):
     return np.delete(np.delete(transformation, 2, axis=0), 2, axis=1)
