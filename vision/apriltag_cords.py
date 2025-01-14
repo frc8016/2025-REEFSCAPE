@@ -30,6 +30,7 @@ apriltag_cords = {
     22: (193.10,  130.17,  12.13,  5.23599,  0.000000),
 }
 
+# creates a pitch-yaw transformation matrix as 4x4 numpy array
 def pitch_yaw_transform(alpha, beta):
     # Returns a 4x4 affine transformation matrix that rotates by alpha and beta
     return np.array(
@@ -42,7 +43,7 @@ def pitch_yaw_transform(alpha, beta):
           [0,                         0,            0                        , 1]
         ]
     )
-
+# creates a translation matrix as 4x4 numpy array
 def translation_matrix(translation):
     return np.array(
         [ [1, 0, 0, translation[0]],
@@ -52,10 +53,12 @@ def translation_matrix(translation):
         ]
     )
 
+# combines the pitch-yaw transformation and translation matrix
 def transform(pose):
     x, y, z, alpha, beta = pose
     return  pitch_yaw_transform(alpha, beta) @ translation_matrix((x, y, z))
 
+# swaps the z and y axis of a 4x4 matrix to account for camera basis(with z pointing out of the camera)
 def swap_z_y_axis(matrix):
     swap_matrix = np.array([
         [1, 0, 0, 0],
@@ -65,5 +68,6 @@ def swap_z_y_axis(matrix):
     ])
     return swap_matrix @ matrix @ swap_matrix
 
+# extracts the 2d pose from a 4x4 transformation matrix because robot has no vertical movment or pitch
 def extract_2d(transformation):
     return np.delete(np.delete(transformation, 2, axis=0), 2, axis=1)

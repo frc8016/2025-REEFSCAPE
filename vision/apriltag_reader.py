@@ -18,10 +18,9 @@ gray = cv2.resize(gray, dsize=(0, 0), fx=decimation_factor, fy=decimation_factor
 
 detector = apriltag.Detector(apriltag.DetectorOptions(families="tag36h11"))
 
-start_time = time.time()
 results = detector.detect(gray)
-end_time = time.time()
 
+#draws lines and prints tags
 for r in results:
     (ptA, ptB, ptC, ptD) = r.corners
 
@@ -40,6 +39,3 @@ for r in results:
     cv2.putText(image, tag, (cX - 10, cY + 5), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 2)
 
 cv2.imwrite("output.jpg", image)
-
-runtime = (end_time - start_time) * 1000
-print(f"Runtime: {runtime:.2f} ms")
