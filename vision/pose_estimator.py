@@ -32,6 +32,7 @@ global_poses = []
 for tag in apriltags:
     id = tag.tag_id
     pose, e0, e1 = detector.detection_pose(tag, camera, april_tag_width)
+    pose = ac.extract_2d(ac.swap_z_y_axis(pose))
 
     if e0 > e0_threshhold and e1 > e1_threshhold:
         global_poses.append((np.linalg.inv(np.array(ac.swap_z_y_axis(pose))) @ at.apriltag_tranform[id]), e0, e1)
