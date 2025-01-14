@@ -6,7 +6,7 @@ import time
 # retrieving the image path
 ap = argparse.ArgumentParser()
 ap.add_argument("-i", "--image", required=True, help="path to input image containing AprilTag")
-ap.add_argument("-d", "--decimation", type=float, default=0.5, help="decimation factor")
+ap.add_argument("-d", "--decimation", type=float, default=1, help="decimation factor")
 args = vars(ap.parse_args())
 
 decimation_factor = args["decimation"]
