@@ -1,7 +1,6 @@
 import cv2
 import argparse
 import apriltag
-import time
 
 # retrieving the image path
 ap = argparse.ArgumentParser()
