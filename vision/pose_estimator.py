@@ -1,8 +1,8 @@
 import apriltag
 import cv2
 import numpy as np
-import apriltag_transform as at
-import apriltag_cords as ac
+import precomps/apriltag_transforms as at
+import transform_functions as tf
 
 #PROPERTIES
 tag_family = "tag36h11"
@@ -37,11 +37,11 @@ for tag in apriltags:
     id = tag.tag_id
     pose, e0, e1 = detector.detection_pose(tag, camera, april_tag_width)
     #swap y and z axis and than extract 2d matrix to for quicker procssing
-    pose = ac.extract_2d(ac.swap_z_y_axis(pose))
+    pose = tf.extract_2d(tf.swap_z_y_axis(pose))
 
     #Chekcs if the errors are below threshold
     if e0 > e0_threshhold and e1 > e1_threshhold:
-        global_poses.append((np.linalg.inv(np.array(ac.swap_z_y_axis(pose))) @ at.apriltag_tranform[id]), e0, e1)
+        global_poses.append((np.linalg.inv(np.array(tf.swap_z_y_axis(pose))) @ at.apriltag_tranform[id]), e0, e1)
 
 #Uses the list to identify best position estimate  and prints as affine tranform matrix
 if len(global_poses) == 0:
