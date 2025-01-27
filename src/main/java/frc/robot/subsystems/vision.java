@@ -17,7 +17,7 @@ import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.vision.VisionThread;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
-public class vision  extends SubsystemBase{
+public class vision extends SubsystemBase {
   
   private final PhotonCamera camera;
 
