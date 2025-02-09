@@ -4,16 +4,55 @@
 
 package frc.robot;
 
+import com.revrobotics.spark.SparkLowLevel.MotorType;
+
+import static edu.wpi.first.units.Units.Inches;
+import static edu.wpi.first.units.Units.MetersPerSecond;
+import static edu.wpi.first.units.Units.MetersPerSecondPerSecond;
+
+import com.revrobotics.spark.SparkMax;
+import com.revrobotics.spark.config.SparkMaxConfig;
+
+import edu.wpi.first.math.controller.ElevatorFeedforward;
+import edu.wpi.first.units.measure.Distance;
+import edu.wpi.first.units.measure.LinearAcceleration;
+import edu.wpi.first.units.measure.LinearVelocity;
+import edu.wpi.first.wpilibj.DutyCycleEncoder;
+import edu.wpi.first.wpilibj.Encoder;
+
 /**
- * The Constants class provides a convenient place for teams to hold robot-wide numerical or boolean
- * constants. This class should not be used for any other purpose. All constants should be declared
+ * The Constants class provides a convenient place for teams to hold robot-wide
+ * numerical or boolean
+ * constants. This class should not be used for any other purpose. All constants
+ * should be declared
  * globally (i.e. public static). Do not put anything functional in this class.
  *
- * <p>It is advised to statically import this class (or one of its inner classes) wherever the
+ * <p>
+ * It is advised to statically import this class (or one of its inner classes)
+ * wherever the
  * constants are needed, to reduce verbosity.
  */
 public final class Constants {
-  public static class OperatorConstants {
-    public static final int kDriverControllerPort = 0;
-  }
+    public static class OperatorConstants {
+        public static final int kDriverControllerPort = 0;
+    }
+
+    public static class ElevatorConstants {
+        public static final double METERS_PER_REVOLUTION = 0.0;
+        public static final double P_VALUE = 0.0;
+        public static final double I_VALUE = 0.0;
+        public static final double D_VALUE = 0.0;
+        public static final double P_VALUE_VELOCITY = 0.0;
+        public static final double I_VALUE_VELOCITY = 0.0;
+        public static final double D_VALUE_VELOCITY = 0.0;
+        public static final double FEEDFORWARD_VALUE = 0.0;
+        public static final double OUTPUTRANGE_MIN_VALUE = -1.0;
+        public static final double OUTPUTRANGE_MAX_VALUE = 1.0;
+        public static final LinearVelocity MAX_VEL = MetersPerSecond.of(0.8);
+        public static final LinearAcceleration MAX_ACCELERATION = MetersPerSecondPerSecond.of(0.4);
+        public static final Distance ALLOWED_SETPOINT_ERROR = Inches.of(1);
+        public static final double ELEVATOR_FORWORD_SOFTLIMIT = 50;
+        public static final double ELEVATOR_REVERSE_SOFTLIMIT = -50;
+        public static final double MAX_CURRENT_LIMIT = 50;
+    }
 }
