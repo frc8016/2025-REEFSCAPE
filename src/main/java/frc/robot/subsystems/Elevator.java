@@ -19,8 +19,11 @@ import edu.wpi.first.math.controller.ProfiledPIDController;
 import edu.wpi.first.math.trajectory.TrapezoidProfile;
 import edu.wpi.first.wpilibj.DutyCycleEncoder;
 import edu.wpi.first.wpilibj.Encoder;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.ElevatorConstants;
+import frc.robot.Constants.SetPointConstants;
 
 public class Elevator extends SubsystemBase {
     // #Note that they changed the spark max name from "CANSparkMax" to "SparkMax"
@@ -90,28 +93,34 @@ public class Elevator extends SubsystemBase {
                 PersistMode.kPersistParameters);
     }
 
+    public void setSpeed(double speed) {
+        m_rightClosedLoopController.setReference(speed, ControlType.kVelocity, ClosedLoopSlot.kSlot1);
+
+    }
+
     public void setPosition(double position) {
         m_rightClosedLoopController.setReference(position, ControlType.kPosition,
                 ClosedLoopSlot.kSlot0);
-        // rightClosedLoopController.setReference(position,
-        // SparkBase.ControlType.kMAXMotionPositionControl);
+
         this.position = position;
     }
 
-    public enum ElevatorPosition {
-
-        LEVEL4(150.0),
-        LEVEL3(100.0),
-        LEVEL2(50.0),
-        LEVEL1(0.0),
-        HOME(0.0),
-        CORAL_STATION(0.0);
-
-        public final double position;
-
-        ElevatorPosition(double position) {
-            this.position = position;
-        }
+    public Command goToSetPointCommand(double position) {
+        return this.runOnce(() -> this.setPosition(position));
     }
+
+    public Command setSpeedCommand(double speed) {
+        return this.run(() -> this.setSpeed(speed));
+    }
+
+    // @Override
+    // public void periodic() {
+    // SmartDashboard.putNumber("Elevator/position", inputs.position);
+    // SmartDashboard.putNumber("Elevator/velocity", inputs.velocity);
+    // SmartDashboard.putNumber("Elevator/appliedVoltage", inputs.appliedVoltage);
+    // SmartDashboard.putNumber("Elevator/positionSetPoint",
+    // inputs.positionSetPoint);
+
+    // }
 
 }
