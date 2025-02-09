@@ -4,6 +4,7 @@
 
 package frc.robot;
 
+import static edu.wpi.first.units.Units.Meters;
 import static edu.wpi.first.units.Units.MetersPerSecond;
 import static edu.wpi.first.units.Units.RadiansPerSecond;
 import static edu.wpi.first.units.Units.RotationsPerSecond;
@@ -19,6 +20,7 @@ import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.RunCommand;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.sysid.SysIdRoutine.Direction;
+import frc.robot.Constants.SetPointConstants;
 import frc.robot.generated.TunerConstants;
 import frc.robot.subsystems.CommandSwerveDrivetrain;
 import frc.robot.subsystems.CoralIntake;
@@ -26,11 +28,13 @@ import frc.robot.subsystems.Elevator;
 
 public class RobotContainer {
     private double MaxSpeed = TunerConstants.kSpeedAt12Volts.in(MetersPerSecond); // kSpeedAt12Volts desired top speed
-    private double MaxAngularRate = RotationsPerSecond.of(0.75).in(RadiansPerSecond); // 3/4 of a rotation per second max angular velocity
-    //create contollers 
-    private final CommandXboxController m_swerveController = new CommandXboxController(0);//swerve xbox controller
-    private final CommandXboxController m_opperatorController = new CommandXboxController(1); //elevator/climb etc xbox controller
-    //create instnace of subsystems 
+    private double MaxAngularRate = RotationsPerSecond.of(0.75).in(RadiansPerSecond); // 3/4 of a rotation per second
+                                                                                      // max angular velocity
+    // create contollers
+    private final CommandXboxController m_swerveController = new CommandXboxController(0);// swerve xbox controller
+    private final CommandXboxController m_opperatorController = new CommandXboxController(1); // elevator/climb etc xbox
+                                                                                              // controller
+    // create instnace of subsystems
     public final CoralIntake m_CoralIntake = new CoralIntake();
     public final CommandSwerveDrivetrain m_Drivetrain = TunerConstants.createDrivetrain();
     private final Telemetry logger = new Telemetry(MaxSpeed);
@@ -47,7 +51,7 @@ public class RobotContainer {
     private final SwerveRequest.RobotCentric forwardStraight = new SwerveRequest.RobotCentric()
             .withDriveRequestType(DriveRequestType.OpenLoopVoltage);
 
-public RobotContainer() {
+    public RobotContainer() {
         autoChooser = AutoBuilder.buildAutoChooser("Tests");
         SmartDashboard.putData("Auto Mode", autoChooser);
 
@@ -55,53 +59,62 @@ public RobotContainer() {
     }
 
     private void configureBindings() {
-        //Swerve Code
+        // Swerve Code
         // Note that X is defined as forward according to WPILib convention,
         // and Y is defined as to the left according to WPILib convention.
         m_Drivetrain.setDefaultCommand(
-            // Drivetrain will execute this command periodically
-            m_Drivetrain.applyRequest(() ->
-                drive.withVelocityX(-m_swerveController.getLeftY() * MaxSpeed) // Drive forward with negative Y (forward)
-                    .withVelocityY(-m_swerveController.getLeftX() * MaxSpeed) // Drive left with negative X (left)
-                    .withRotationalRate(-m_swerveController.getRightX() * MaxAngularRate) // Drive counterclockwise with negative X (left)
-            )
-        );
+                // Drivetrain will execute this command periodically
+                m_Drivetrain.applyRequest(() -> drive.withVelocityX(-m_swerveController.getLeftY() * MaxSpeed) // Drive
+                                                                                                               // forward
+                                                                                                               // with
+                                                                                                               // negative
+                                                                                                               // Y
+                                                                                                               // (forward)
+                        .withVelocityY(-m_swerveController.getLeftX() * MaxSpeed) // Drive left with negative X (left)
+                        .withRotationalRate(-m_swerveController.getRightX() * MaxAngularRate) // Drive counterclockwise
+                                                                                              // with negative X (left)
+                ));
 
         m_swerveController.a().whileTrue(m_Drivetrain.applyRequest(() -> brake));
-        m_swerveController.b().whileTrue(m_Drivetrain.applyRequest(() ->
-            point.withModuleDirection(new Rotation2d(-m_swerveController.getLeftY(), -m_swerveController.getLeftX()))
-        ));
+        m_swerveController.b().whileTrue(m_Drivetrain.applyRequest(() -> point
+                .withModuleDirection(new Rotation2d(-m_swerveController.getLeftY(), -m_swerveController.getLeftX()))));
 
-        m_swerveController.pov(0).whileTrue(m_Drivetrain.applyRequest(() ->
-            forwardStraight.withVelocityX(0.5).withVelocityY(0))
-        );
-        m_swerveController.pov(180).whileTrue(m_Drivetrain.applyRequest(() ->
-            forwardStraight.withVelocityX(-0.5).withVelocityY(0))
-        );
+        m_swerveController.pov(0)
+                .whileTrue(m_Drivetrain.applyRequest(() -> forwardStraight.withVelocityX(0.5).withVelocityY(0)));
+        m_swerveController.pov(180)
+                .whileTrue(m_Drivetrain.applyRequest(() -> forwardStraight.withVelocityX(-0.5).withVelocityY(0)));
 
         // Run SysId routines when holding back/start and X/Y.
         // Note that each routine should be run exactly once in a single log.
         m_swerveController.back().and(m_swerveController.y()).whileTrue(m_Drivetrain.sysIdDynamic(Direction.kForward));
         m_swerveController.back().and(m_swerveController.x()).whileTrue(m_Drivetrain.sysIdDynamic(Direction.kReverse));
-        m_swerveController.start().and(m_swerveController.y()).whileTrue(m_Drivetrain.sysIdQuasistatic(Direction.kForward));
-        m_swerveController.start().and(m_swerveController.x()).whileTrue(m_Drivetrain.sysIdQuasistatic(Direction.kReverse));
+        m_swerveController.start().and(m_swerveController.y())
+                .whileTrue(m_Drivetrain.sysIdQuasistatic(Direction.kForward));
+        m_swerveController.start().and(m_swerveController.x())
+                .whileTrue(m_Drivetrain.sysIdQuasistatic(Direction.kReverse));
 
         // reset the field-centric heading on left bumper press
         m_swerveController.leftBumper().onTrue(m_Drivetrain.runOnce(() -> m_Drivetrain.seedFieldCentric()));
 
         m_Drivetrain.registerTelemetry(logger::telemeterize);
 
-        //Elevator code
+        // Elevator code
 
-        //Coral outtake code
+        // Coral outtake code
         m_opperatorController.leftBumper().toggleOnTrue(
-            new RunCommand(() -> m_CoralIntake.intake(0), m_CoralIntake));
+                new RunCommand(() -> m_CoralIntake.intake(0), m_CoralIntake));
 
         m_opperatorController.rightBumper().toggleOnTrue(
-            new RunCommand(() -> m_CoralIntake.score(0), m_CoralIntake));
-        
+                new RunCommand(() -> m_CoralIntake.score(0), m_CoralIntake));
 
-
+        m_opperatorController.y().toggleOnTrue(
+                new RunCommand(() -> m_Elevator.goToSetPointCommand(SetPointConstants.LEVEL4.in(Meters))));
+        m_opperatorController.b().toggleOnTrue(
+                new RunCommand(() -> m_Elevator.goToSetPointCommand(SetPointConstants.LEVEL3.in(Meters))));
+        m_opperatorController.x().toggleOnTrue(
+                new RunCommand(() -> m_Elevator.goToSetPointCommand(SetPointConstants.LEVEL2.in(Meters))));
+        m_opperatorController.a().toggleOnTrue(
+                new RunCommand(() -> m_Elevator.goToSetPointCommand(SetPointConstants.LEVEL1.in(Meters))));
 
     }
 

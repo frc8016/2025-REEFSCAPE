@@ -4,21 +4,14 @@
 
 package frc.robot;
 
-import com.revrobotics.spark.SparkLowLevel.MotorType;
-
 import static edu.wpi.first.units.Units.Inches;
 import static edu.wpi.first.units.Units.MetersPerSecond;
 import static edu.wpi.first.units.Units.MetersPerSecondPerSecond;
+import static edu.wpi.first.units.Units.Centimeters;
 
-import com.revrobotics.spark.SparkMax;
-import com.revrobotics.spark.config.SparkMaxConfig;
-
-import edu.wpi.first.math.controller.ElevatorFeedforward;
 import edu.wpi.first.units.measure.Distance;
 import edu.wpi.first.units.measure.LinearAcceleration;
 import edu.wpi.first.units.measure.LinearVelocity;
-import edu.wpi.first.wpilibj.DutyCycleEncoder;
-import edu.wpi.first.wpilibj.Encoder;
 
 /**
  * The Constants class provides a convenient place for teams to hold robot-wide
@@ -54,5 +47,15 @@ public final class Constants {
         public static final double ELEVATOR_FORWORD_SOFTLIMIT = 50;
         public static final double ELEVATOR_REVERSE_SOFTLIMIT = -50;
         public static final double MAX_CURRENT_LIMIT = 50;
+
+    }
+
+    public static class SetPointConstants {
+
+        public static Distance LEVEL4 = Centimeters.of(150.0);
+        public static Distance LEVEL3 = Centimeters.of(100.0);
+        public static Distance LEVEL2 = Centimeters.of(50.0);
+        public static Distance LEVEL1 = Centimeters.of(0.0);
+
     }
 }
