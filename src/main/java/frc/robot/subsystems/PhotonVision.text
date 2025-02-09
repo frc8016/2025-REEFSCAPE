@@ -1,0 +1,15 @@
+package frc.robot.subsystems;
+
+import org.photonvision.PhotonCamera;
+import org.photonvision.targeting.PhotonPipelineResult;
+
+import edu.wpi.first.wpilibj2.command.SubsystemBase;
+
+public class PhotonVision extends SubsystemBase{
+    PhotonCamera camera = new PhotonCamera("PhotonCamera");
+    boolean hasTargets = 
+public PhotonPipelineResult getLatestTags(){
+    return camera.getLatestResult();
+
+    }
+} 
