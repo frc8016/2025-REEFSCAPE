@@ -5,6 +5,8 @@ import static edu.wpi.first.units.Units.MetersPerSecond;
 import static edu.wpi.first.units.Units.MetersPerSecondPerSecond;
 
 import com.revrobotics.spark.ClosedLoopSlot;
+import com.revrobotics.spark.SparkClosedLoopController;
+import com.revrobotics.spark.SparkBase.ControlType;
 import com.revrobotics.spark.SparkBase.PersistMode;
 import com.revrobotics.spark.SparkBase.ResetMode;
 import com.revrobotics.spark.SparkLowLevel.MotorType;
@@ -25,12 +27,11 @@ public class Elevator extends SubsystemBase {
     // Declare devices
     private final SparkMax m_elevatorLeft = new SparkMax(0, MotorType.kBrushless);
     private final SparkMax m_elevatorRight = new SparkMax(0, MotorType.kBrushless);
-    private final Encoder m_relativeEncoder = new Encoder(null, null);
-    private final DutyCycleEncoder m_absoluteEncoder = new DutyCycleEncoder(0);
     private final SparkMaxConfig m_sharedconfig = new SparkMaxConfig();
     private final SparkMaxConfig m_leftconfig = new SparkMaxConfig();
     private final SparkMaxConfig m_rightconfig = new SparkMaxConfig();
-
+    private final SparkClosedLoopController m_rightClosedLoopController = m_elevatorRight.getClosedLoopController();
+    private double position;
     // Creates the feedforward control for the elevator
 
     public Elevator() {
@@ -43,13 +44,15 @@ public class Elevator extends SubsystemBase {
                 .p(ElevatorConstants.P_VALUE, ClosedLoopSlot.kSlot0)
                 .i(ElevatorConstants.I_VALUE, ClosedLoopSlot.kSlot0)
                 .d(ElevatorConstants.D_VALUE, ClosedLoopSlot.kSlot0)
-                .outputRange(ElevatorConstants.OUTPUTRANGE_MIN_VALUE, ElevatorConstants.OUTPUTRANGE_MAX_VALUE)
+                .outputRange(ElevatorConstants.OUTPUTRANGE_MIN_VALUE,
+                        ElevatorConstants.OUTPUTRANGE_MAX_VALUE)
                 .p(ElevatorConstants.P_VALUE_VELOCITY, ClosedLoopSlot.kSlot1)
                 .i(ElevatorConstants.I_VALUE_VELOCITY, ClosedLoopSlot.kSlot1)
                 .d(ElevatorConstants.D_VALUE_VELOCITY, ClosedLoopSlot.kSlot1)
                 // https://docs.revrobotics.com/revlib/spark/closed-loop/closed-loop-control-getting-started#f-parameter
                 .velocityFF(ElevatorConstants.FEEDFORWARD_VALUE, ClosedLoopSlot.kSlot1)
-                .outputRange(ElevatorConstants.OUTPUTRANGE_MIN_VALUE, ElevatorConstants.OUTPUTRANGE_MAX_VALUE,
+                .outputRange(ElevatorConstants.OUTPUTRANGE_MIN_VALUE,
+                        ElevatorConstants.OUTPUTRANGE_MAX_VALUE,
                         ClosedLoopSlot.kSlot1);
 
         m_sharedconfig.closedLoop.maxMotion
@@ -83,6 +86,32 @@ public class Elevator extends SubsystemBase {
                 .reverseSoftLimitEnabled(true);
 
         m_elevatorLeft.configure(m_leftconfig, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
-        m_elevatorRight.configure(m_rightconfig, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
-    }// test
+        m_elevatorRight.configure(m_rightconfig, ResetMode.kResetSafeParameters,
+                PersistMode.kPersistParameters);
+    }
+
+    public void setPosition(double position) {
+        m_rightClosedLoopController.setReference(position, ControlType.kPosition,
+                ClosedLoopSlot.kSlot0);
+        // rightClosedLoopController.setReference(position,
+        // SparkBase.ControlType.kMAXMotionPositionControl);
+        this.position = position;
+    }
+
+    public enum ElevatorPosition {
+
+        LEVEL4(150.0),
+        LEVEL3(100.0),
+        LEVEL2(50.0),
+        LEVEL1(0.0),
+        HOME(0.0),
+        CORAL_STATION(0.0);
+
+        public final double position;
+
+        ElevatorPosition(double position) {
+            this.position = position;
+        }
+    }
+
 }
