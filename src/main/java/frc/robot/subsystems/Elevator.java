@@ -12,6 +12,7 @@ import com.revrobotics.spark.SparkBase.ResetMode;
 import com.revrobotics.spark.SparkLowLevel.MotorType;
 import com.revrobotics.spark.SparkMax;
 import com.revrobotics.spark.config.ClosedLoopConfig.FeedbackSensor;
+import com.revrobotics.spark.config.MAXMotionConfig.MAXMotionPositionMode;
 import com.revrobotics.spark.config.SparkBaseConfig.IdleMode;
 import com.revrobotics.spark.config.SparkMaxConfig;
 import edu.wpi.first.wpilibj2.command.Command;
@@ -21,8 +22,8 @@ import frc.robot.Constants.ElevatorConstants;
 public class Elevator extends SubsystemBase {
         // #Note that they changed the spark max name from "CANSparkMax" to "SparkMax"
         // Declare devices
-        private final SparkMax m_elevatorLeft = new SparkMax(0, MotorType.kBrushless);
-        private final SparkMax m_elevatorRight = new SparkMax(0, MotorType.kBrushless);
+        private final SparkMax m_elevatorLeft = new SparkMax(1, MotorType.kBrushless);
+        private final SparkMax m_elevatorRight = new SparkMax(2, MotorType.kBrushless);
         private final SparkMaxConfig m_sharedconfig = new SparkMaxConfig();
         private final SparkMaxConfig m_leftconfig = new SparkMaxConfig();
         private final SparkMaxConfig m_rightconfig = new SparkMaxConfig();
@@ -54,6 +55,7 @@ public class Elevator extends SubsystemBase {
                 m_sharedconfig.closedLoop.maxMotion
                                 .maxVelocity(ElevatorConstants.MAX_VEL.in(MetersPerSecond))
                                 .maxAcceleration(ElevatorConstants.MAX_ACCELERATION.in(MetersPerSecondPerSecond))
+                                .positionMode(MAXMotionPositionMode.kMAXMotionTrapezoidal)
                                 .allowedClosedLoopError(ElevatorConstants.ALLOWED_SETPOINT_ERROR.in(Meters));
 
                 m_rightconfig

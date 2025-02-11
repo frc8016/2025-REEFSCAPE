@@ -38,7 +38,7 @@ public final class Constants {
         public static final double P_VALUE_VELOCITY = 0.0;
         public static final double I_VALUE_VELOCITY = 0.0;
         public static final double D_VALUE_VELOCITY = 0.0;
-        public static final double FEEDFORWARD_VALUE = 0.0;
+        public static final double FEEDFORWARD_VALUE = 1.0 / 473.0;
         public static final double OUTPUTRANGE_MIN_VALUE = -1.0;
         public static final double OUTPUTRANGE_MAX_VALUE = 1.0;
         public static final LinearVelocity MAX_VEL = MetersPerSecond.of(0.8);
