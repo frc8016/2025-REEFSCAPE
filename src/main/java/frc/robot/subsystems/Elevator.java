@@ -22,8 +22,9 @@ import frc.robot.Constants.ElevatorConstants;
 public class Elevator extends SubsystemBase {
         // #Note that they changed the spark max name from "CANSparkMax" to "SparkMax"
         // Declare devices
-        private final SparkMax m_elevatorLeft = new SparkMax(1, MotorType.kBrushless);
-        private final SparkMax m_elevatorRight = new SparkMax(2, MotorType.kBrushless);
+        //
+        private final SparkMax m_elevatorLeft = new SparkMax(13, MotorType.kBrushless);
+        private final SparkMax m_elevatorRight = new SparkMax(15, MotorType.kBrushless);
         private final SparkMaxConfig m_sharedconfig = new SparkMaxConfig();
         private final SparkMaxConfig m_leftconfig = new SparkMaxConfig();
         private final SparkMaxConfig m_rightconfig = new SparkMaxConfig();
