@@ -45,7 +45,7 @@ public final class Constants {
         public static final LinearAcceleration MAX_ACCELERATION = MetersPerSecondPerSecond.of(0.4);
         public static final Distance ALLOWED_SETPOINT_ERROR = Inches.of(1);
         public static final double ELEVATOR_FORWORD_SOFTLIMIT = 50;
-        public static final double ELEVATOR_REVERSE_SOFTLIMIT = -50;
+        public static final double ELEVATOR_REVERSE_SOFTLIMIT = 0;
         public static final double MAX_CURRENT_LIMIT = 50;
 
     }
