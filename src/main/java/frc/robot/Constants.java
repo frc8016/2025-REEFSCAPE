@@ -31,7 +31,7 @@ public final class Constants {
     }
 
     public static class ElevatorConstants {
-        public static final double METERS_PER_REVOLUTION = 0.0;
+        public static final double METERS_PER_REVOLUTION = 0.1397 / 3.0;
         public static final double P_VALUE = 0.0;
         public static final double I_VALUE = 0.0;
         public static final double D_VALUE = 0.0;

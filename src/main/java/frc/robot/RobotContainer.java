@@ -18,6 +18,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.RunCommand;
+import edu.wpi.first.wpilibj2.command.StartEndCommand;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.sysid.SysIdRoutine.Direction;
 import frc.robot.Constants.SetPointConstants;
@@ -32,7 +33,7 @@ public class RobotContainer {
                                                                                       // max angular velocity
     // create contollers
     private final CommandXboxController m_swerveController = new CommandXboxController(0);// swerve xbox controller
-    private final CommandXboxController m_opperatorController = new CommandXboxController(1); // elevator/climb etc xbox
+    private final CommandXboxController m_operatorController = new CommandXboxController(1); // elevator/climb etc xbox
                                                                                               // controller
     // create instnace of subsystems
     public final CoralIntake m_CoralIntake = new CoralIntake();
@@ -101,20 +102,34 @@ public class RobotContainer {
         // Elevator code
 
         // Coral outtake code
-        m_opperatorController.leftBumper().toggleOnTrue(
-                new RunCommand(() -> m_CoralIntake.intake(0), m_CoralIntake));
+        //change to start end commands
+        m_operatorController.leftBumper().toggleOnTrue(
+                new StartEndCommand(
+                        () -> m_CoralIntake.score(0.1),
+                        () -> m_CoralIntake.score(0),
+                 m_CoralIntake));
 
-        m_opperatorController.rightBumper().toggleOnTrue(
-                new RunCommand(() -> m_CoralIntake.score(0), m_CoralIntake));
+        
+                
 
-        m_opperatorController.y().toggleOnTrue(
-                new RunCommand(() -> m_Elevator.goToSetPointCommand(SetPointConstants.LEVEL4.in(Meters))));
-        m_opperatorController.b().toggleOnTrue(
-                new RunCommand(() -> m_Elevator.goToSetPointCommand(SetPointConstants.LEVEL3.in(Meters))));
-        m_opperatorController.x().toggleOnTrue(
-                new RunCommand(() -> m_Elevator.goToSetPointCommand(SetPointConstants.LEVEL2.in(Meters))));
-        m_opperatorController.a().toggleOnTrue(
-                new RunCommand(() -> m_Elevator.goToSetPointCommand(SetPointConstants.LEVEL1.in(Meters))));
+        m_operatorController.rightBumper().toggleOnTrue(
+                new StartEndCommand(
+                        () -> m_CoralIntake.score(0.2),
+                        () -> m_CoralIntake.score(0),
+                 m_CoralIntake));
+
+       
+        m_operatorController.y().onTrue(
+                m_Elevator.goToSetPointCommand(SetPointConstants.LEVEL4.in(Meters)));
+
+        m_operatorController.b().onTrue(
+                m_Elevator.goToSetPointCommand(SetPointConstants.LEVEL3.in(Meters)));
+
+        m_operatorController.x().onTrue(
+                m_Elevator.goToSetPointCommand(SetPointConstants.LEVEL2.in(Meters)));
+
+        m_operatorController.a().onTrue(
+                m_Elevator.goToSetPointCommand(SetPointConstants.LEVEL1.in(Meters)));
 
     }
 

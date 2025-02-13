@@ -16,6 +16,7 @@ import com.revrobotics.spark.config.MAXMotionConfig.MAXMotionPositionMode;
 import com.revrobotics.spark.config.SparkBaseConfig.IdleMode;
 import com.revrobotics.spark.config.SparkMaxConfig;
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.ElevatorConstants;
 
@@ -67,10 +68,9 @@ public class Elevator extends SubsystemBase {
 
                 m_leftconfig
                                 .apply(m_sharedconfig)
-                                .inverted(true)
                                 .idleMode(IdleMode.kBrake)
                                 .smartCurrentLimit(50)
-                                .follow(m_elevatorRight);
+                                .follow(m_elevatorRight, true);
 
                 m_leftconfig.softLimit
                                 .forwardSoftLimit(ElevatorConstants.ELEVATOR_FORWORD_SOFTLIMIT)
@@ -101,13 +101,18 @@ public class Elevator extends SubsystemBase {
                 this.position = position;
         }
 
-        public Command goToSetPointCommand(double position) {
+        public Command goToSetPointCommand1(double position) {
                 return this.runOnce(() -> this.setPosition(position));
+        }
+
+        public Command goToSetPointCommand(double position) {
+                return new InstantCommand(() -> this.setPosition(position));
         }
 
         public Command setSpeedCommand(double speed) {
                 return this.run(() -> this.setSpeed(speed));
         }
+       
 
         // @Override
         // public void periodic() {
