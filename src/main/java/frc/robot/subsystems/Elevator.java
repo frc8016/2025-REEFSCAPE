@@ -15,7 +15,11 @@ import com.revrobotics.spark.config.ClosedLoopConfig.FeedbackSensor;
 import com.revrobotics.spark.config.MAXMotionConfig.MAXMotionPositionMode;
 import com.revrobotics.spark.config.SparkBaseConfig.IdleMode;
 import com.revrobotics.spark.config.SparkMaxConfig;
+
+import edu.wpi.first.units.measure.Velocity;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.ElevatorConstants;
 
@@ -61,16 +65,15 @@ public class Elevator extends SubsystemBase {
 
                 m_rightconfig
                                 .apply(m_sharedconfig)
-                                .inverted(false)
+                                .inverted(true)
                                 .idleMode(IdleMode.kBrake)
-                                .smartCurrentLimit(50);
+                                .smartCurrentLimit(ElevatorConstants.MAX_CURRENT_LIMIT);
 
                 m_leftconfig
                                 .apply(m_sharedconfig)
-                                .inverted(true)
                                 .idleMode(IdleMode.kBrake)
-                                .smartCurrentLimit(50)
-                                .follow(m_elevatorRight);
+                                .smartCurrentLimit(ElevatorConstants.MAX_CURRENT_LIMIT)
+                                .follow(m_elevatorRight, true);
 
                 m_leftconfig.softLimit
                                 .forwardSoftLimit(ElevatorConstants.ELEVATOR_FORWORD_SOFTLIMIT)
@@ -99,24 +102,32 @@ public class Elevator extends SubsystemBase {
                                 ClosedLoopSlot.kSlot0);
 
                 this.position = position;
+                System.out.println("set position" + position);
+        }
+
+        public Command goToSetPointCommand1(double position) {
+                return this.runOnce(() -> this.setPosition(position));
         }
 
         public Command goToSetPointCommand(double position) {
-                return this.runOnce(() -> this.setPosition(position));
+                return new InstantCommand(() -> this.setPosition(position));
+
         }
 
         public Command setSpeedCommand(double speed) {
                 return this.run(() -> this.setSpeed(speed));
         }
+       
+       
 
-        // @Override
-        // public void periodic() {
-        // SmartDashboard.putNumber("Elevator/position", inputs.position);
-        // SmartDashboard.putNumber("Elevator/velocity", inputs.velocity);
-        // SmartDashboard.putNumber("Elevator/appliedVoltage", inputs.appliedVoltage);
-        // SmartDashboard.putNumber("Elevator/positionSetPoint",
-        // inputs.positionSetPoint);
+        @Override
+        public void periodic() {
+                SmartDashboard.putNumber("Encoder position",  m_elevatorRight.getEncoder().getPosition());
+                SmartDashboard.putNumber("Encoder velocity", m_elevatorRight.getEncoder().getVelocity());
+                SmartDashboard.putNumber("Duty Cycle", m_elevatorRight.getAppliedOutput());
+                SmartDashboard.putNumber("Bus voltage", m_elevatorRight.getBusVoltage());
+                SmartDashboard.putNumber("Output current", m_elevatorRight.getOutputCurrent());
 
-        // }
+        }
 
 }
