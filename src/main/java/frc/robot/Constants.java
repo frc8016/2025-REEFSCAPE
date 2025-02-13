@@ -32,7 +32,7 @@ public final class Constants {
 
     public static class ElevatorConstants {
         public static final double METERS_PER_REVOLUTION = 0.1397 / 3.0;
-        public static final double P_VALUE = 0.0;
+        public static final double P_VALUE = 0.5;
         public static final double I_VALUE = 0.0;
         public static final double D_VALUE = 0.0;
         public static final double P_VALUE_VELOCITY = 0.0;
@@ -46,7 +46,7 @@ public final class Constants {
         public static final Distance ALLOWED_SETPOINT_ERROR = Inches.of(1);
         public static final double ELEVATOR_FORWORD_SOFTLIMIT = 50;
         public static final double ELEVATOR_REVERSE_SOFTLIMIT = 0;
-        public static final double MAX_CURRENT_LIMIT = 50;
+        public static final int MAX_CURRENT_LIMIT = 50;
 
     }
 
