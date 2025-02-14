@@ -64,13 +64,13 @@ public class RobotContainer {
         // and Y is defined as to the left according to WPILib convention.
         m_Drivetrain.setDefaultCommand(
                 // Drivetrain will execute this command periodically
-                m_Drivetrain.applyRequest(() -> drive.withVelocityX(-m_swerveController.getLeftY() * MaxSpeed) // Drive
+                m_Drivetrain.applyRequest(() -> drive.withVelocityX(m_swerveController.getLeftY() * MaxSpeed) // Drive
                                                                                                                // forward
                                                                                                                // with
                                                                                                                // negative
                                                                                                                // Y
                                                                                                                // (forward)
-                        .withVelocityY(-m_swerveController.getLeftX() * MaxSpeed) // Drive left with negative X (left)
+                        .withVelocityY(m_swerveController.getLeftX() * MaxSpeed) // Drive left with negative X (left)
                         .withRotationalRate(-m_swerveController.getRightX() * MaxAngularRate) // Drive counterclockwise
                                                                                               // with negative X (left)
                 ));
@@ -102,7 +102,7 @@ public class RobotContainer {
 
         // Coral outtake code
         //change to start end commands
-        m_operatorController.leftBumper().toggleOnTrue(
+        m_operatorController.leftBumper().whileTrue(
                 new StartEndCommand(
                         () -> m_CoralIntake.score(0.1),
                         () -> m_CoralIntake.score(0),
@@ -111,7 +111,7 @@ public class RobotContainer {
         
                 
 
-        m_operatorController.rightBumper().toggleOnTrue(
+        m_operatorController.rightBumper().whileTrue(
                 new StartEndCommand(
                         () -> m_CoralIntake.score(0.2),
                         () -> m_CoralIntake.score(0),
