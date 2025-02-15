@@ -98,12 +98,18 @@ public class Elevator extends SubsystemBase {
         }
 
         public void setPosition(double position) {
+                double ff = 0;
+                if (position > .5){
+                        ff = -0.3;
+                }
                 m_rightClosedLoopController.setReference(position, ControlType.kPosition,
-                                ClosedLoopSlot.kSlot0);
+                                ClosedLoopSlot.kSlot0, ff);
 
                 this.position = position;
                 System.out.println("set position" + position);
         }
+
+       
 
         public Command goToSetPointCommand1(double position) {
                 return this.runOnce(() -> this.setPosition(position));
