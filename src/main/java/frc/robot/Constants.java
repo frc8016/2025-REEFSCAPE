@@ -41,7 +41,7 @@ public final class Constants {
         public static final double FEEDFORWARD_VALUE = 1.0 / 473.0;
         public static final double OUTPUTRANGE_MIN_VALUE = -1.0;
         public static final double OUTPUTRANGE_MAX_VALUE = 1.0;
-        public static final LinearVelocity MAX_VEL = MetersPerSecond.of(0.1);
+        public static final LinearVelocity MAX_VEL = MetersPerSecond.of(0.4);
         public static final LinearAcceleration MAX_ACCELERATION = MetersPerSecondPerSecond.of(.4);
         public static final Distance ALLOWED_SETPOINT_ERROR = Inches.of(1);
         public static final double ELEVATOR_FORWORD_SOFTLIMIT = 50;
@@ -53,8 +53,8 @@ public final class Constants {
     public static class SetPointConstants {
 
         public static Distance LEVEL4 = Centimeters.of(90.0);
-        public static Distance LEVEL3 = Centimeters.of(48.0);
-        public static Distance LEVEL2 = Centimeters.of(28.0);
+        public static Distance LEVEL3 = Centimeters.of(44.0);
+        public static Distance LEVEL2 = Centimeters.of(22.0);
         public static Distance LEVEL1 = Centimeters.of(0.0);
 
     }
