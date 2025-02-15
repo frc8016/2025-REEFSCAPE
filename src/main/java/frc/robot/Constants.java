@@ -52,7 +52,7 @@ public final class Constants {
 
     public static class SetPointConstants {
 
-        public static Distance LEVEL4 = Centimeters.of(90.0);
+        public static Distance LEVEL4 = Centimeters.of(89.0);
         public static Distance LEVEL3 = Centimeters.of(44.0);
         public static Distance LEVEL2 = Centimeters.of(22.0);
         public static Distance LEVEL1 = Centimeters.of(0.0);
