@@ -52,10 +52,20 @@ public final class Constants {
 
     public static class SetPointConstants {
 
-        public static Distance LEVEL4 = Centimeters.of(87.0);
+        public static Distance LEVEL4 = Centimeters.of(84.0);
         public static Distance LEVEL3 = Centimeters.of(42.0);
-        public static Distance LEVEL2 = Centimeters.of(20.0);
+        public static Distance LEVEL2 = Centimeters.of(21.0);
         public static Distance LEVEL1 = Centimeters.of(0.0);
-
     }
+
+    public static class AlgaeIntakeConstants {
+        public static final double METERS_PER_REVOLUTION = 0.1397 / 3.0;
+        public static final double P_VALUE = 1.475;
+        public static final double I_VALUE = 0.0;
+        public static final double D_VALUE = 0.15;
+        public static final double P_VALUE_VELOCITY = 0.5;
+        public static final double I_VALUE_VELOCITY = 0.0;
+        public static final double D_VALUE_VELOCITY = 0.0;
+    }
+
 }
