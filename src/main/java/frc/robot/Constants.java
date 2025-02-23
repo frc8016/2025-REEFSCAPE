@@ -7,8 +7,15 @@ package frc.robot;
 import static edu.wpi.first.units.Units.Inches;
 import static edu.wpi.first.units.Units.MetersPerSecond;
 import static edu.wpi.first.units.Units.MetersPerSecondPerSecond;
+import static edu.wpi.first.units.Units.Radians;
 import static edu.wpi.first.units.Units.Centimeters;
+import static edu.wpi.first.units.Units.Degrees;
+import static edu.wpi.first.units.Units.DegreesPerSecond;
+import static edu.wpi.first.units.Units.DegreesPerSecondPerSecond;
 
+import edu.wpi.first.units.measure.Angle;
+import edu.wpi.first.units.measure.AngularAcceleration;
+import edu.wpi.first.units.measure.AngularVelocity;
 import edu.wpi.first.units.measure.Distance;
 import edu.wpi.first.units.measure.LinearAcceleration;
 import edu.wpi.first.units.measure.LinearVelocity;
@@ -59,15 +66,21 @@ public final class Constants {
     }
 
     public static class AlgaeIntakeConstants {
-        public static final double METERS_PER_REVOLUTION = 0.1397 / 3.0;
+        public static final double DEGREE_PER_REVOLUTION = 360;
+        public static final double VELOCITY_CONVERSHION_FACTOR = DEGREE_PER_REVOLUTION / 60;
         public static final double P_VALUE = 1.475;
         public static final double I_VALUE = 0.0;
         public static final double D_VALUE = 0.15;
         public static final double P_VALUE_VELOCITY = 0.5;
         public static final double I_VALUE_VELOCITY = 0.0;
         public static final double D_VALUE_VELOCITY = 0.0;
-        public static final double OUTPUTRANGE_MIN_VALUE =0.0;
-        public static final double OUTPUTRANGE_MAX_VALUE =0.0;
+        public static final double OUTPUTRANGE_MIN_VALUE = 0.0;
+        public static final double OUTPUTRANGE_MAX_VALUE = 0.0;
+        public static final double MAX_VEL = 0.4; // dont use unless sure
+        public static final double MAX_ACCELERATION = MAX_VEL / .5;// dont use unless sure
+        public static final Angle ALLOWED_SETPOINT_ERROR = Degrees.of(1);
+        public static final double ALGEAINTAKE_FORWORD_SOFTLIMIT = 1;
+        public static final double ALGEAINTAKE_REVERSE_SOFTLIMIT = 0;
     }
 
 }
