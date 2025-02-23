@@ -3,29 +3,29 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 8.772379557291666,
-        "y": 7.230441984953703
+        "x": 5.163291181144068,
+        "y": 2.9031432070974574
       },
       "prevControl": null,
       "nextControl": {
-        "x": 7.345577618634259,
-        "y": 7.235508174189815
+        "x": 6.163291181144068,
+        "y": 2.9031432070974574
       },
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "end of mac"
     },
     {
       "anchor": {
-        "x": 3.636835937499999,
-        "y": 5.2708166956018525
+        "x": 5.163291181144068,
+        "y": 5.150729939088983
       },
       "prevControl": {
-        "x": 2.3203255208333324,
-        "y": 7.23894386574074
+        "x": 6.136225503177966,
+        "y": 4.605584613347458
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "Odin end point "
     }
   ],
   "rotationTargets": [],
@@ -42,13 +42,13 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": -53.18377738595839
+    "rotation": -119.17726042876778
   },
   "reversed": false,
   "folder": null,
   "idealStartingState": {
     "velocity": 0,
-    "rotation": 0.0
+    "rotation": 120.1686428476434
   },
   "useDefaultConstraints": true
 }

@@ -20,13 +20,13 @@ public class AlgaeIntake extends SubsystemBase {
     private final SparkMaxConfig m_algaeMotorconfig = new SparkMaxConfig();
 
     public AlgaeIntake() {
-     
+
         // m_algaeMotorconfig.encoder
         m_algaeMotorconfig.closedLoop
-                .feedbackSensor(FeedbackSensor.kPrimaryEncoder);
+                .feedbackSensor(FeedbackSensor.kPrimaryEncoder)
                 .p(AlgaeIntakeConstants.P_VALUE, ClosedLoopSlot.kSlot0)
                 .i(AlgaeIntakeConstants.I_VALUE, ClosedLoopSlot.kSlot0)
                 .d(AlgaeIntakeConstants.D_VALUE, ClosedLoopSlot.kSlot0)
-                .outputRange(AlgaeIntakeConstants.OUTPUTRANGE_MIN_VALUE, AlgaeIntakeConstants.OUTPUTRANGE_MAX_VALUE); 
+                .outputRange(AlgaeIntakeConstants.OUTPUTRANGE_MIN_VALUE, AlgaeIntakeConstants.OUTPUTRANGE_MAX_VALUE);
     }
 }

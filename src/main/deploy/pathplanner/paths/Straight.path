@@ -3,29 +3,29 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 8.089550419560185,
-        "y": 6.13678566261574
+        "x": 0.6450240830243643,
+        "y": 4.047319004899364
       },
       "prevControl": null,
       "nextControl": {
-        "x": 7.324148220486111,
-        "y": 6.087987196180555
+        "x": 1.6450240830243668,
+        "y": 4.047319004899364
       },
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "Josh start point"
     },
     {
       "anchor": {
-        "x": 4.0,
-        "y": 6.0
+        "x": 3.145188360699153,
+        "y": 4.047319004899364
       },
       "prevControl": {
-        "x": 5.1989439653154195,
-        "y": 6.051589470608869
+        "x": 2.145188360699153,
+        "y": 4.047319004899364
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "Josh End"
     }
   ],
   "rotationTargets": [],
@@ -42,13 +42,13 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 179.38249691605117
+    "rotation": 0.0
   },
   "reversed": false,
   "folder": null,
   "idealStartingState": {
     "velocity": 0,
-    "rotation": 179.7868321724428
+    "rotation": 0.0
   },
   "useDefaultConstraints": true
 }
