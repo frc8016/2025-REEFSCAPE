@@ -7,37 +7,43 @@
         {
           "type": "path",
           "data": {
-            "pathName": "Max Path 1"
-          }
-        },
-        {
-          "type": "path",
-          "data": {
-            "pathName": "Max Path 2"
-          }
-        },
-        {
-          "type": "path",
-          "data": {
-            "pathName": "Max Path 3"
-          }
-        },
-        {
-          "type": "path",
-          "data": {
-            "pathName": "Max Path 4"
-          }
-        },
-        {
-          "type": "path",
-          "data": {
-            "pathName": "Max Path 5"
+            "pathName": "Max Path section 1"
           }
         },
         {
           "type": "wait",
           "data": {
-            "waitTime": 0
+            "waitTime": 2.0
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "Josh Path (p2)"
+          }
+        },
+        {
+          "type": "wait",
+          "data": {
+            "waitTime": 2.0
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "path-section-3"
+          }
+        },
+        {
+          "type": "wait",
+          "data": {
+            "waitTime": 5.0
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "end path"
           }
         }
       ]
