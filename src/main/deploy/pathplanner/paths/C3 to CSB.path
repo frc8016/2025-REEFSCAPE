@@ -3,29 +3,45 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 8.045,
-        "y": 7.284
+        "x": 5.781297754405875,
+        "y": 4.1879951371379205
       },
       "prevControl": null,
       "nextControl": {
-        "x": 7.045,
-        "y": 7.284
+        "x": 6.084191176470589,
+        "y": 3.5145932154523125
       },
       "isLocked": false,
-      "linkedName": "SPT"
+      "linkedName": "C3"
     },
     {
       "anchor": {
-        "x": 6.5,
-        "y": 7.284
+        "x": 5.568320158300587,
+        "y": 2.749707442656894
       },
       "prevControl": {
-        "x": 7.5,
-        "y": 7.284
+        "x": 6.1227114571567,
+        "y": 3.1880082558551033
+      },
+      "nextControl": {
+        "x": 4.44993780535941,
+        "y": 1.8655162661863043
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 1.577319671706126,
+        "y": 0.7035470185077634
+      },
+      "prevControl": {
+        "x": 2.364977081098476,
+        "y": 1.325627214040296
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "CSB"
     }
   ],
   "rotationTargets": [],
@@ -42,10 +58,10 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 180.0
+    "rotation": 414.0
   },
   "reversed": false,
-  "folder": "top autos",
+  "folder": "bottom autos",
   "idealStartingState": {
     "velocity": 0,
     "rotation": 180.0

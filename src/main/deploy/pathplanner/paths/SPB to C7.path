@@ -4,28 +4,28 @@
     {
       "anchor": {
         "x": 8.045,
-        "y": 7.284
+        "y": 0.8186000000000009
       },
       "prevControl": null,
       "nextControl": {
-        "x": 7.045,
-        "y": 7.284
+        "x": 5.391176470590364,
+        "y": 1.797820588235108
       },
       "isLocked": false,
-      "linkedName": "SPT"
+      "linkedName": "SPB"
     },
     {
       "anchor": {
-        "x": 6.5,
-        "y": 7.284
+        "x": 3.9774758429792394,
+        "y": 2.8130804805731113
       },
       "prevControl": {
-        "x": 7.5,
-        "y": 7.284
+        "x": 3.6999724095295172,
+        "y": 2.3041872962517127
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "C7"
     }
   ],
   "rotationTargets": [],
@@ -42,10 +42,10 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 180.0
+    "rotation": 420.00000000000006
   },
   "reversed": false,
-  "folder": "top autos",
+  "folder": "bottom autos",
   "idealStartingState": {
     "velocity": 0,
     "rotation": 180.0

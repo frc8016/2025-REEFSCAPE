@@ -3,29 +3,45 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 8.045,
-        "y": 7.284
+        "x": 1.577319671706126,
+        "y": 0.7035470185077634
       },
       "prevControl": null,
       "nextControl": {
-        "x": 7.045,
-        "y": 7.284
+        "x": 4.1369275361653575,
+        "y": 1.8743605018850427
       },
       "isLocked": false,
-      "linkedName": "SPT"
+      "linkedName": "CSB"
     },
     {
       "anchor": {
-        "x": 6.5,
-        "y": 7.284
+        "x": 5.83965556406587,
+        "y": 2.967522448685214
       },
       "prevControl": {
-        "x": 7.5,
-        "y": 7.284
+        "x": 5.123315672779872,
+        "y": 2.428721790627926
+      },
+      "nextControl": {
+        "x": 6.220028550810453,
+        "y": 3.253622968924667
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 5.781297754405875,
+        "y": 4.1879951371379205
+      },
+      "prevControl": {
+        "x": 6.162847531533088,
+        "y": 3.959415755056366
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "C3"
     }
   ],
   "rotationTargets": [],
@@ -45,10 +61,10 @@
     "rotation": 180.0
   },
   "reversed": false,
-  "folder": "top autos",
+  "folder": "bottom autos",
   "idealStartingState": {
     "velocity": 0,
-    "rotation": 180.0
+    "rotation": 414.0
   },
   "useDefaultConstraints": true
 }

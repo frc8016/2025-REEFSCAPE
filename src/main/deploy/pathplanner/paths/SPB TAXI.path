@@ -4,24 +4,24 @@
     {
       "anchor": {
         "x": 8.045,
-        "y": 7.284
+        "y": 0.805
       },
       "prevControl": null,
       "nextControl": {
         "x": 7.045,
-        "y": 7.284
+        "y": 0.8050000000000002
       },
       "isLocked": false,
-      "linkedName": "SPT"
+      "linkedName": null
     },
     {
       "anchor": {
         "x": 6.5,
-        "y": 7.284
+        "y": 0.805
       },
       "prevControl": {
         "x": 7.5,
-        "y": 7.284
+        "y": 0.8050000000000002
       },
       "nextControl": null,
       "isLocked": false,
@@ -45,7 +45,7 @@
     "rotation": 180.0
   },
   "reversed": false,
-  "folder": "top autos",
+  "folder": "bottom autos",
   "idealStartingState": {
     "velocity": 0,
     "rotation": 180.0
