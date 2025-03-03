@@ -4,28 +4,28 @@
     {
       "anchor": {
         "x": 8.045,
-        "y": 7.284
+        "y": 0.8186000000000009
       },
       "prevControl": null,
       "nextControl": {
-        "x": 7.045,
-        "y": 7.284
+        "x": 7.298161764705988,
+        "y": 1.8456147058799484
       },
       "isLocked": false,
-      "linkedName": "SPT"
+      "linkedName": "SPB"
     },
     {
       "anchor": {
-        "x": 6.5,
-        "y": 7.284
+        "x": 5.784137080660937,
+        "y": 3.8572934413018483
       },
       "prevControl": {
-        "x": 7.5,
-        "y": 7.284
+        "x": 6.472372374778585,
+        "y": 3.494058147184201
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "C4"
     }
   ],
   "rotationTargets": [],
@@ -45,7 +45,7 @@
     "rotation": 180.0
   },
   "reversed": false,
-  "folder": "top autos",
+  "folder": "bottom autos",
   "idealStartingState": {
     "velocity": 0,
     "rotation": 180.0

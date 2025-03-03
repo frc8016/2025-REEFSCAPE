@@ -3,29 +3,29 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 8.045,
-        "y": 7.284
+        "x": 4.989179946143288,
+        "y": 2.8177362963885777
       },
       "prevControl": null,
       "nextControl": {
-        "x": 7.045,
-        "y": 7.284
+        "x": 4.353234921644775,
+        "y": 1.9754596782538592
       },
       "isLocked": false,
-      "linkedName": "SPT"
+      "linkedName": "C6"
     },
     {
       "anchor": {
-        "x": 6.5,
-        "y": 7.284
+        "x": 1.577319671706126,
+        "y": 0.7035470185077634
       },
       "prevControl": {
-        "x": 7.5,
-        "y": 7.284
+        "x": 2.514636857378056,
+        "y": 1.4305464806106438
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "CSB"
     }
   ],
   "rotationTargets": [],
@@ -42,13 +42,13 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 180.0
+    "rotation": 414.0
   },
   "reversed": false,
-  "folder": "top autos",
+  "folder": "bottom autos",
   "idealStartingState": {
-    "velocity": 0,
-    "rotation": 180.0
+    "velocity": 0.0,
+    "rotation": 479.99999999999994
   },
   "useDefaultConstraints": true
 }
