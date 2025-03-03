@@ -96,9 +96,9 @@ public final class Constants {
             public static final double MAX_VEL = 0.4;
             public static final double MAX_ACCELERATION = MAX_VEL / .5;
             public static final Angle ALLOWED_SETPOINT_ERROR = Degrees.of(1);
-            public static final int MAX_CURRENT_LIMIT = 0;
-            public static final double FORWORD_SOFTLIMIT = 0;
-            public static final double REVERSE_SOFTLIMIT = 0;
+            public static final int MAX_CURRENT_LIMIT = 40;
+            public static final double FORWORD_SOFTLIMIT = 360;
+            public static final double REVERSE_SOFTLIMIT = -360;
             
 
         }

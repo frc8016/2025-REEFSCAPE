@@ -19,6 +19,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Commands;
+import edu.wpi.first.wpilibj2.command.RunCommand;
 import edu.wpi.first.wpilibj2.command.StartEndCommand;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.sysid.SysIdRoutine.Direction;
@@ -26,6 +27,7 @@ import frc.robot.Constants.SetPointConstants;
 import frc.robot.generated.TunerConstants;
 import frc.robot.subsystems.CommandSwerveDrivetrain;
 import frc.robot.subsystems.CoralIntake;
+import frc.robot.subsystems.DeepClimb;
 import frc.robot.subsystems.Elevator;
 
 public class RobotContainer {
@@ -46,6 +48,7 @@ public class RobotContainer {
         /* Path follower */
         private final SendableChooser<Command> autoChooser;
         private final Elevator m_Elevator = new Elevator();
+        private final DeepClimb m_DeepClimb = new DeepClimb();
 
         /* Setting up bindings for necessary control of the swerve drive platform */
         private final SwerveRequest.FieldCentric drive = new SwerveRequest.FieldCentric()
@@ -104,16 +107,26 @@ public class RobotContainer {
                                 .whileTrue(m_Drivetrain.applyRequest(
                                                 () -> forwardStraight.withVelocityX(-0.5).withVelocityY(0)));
 
+                m_swerveController.x().whileTrue(
+                       new StartEndCommand(() -> m_DeepClimb.runLeft(.5),
+                       () -> m_DeepClimb.runLeft(0), m_DeepClimb));
+                 m_swerveController.y().whileTrue(
+                        new StartEndCommand(() -> m_DeepClimb.runRight(.5),
+                        () -> m_DeepClimb.runRight(0), m_DeepClimb));    
+
+                
+                
+
                 // Run SysId routines when holding back/start and X/Y.
                 // Note that each routine should be run exactly once in a single log.
-                m_swerveController.back().and(m_swerveController.y())
-                                .whileTrue(m_Drivetrain.sysIdDynamic(Direction.kForward));
-                m_swerveController.back().and(m_swerveController.x())
-                                .whileTrue(m_Drivetrain.sysIdDynamic(Direction.kReverse));
-                m_swerveController.start().and(m_swerveController.y())
-                                .whileTrue(m_Drivetrain.sysIdQuasistatic(Direction.kForward));
-                m_swerveController.start().and(m_swerveController.x())
-                                .whileTrue(m_Drivetrain.sysIdQuasistatic(Direction.kReverse));
+                // m_swerveController.back().and(m_swerveController.y())
+                //                 .whileTrue(m_Drivetrain.sysIdDynamic(Direction.kForward));
+                // m_swerveController.back().and(m_swerveController.x())
+                //                 .whileTrue(m_Drivetrain.sysIdDynamic(Direction.kReverse));
+                // m_swerveController.start().and(m_swerveController.y())
+                //                 .whileTrue(m_Drivetrain.sysIdQuasistatic(Direction.kForward));
+                // m_swerveController.start().and(m_swerveController.x())
+                //                 .whileTrue(m_Drivetrain.sysIdQuasistatic(Direction.kReverse));
 
                 // reset the field-centric heading on left bumper press
                 m_swerveController.leftBumper().onTrue(m_Drivetrain.runOnce(() -> m_Drivetrain.seedFieldCentric()));
