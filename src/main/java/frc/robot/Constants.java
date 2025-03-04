@@ -57,12 +57,18 @@ public final class Constants {
 
     }
 
-    public static class SetPointConstants {
+    public static class Elevator_SetPointConstants {
 
         public static Distance LEVEL4 = Centimeters.of(84.0);
         public static Distance LEVEL3 = Centimeters.of(42.0);
         public static Distance LEVEL2 = Centimeters.of(21.0);
         public static Distance LEVEL1 = Centimeters.of(0.0);
+    }
+
+    public static class AlgaeIntake_SetPointConstants {
+
+        public static final Angle LEVEL1_ANGLE = Degrees.of(0);
+        public static final Angle LEVEL2_ANGLE = Degrees.of(90);
     }
 
     public static class AlgaeIntakeConstants {

@@ -4,10 +4,14 @@
 
 package frc.robot;
 
+import static edu.wpi.first.units.Units.Degree;
+import static edu.wpi.first.units.Units.Degrees;
 import static edu.wpi.first.units.Units.Meters;
 import static edu.wpi.first.units.Units.MetersPerSecond;
 import static edu.wpi.first.units.Units.RadiansPerSecond;
 import static edu.wpi.first.units.Units.RotationsPerSecond;
+
+import java.security.AlgorithmConstraints;
 
 import com.ctre.phoenix6.swerve.SwerveModule.DriveRequestType;
 import com.ctre.phoenix6.swerve.SwerveRequest;
@@ -22,8 +26,11 @@ import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.StartEndCommand;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.sysid.SysIdRoutine.Direction;
-import frc.robot.Constants.SetPointConstants;
+import frc.robot.Constants.Elevator_SetPointConstants;
+import frc.robot.Constants.AlgaeIntakeConstants;
+import frc.robot.Constants.AlgaeIntake_SetPointConstants;
 import frc.robot.generated.TunerConstants;
+import frc.robot.subsystems.AlgaeIntake;
 import frc.robot.subsystems.CommandSwerveDrivetrain;
 import frc.robot.subsystems.CoralIntake;
 import frc.robot.subsystems.Elevator;
@@ -46,7 +53,7 @@ public class RobotContainer {
         /* Path follower */
         private final SendableChooser<Command> autoChooser;
         private final Elevator m_Elevator = new Elevator();
-
+        private final AlgaeIntake m_AlgaeIntake = new AlgaeIntake();
         /* Setting up bindings for necessary control of the swerve drive platform */
         private final SwerveRequest.FieldCentric drive = new SwerveRequest.FieldCentric()
                         .withDeadband(MaxSpeed * 0.1).withRotationalDeadband(MaxAngularRate * 0.1) // Add a 10% deadband
@@ -62,7 +69,7 @@ public class RobotContainer {
                 SmartDashboard.putData("Auto Mode", autoChooser);
 
                 NamedCommands.registerCommand("Elevator",
-                                m_Elevator.goToSetPointCommand(SetPointConstants.LEVEL4.in(Meters)));
+                        m_Elevator.goToSetPointCommand(Elevator_SetPointConstants.LEVEL4.in(Meters)));
 
                 configureBindings();
         }
@@ -143,18 +150,22 @@ public class RobotContainer {
                                                 m_CoralIntake));
 
                 m_operatorController.y().onTrue(
-                                m_Elevator.goToSetPointCommand(SetPointConstants.LEVEL4.in(Meters)));
+                                m_Elevator.goToSetPointCommand(Elevator_SetPointConstants.LEVEL4.in(Meters)));
 
                 m_operatorController.b().onTrue(
-                                m_Elevator.goToSetPointCommand(SetPointConstants.LEVEL3.in(Meters)));
+                                m_Elevator.goToSetPointCommand(Elevator_SetPointConstants.LEVEL3.in(Meters)));
 
                 m_operatorController.x().onTrue(
-                                m_Elevator.goToSetPointCommand(SetPointConstants.LEVEL2.in(Meters)));
+                                m_Elevator.goToSetPointCommand(Elevator_SetPointConstants.LEVEL2.in(Meters)));
 
                 m_operatorController.a().onTrue(
-                                m_Elevator.goToSetPointCommand(SetPointConstants.LEVEL1.in(Meters)));
+                                m_Elevator.goToSetPointCommand(Elevator_SetPointConstants.LEVEL1.in(Meters)));
 
-        }
+                m_operatorController.rightTrigger().onTrue(
+                        m_AlgaeIntake.goToSetPointCommand (AlgaeIntake_SetPointConstants.LEVEL1_ANGLE.in(Degrees)));
+                }
+               
+                
 
         public Command getAutonomousCommand() {
                 /* Run the path selected from the auto chooser */
