@@ -99,7 +99,7 @@ public class Elevator extends SubsystemBase {
 
         public void setPosition(double position) {
                 double ff = 0;
-                if (position > .5){
+                if (position > .5) {
                         ff = -0.3;
                 }
                 m_rightClosedLoopController.setReference(position, ControlType.kPosition,
@@ -109,28 +109,22 @@ public class Elevator extends SubsystemBase {
                 System.out.println("set position" + position);
         }
 
-       
-
         public Command goToSetPointCommand1(double position) {
-                return this.runOnce(() -> this.setPosition(ControlType.kMAXMotionPositionControl,
-                ClosedLoopSlot.kSlot0));
+                return this.runOnce(() -> this.setPosition(position));
         }
 
         public Command goToSetPointCommand(double position) {
-                return new InstantCommand(() -> this.setPosition(ControlType.kMAXMotionPositionControl,
-                ClosedLoopSlot.kSlot0));
+                return new InstantCommand(() -> this.setPosition(position));
 
         }
 
         public Command setSpeedCommand(double speed) {
                 return this.run(() -> this.setSpeed(speed));
         }
-       
-       
 
         @Override
         public void periodic() {
-                SmartDashboard.putNumber("Encoder position",  m_elevatorRight.getEncoder().getPosition());
+                SmartDashboard.putNumber("Encoder position", m_elevatorRight.getEncoder().getPosition());
                 SmartDashboard.putNumber("Encoder velocity", m_elevatorRight.getEncoder().getVelocity());
                 SmartDashboard.putNumber("Duty Cycle", m_elevatorRight.getAppliedOutput());
                 SmartDashboard.putNumber("Bus voltage", m_elevatorRight.getBusVoltage());
