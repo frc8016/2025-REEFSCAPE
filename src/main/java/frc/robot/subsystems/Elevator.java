@@ -102,8 +102,8 @@ public class Elevator extends SubsystemBase {
                 if (position > .5) {
                         ff = -0.3;
                 }
-                m_rightClosedLoopController.setReference(position, ControlType.kPosition,
-                                ClosedLoopSlot.kSlot0, ff);
+                m_rightClosedLoopController.setReference(position, ControlType.kMAXMotionPositionControl,
+                                ClosedLoopSlot.kSlot0);
 
                 this.position = position;
                 System.out.println("set position" + position);
