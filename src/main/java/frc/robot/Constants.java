@@ -85,10 +85,10 @@ public final class Constants {
         public static class DeepClimbConstants {
             public static final double DEGREE_PER_REVOLUTION = 360;
             public static final double VELOCITY_CONVERSHION_FACTOR = DEGREE_PER_REVOLUTION / 60;
-            public static final double P_VALUE = 1.475;
-            public static final double I_VALUE = 0.0;
-            public static final double D_VALUE = 0.15;
-            public static final double P_VALUE_VELOCITY = 0.5;
+            public static final double P_VALUE = .3;
+            public static final double I_VALUE = 0.00001;
+            public static final double D_VALUE = 0.2;
+            public static final double P_VALUE_VELOCITY = 0.1;
             public static final double I_VALUE_VELOCITY = 0.0;
             public static final double D_VALUE_VELOCITY = 0.0;
             public static final double OUTPUTRANGE_MIN_VALUE = 0.0;
