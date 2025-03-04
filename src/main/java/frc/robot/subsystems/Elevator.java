@@ -112,11 +112,13 @@ public class Elevator extends SubsystemBase {
        
 
         public Command goToSetPointCommand1(double position) {
-                return this.runOnce(() -> this.setPosition(position));
+                return this.runOnce(() -> this.setPosition(ControlType.kMAXMotionPositionControl,
+                ClosedLoopSlot.kSlot0));
         }
 
         public Command goToSetPointCommand(double position) {
-                return new InstantCommand(() -> this.setPosition(position));
+                return new InstantCommand(() -> this.setPosition(ControlType.kMAXMotionPositionControl,
+                ClosedLoopSlot.kSlot0));
 
         }
 
