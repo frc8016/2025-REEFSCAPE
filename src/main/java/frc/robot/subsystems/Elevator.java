@@ -4,6 +4,8 @@ import static edu.wpi.first.units.Units.Meters;
 import static edu.wpi.first.units.Units.MetersPerSecond;
 import static edu.wpi.first.units.Units.MetersPerSecondPerSecond;
 
+import java.util.ResourceBundle.Control;
+
 import com.revrobotics.spark.ClosedLoopSlot;
 import com.revrobotics.spark.SparkClosedLoopController;
 import com.revrobotics.spark.SparkBase.ControlType;
@@ -38,8 +40,8 @@ public class Elevator extends SubsystemBase {
 
         public Elevator() {
                 m_sharedconfig.encoder
-                                .positionConversionFactor(ElevatorConstants.METERS_PER_REVOLUTION)
-                                .velocityConversionFactor(ElevatorConstants.METERS_PER_REVOLUTION / 60);
+                                .positionConversionFactor(ElevatorConstants.POS_CONVERSION_FACTOR)
+                                .velocityConversionFactor(ElevatorConstants.VELOCITY_CONVERSION_FACTOR);
 
                 m_sharedconfig.closedLoop
                                 .feedbackSensor(FeedbackSensor.kPrimaryEncoder)
@@ -58,8 +60,8 @@ public class Elevator extends SubsystemBase {
                                                 ClosedLoopSlot.kSlot1);
 
                 m_sharedconfig.closedLoop.maxMotion
-                                .maxVelocity(ElevatorConstants.MAX_VEL.in(MetersPerSecond))
-                                .maxAcceleration(ElevatorConstants.MAX_ACCELERATION.in(MetersPerSecondPerSecond))
+                                .maxVelocity(ElevatorConstants.MAX_VEL_RPM)
+                                .maxAcceleration(ElevatorConstants.VELOCITY_CONVERSION_FACTOR)
                                 .positionMode(MAXMotionPositionMode.kMAXMotionTrapezoidal)
                                 .allowedClosedLoopError(ElevatorConstants.ALLOWED_SETPOINT_ERROR.in(Meters));
 
@@ -93,20 +95,15 @@ public class Elevator extends SubsystemBase {
         }
 
         public void setSpeed(double speed) {
-                m_rightClosedLoopController.setReference(speed, ControlType.kVelocity, ClosedLoopSlot.kSlot1);
+                m_rightClosedLoopController.setReference(speed, ControlType.kMAXMotionVelocityControl,
+                                ClosedLoopSlot.kSlot1);
 
         }
 
         public void setPosition(double position) {
-                double ff = 0;
-                if (position > .5) {
-                        ff = -0.3;
-                }
                 m_rightClosedLoopController.setReference(position, ControlType.kMAXMotionPositionControl,
                                 ClosedLoopSlot.kSlot0);
 
-                this.position = position;
-                System.out.println("set position" + position);
         }
 
         public Command goToSetPointCommand1(double position) {

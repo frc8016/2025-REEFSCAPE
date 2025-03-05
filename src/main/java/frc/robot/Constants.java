@@ -5,6 +5,7 @@
 package frc.robot;
 
 import static edu.wpi.first.units.Units.Inches;
+import static edu.wpi.first.units.Units.Meters;
 import static edu.wpi.first.units.Units.MetersPerSecond;
 import static edu.wpi.first.units.Units.MetersPerSecondPerSecond;
 import static edu.wpi.first.units.Units.Radians;
@@ -38,18 +39,26 @@ public final class Constants {
     }
 
     public static class ElevatorConstants {
-        public static final double METERS_PER_REVOLUTION = 0.1397 / 3.0;
-        public static final double P_VALUE = 1.475;
+        private static final Distance ELEVATOR_SPROCKET_DIA = Centimeters.of(4.79806);
+        private static final double GEARBOX_RATIO = 3.0;
+        // Multipier to convert rotatons of motor to meters of travel for elevator
+        public static final double POS_CONVERSION_FACTOR = Math.PI * ELEVATOR_SPROCKET_DIA.in(Meters) / GEARBOX_RATIO;
+        // Multiplier to convert RPM of motor to m/s of elevator;
+        public static final double VELOCITY_CONVERSION_FACTOR = POS_CONVERSION_FACTOR / 60;
+        public static final double P_VALUE = 0.2;
         public static final double I_VALUE = 0.0;
-        public static final double D_VALUE = 0.15;
-        public static final double P_VALUE_VELOCITY = 0.5;
+        public static final double D_VALUE = 0.0;
+        public static final double P_VALUE_VELOCITY = 0.1;
         public static final double I_VALUE_VELOCITY = 0.0;
         public static final double D_VALUE_VELOCITY = 0.0;
         public static final double FEEDFORWARD_VALUE = 1.0 / 473.0;
         public static final double OUTPUTRANGE_MIN_VALUE = -1.0;
         public static final double OUTPUTRANGE_MAX_VALUE = 1.0;
-        public static final LinearVelocity MAX_VEL = MetersPerSecond.of(0.4);
-        public static final LinearAcceleration MAX_ACCELERATION = MetersPerSecondPerSecond.of(.4);
+        // Max velocity in m/s
+        private static final double MAX_VEL = 0.8;
+        public static final double MAX_VEL_RPM = MAX_VEL / VELOCITY_CONVERSION_FACTOR;
+        // Max acceleration in RPM/s - acceleration to max velocity in 0.5s
+        public static final double MAX_ACCEL_RPM = MAX_VEL_RPM / 0.5;
         public static final Distance ALLOWED_SETPOINT_ERROR = Inches.of(1);
         public static final double ELEVATOR_FORWORD_SOFTLIMIT = 50;
         public static final double ELEVATOR_REVERSE_SOFTLIMIT = 0;
@@ -99,7 +108,6 @@ public final class Constants {
             public static final int MAX_CURRENT_LIMIT = 0;
             public static final double FORWORD_SOFTLIMIT = 0;
             public static final double REVERSE_SOFTLIMIT = 0;
-            
 
         }
 
