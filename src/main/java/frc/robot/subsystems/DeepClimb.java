@@ -24,8 +24,8 @@ import frc.robot.Constants.ElevatorConstants;
 import com.revrobotics.spark.config.SparkMaxConfig;
 
 public class DeepClimb extends SubsystemBase {
-        private final SparkMax m_climbLeft = new SparkMax(0, MotorType.kBrushless);
-        private final SparkMax m_climbRight = new SparkMax(0, MotorType.kBrushless);
+        private final SparkMax m_climbLeft = new SparkMax(18, MotorType.kBrushless);
+        private final SparkMax m_climbRight = new SparkMax(17, MotorType.kBrushless);
         private final SparkMaxConfig m_sharedclimbconfig = new SparkMaxConfig();
         private final SparkMaxConfig m_climbLeftConfig = new SparkMaxConfig();
         private final SparkMaxConfig m_climbRightConfig = new SparkMaxConfig();
@@ -51,29 +51,29 @@ public class DeepClimb extends SubsystemBase {
                                 .positionMode(MAXMotionPositionMode.kMAXMotionTrapezoidal)
                                 .allowedClosedLoopError(DeepClimbConstants.ALLOWED_SETPOINT_ERROR.in(Degrees));
 
-                m_climbLeftConfig
-                                .apply(m_sharedclimbconfig)
-                                .inverted(true)
+                 m_climbLeftConfig
+                             .apply(m_sharedclimbconfig)
+                               .inverted(true)
                                 .idleMode(IdleMode.kBrake)
                                 .smartCurrentLimit(DeepClimbConstants.MAX_CURRENT_LIMIT);
 
                 m_climbRightConfig
                                 .apply(m_sharedclimbconfig)
                                 .idleMode(IdleMode.kBrake)
-                                .smartCurrentLimit(DeepClimbConstants.MAX_CURRENT_LIMIT)
-                                .follow(m_climbLeft, true);
+                                .smartCurrentLimit(DeepClimbConstants.MAX_CURRENT_LIMIT);
+                              // .follow(m_climbLeft, false);
 
-                m_climbLeftConfig.softLimit
-                                .forwardSoftLimit(DeepClimbConstants.FORWORD_SOFTLIMIT)
-                                .forwardSoftLimitEnabled(true)
-                                .reverseSoftLimit(DeepClimbConstants.REVERSE_SOFTLIMIT)
-                                .reverseSoftLimitEnabled(true);
+                // m_climbLeftConfig.softLimit
+                //                 .forwardSoftLimit(DeepClimbConstants.FORWORD_SOFTLIMIT)
+                //                 .forwardSoftLimitEnabled(true)
+                //                 .reverseSoftLimit(DeepClimbConstants.REVERSE_SOFTLIMIT)
+                //                 .reverseSoftLimitEnabled(true);
 
-                m_climbRightConfig.softLimit
-                                .forwardSoftLimit(DeepClimbConstants.FORWORD_SOFTLIMIT)
-                                .forwardSoftLimitEnabled(true)
-                                .reverseSoftLimit(DeepClimbConstants.REVERSE_SOFTLIMIT)
-                                .reverseSoftLimitEnabled(true);
+                // m_climbRightConfig.softLimit
+                //                 .forwardSoftLimit(DeepClimbConstants.FORWORD_SOFTLIMIT)
+                //                 .forwardSoftLimitEnabled(true)
+                //                 .reverseSoftLimit(DeepClimbConstants.REVERSE_SOFTLIMIT)
+                //                 .reverseSoftLimitEnabled(true);
 
                 m_climbLeft.configure(m_climbLeftConfig, ResetMode.kResetSafeParameters,
                                 PersistMode.kPersistParameters);
@@ -91,4 +91,15 @@ public class DeepClimb extends SubsystemBase {
         public Command goToSetPointCommand(double position) {
                 return this.runOnce(() -> this.setPosition(position));
         }
+
+        public void runLeft(double speed){
+                m_climbLeft.set(speed);
+                m_climbRight.set(speed);
+        }
+        public void runRight(double speed){
+                 
+        }
+        
+
+     
 }
