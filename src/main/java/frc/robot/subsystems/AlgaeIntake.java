@@ -20,6 +20,8 @@ import com.revrobotics.spark.config.SparkMaxConfig;
 import com.revrobotics.spark.config.ClosedLoopConfig.FeedbackSensor;
 import com.revrobotics.spark.config.MAXMotionConfig.MAXMotionPositionMode;
 
+import edu.wpi.first.wpilibj.DigitalInput;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.AlgaeIntakeConstants;
@@ -27,9 +29,10 @@ import frc.robot.Constants.ElevatorConstants;
 
 public class AlgaeIntake extends SubsystemBase {
         // v- needed
-        private final SparkMax m_algaeMotor = new SparkMax(0, MotorType.kBrushless);
+        private final SparkMax m_algaeMotor = new SparkMax(18, MotorType.kBrushless); // double check id 
         private final SparkMaxConfig m_algaeMotorconfig = new SparkMaxConfig();
         private final SparkClosedLoopController m_algaeClosedLoopController = m_algaeMotor.getClosedLoopController();
+        private final DigitalInput m_beamBreak = new DigitalInput(0);
 
         public AlgaeIntake() {
                 // converts Rotations values to degree values
@@ -70,5 +73,10 @@ public class AlgaeIntake extends SubsystemBase {
                 return this.runOnce(() -> this.setPosition(position));
 
         }
+@Override
+public void periodic(){
+        SmartDashboard.putNumber("Algea Position", m_algaeMotor.getEncoder().getPosition());
+        SmartDashboard.putNumber("Algae Velocity", m_algaeMotor.getEncoder().getVelocity());
+}
 
 }

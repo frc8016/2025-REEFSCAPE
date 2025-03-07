@@ -20,6 +20,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.RunCommand;
+import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import edu.wpi.first.wpilibj2.command.StartEndCommand;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.sysid.SysIdRoutine.Direction;
@@ -117,7 +118,7 @@ public class RobotContainer {
                 
                 
 
-                // Run SysId routines when holding back/start and X/Y.
+        // Run SysId routines when holding back/start and X/Y.
                 // Note that each routine should be run exactly once in a single log.
                 // m_swerveController.back().and(m_swerveController.y())
                 //                 .whileTrue(m_Drivetrain.sysIdDynamic(Direction.kForward));
@@ -133,40 +134,56 @@ public class RobotContainer {
 
                 m_Drivetrain.registerTelemetry(logger::telemeterize);
 
-                // Elevator code
+        // Elevator code
+                m_operatorController.y().onTrue(
+                        m_Elevator.goToSetPointCommand(SetPointConstants.LEVEL4.in(Meters)));
+
+                m_operatorController.b().onTrue(
+                        m_Elevator.goToSetPointCommand(SetPointConstants.LEVEL3.in(Meters)));
+
+                m_operatorController.x().onTrue(
+                        m_Elevator.goToSetPointCommand(SetPointConstants.LEVEL2.in(Meters)));
+
+                m_operatorController.a().onTrue(
+                        m_Elevator.goToSetPointCommand(SetPointConstants.LEVEL1.in(Meters)));
+
+        
 
                 // Coral outtake code
-                // change to start end commands
-                m_operatorController.leftBumper().whileTrue(
+                //RUns multiple commands in order
+                m_operatorController.leftBumper().toggleOnTrue(
+                        new SequentialCommandGroup(
+                                //runs rollers at .1 speed until the beam is broken
                                 new StartEndCommand(
-                                                () -> m_CoralIntake.score(0.1),
-                                                () -> m_CoralIntake.score(0),
-                                                m_CoralIntake));
+                                        () -> m_CoralIntake.runRollers(.1), 
+                                        () -> m_CoralIntake.runRollers(.1), 
+                                        m_CoralIntake)
+                                                .until(m_CoralIntake.isBroken()),
+                                //runs rollers at .07 speed until beak is restored
+                                new StartEndCommand(
+                                        () -> m_CoralIntake.runRollers(.07), 
+                                        () -> m_CoralIntake.runRollers(0), 
+                                        m_CoralIntake)
+                                                .until(m_CoralIntake.notBroken())));
+
+                // change to start end commands
+                // m_operatorController.leftBumper().whileTrue(
+                //                 new StartEndCommand(
+                //                                 () -> m_CoralIntake.runRollers(0.1),
+                //                                 () -> m_CoralIntake.runRollers(0),
+                //                                 m_CoralIntake));
 
                 m_operatorController.rightBumper().whileTrue(
                                 new StartEndCommand(
-                                                () -> m_CoralIntake.score(0.2),
-                                                () -> m_CoralIntake.score(0),
+                                                () -> m_CoralIntake.runRollers(0.2),
+                                                () -> m_CoralIntake.runRollers(0),
                                                 m_CoralIntake));
 
                 m_operatorController.leftTrigger().whileTrue(
                                 new StartEndCommand(
-                                                () -> m_CoralIntake.score(-0.1),
-                                                () -> m_CoralIntake.score(0),
+                                                () -> m_CoralIntake.runRollers(-0.1),
+                                                () -> m_CoralIntake.runRollers(0),
                                                 m_CoralIntake));
-
-                m_operatorController.y().onTrue(
-                                m_Elevator.goToSetPointCommand(SetPointConstants.LEVEL4.in(Meters)));
-
-                m_operatorController.b().onTrue(
-                                m_Elevator.goToSetPointCommand(SetPointConstants.LEVEL3.in(Meters)));
-
-                m_operatorController.x().onTrue(
-                                m_Elevator.goToSetPointCommand(SetPointConstants.LEVEL2.in(Meters)));
-
-                m_operatorController.a().onTrue(
-                                m_Elevator.goToSetPointCommand(SetPointConstants.LEVEL1.in(Meters)));
-
         }
 
         public Command getAutonomousCommand() {
