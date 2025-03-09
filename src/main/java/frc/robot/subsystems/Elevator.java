@@ -77,7 +77,7 @@ public class Elevator extends SubsystemBase {
         public void setPosition(double position) {
                 this.position = position;
                 m_rightClosedLoopController.setReference(position, ControlType.kMAXMotionPositionControl,
-                                ClosedLoopSlot.kSlot0, 0.65);
+                                ClosedLoopSlot.kSlot0, ElevatorConstants.ELEVATOR_FEEDFORWORD_CONSTANT);
 
         }
 

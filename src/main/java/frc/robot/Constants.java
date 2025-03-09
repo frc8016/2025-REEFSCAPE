@@ -47,21 +47,21 @@ public final class Constants {
         // Multiplier to convert RPM of motor to m/s of elevator;
         // public static final double VELOCITY_CONVERSION_FACTOR = POS_CONVERSION_FACTOR
         // / 60;
-        public static final double P_VALUE = 0.1;
+        public static final double P_VALUE = 0.2;
         public static final double I_VALUE = 0.0;
         public static final double D_VALUE = 0.0;
         public static final double OUTPUTRANGE_MIN_VALUE = -1.0;
         public static final double OUTPUTRANGE_MAX_VALUE = 1.0;
 
-        public static final double MAX_VEL_RPM = 600;
+        public static final double MAX_VEL_RPM = 800;
 
-        public static final double MAX_ACCEL_RPM = MAX_VEL_RPM / 0.5;
+        public static final double MAX_ACCEL_RPM = MAX_VEL_RPM / 0.7;
 
-        public static final double ALLOWED_SETPOINT_ERROR = 0.75;
+        public static final double ALLOWED_SETPOINT_ERROR = 0.3;
         public static final double ELEVATOR_FORWORD_SOFTLIMIT = 50;
         public static final double ELEVATOR_REVERSE_SOFTLIMIT = 0;
         public static final int MAX_CURRENT_LIMIT = 50;
-
+        public static final double ELEVATOR_FEEDFORWORD_CONSTANT = 0.22;
     }
 
     public static class SetPointConstants {
