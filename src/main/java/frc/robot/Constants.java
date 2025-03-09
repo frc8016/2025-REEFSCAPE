@@ -39,7 +39,7 @@ public final class Constants {
     }
 
     public static class ElevatorConstants {
-        private static final Distance ELEVATOR_SPROCKET_DIA = Centimeters.of(4.79806);
+        private static final Distance ELEVATOR_SPROCKET_DIA = Centimeters.of(4.445);
         private static final double GEARBOX_RATIO = 3.0;
         // Multipier to convert rotatons of motor to meters of travel for elevator
         public static final double POS_CONVERSION_FACTOR = Math.PI * ELEVATOR_SPROCKET_DIA.in(Meters) / GEARBOX_RATIO;
