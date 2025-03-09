@@ -31,7 +31,7 @@ public class Elevator extends SubsystemBase {
         //
         private final SparkMax m_elevatorLeft = new SparkMax(13, MotorType.kBrushless);
         private final SparkMax m_elevatorRight = new SparkMax(15, MotorType.kBrushless);
-        private final SparkMaxConfig m_sharedconfig = new SparkMaxConfig();
+        // private final SparkMaxConfig m_sharedconfig = new SparkMaxConfig();
         private final SparkMaxConfig m_leftconfig = new SparkMaxConfig();
         private final SparkMaxConfig m_rightconfig = new SparkMaxConfig();
         private final SparkClosedLoopController m_rightClosedLoopController = m_elevatorRight.getClosedLoopController();
@@ -39,49 +39,46 @@ public class Elevator extends SubsystemBase {
         // Creates the feedforward control for the elevator
 
         public Elevator() {
-                m_sharedconfig.encoder
-                                .positionConversionFactor(ElevatorConstants.POS_CONVERSION_FACTOR)
-                                .velocityConversionFactor(ElevatorConstants.VELOCITY_CONVERSION_FACTOR);
+                // m_rightconfig.encoder
+                // .positionConversionFactor(ElevatorConstants.POS_CONVERSION_FACTOR)
+                // .velocityConversionFactor(ElevatorConstants.VELOCITY_CONVERSION_FACTOR);
 
-                m_sharedconfig.closedLoop
+                m_rightconfig.closedLoop
                                 .feedbackSensor(FeedbackSensor.kPrimaryEncoder)
                                 .p(ElevatorConstants.P_VALUE, ClosedLoopSlot.kSlot0)
                                 .i(ElevatorConstants.I_VALUE, ClosedLoopSlot.kSlot0)
                                 .d(ElevatorConstants.D_VALUE, ClosedLoopSlot.kSlot0)
                                 .outputRange(ElevatorConstants.OUTPUTRANGE_MIN_VALUE,
-                                                ElevatorConstants.OUTPUTRANGE_MAX_VALUE)
-                                .p(ElevatorConstants.P_VALUE_VELOCITY, ClosedLoopSlot.kSlot1)
-                                .i(ElevatorConstants.I_VALUE_VELOCITY, ClosedLoopSlot.kSlot1)
-                                .d(ElevatorConstants.D_VALUE_VELOCITY, ClosedLoopSlot.kSlot1)
-                                // https://docs.revrobotics.com/revlib/spark/closed-loop/closed-loop-control-getting-started#f-parameter
-                                .velocityFF(ElevatorConstants.FEEDFORWARD_VALUE, ClosedLoopSlot.kSlot1)
-                                .outputRange(ElevatorConstants.OUTPUTRANGE_MIN_VALUE,
-                                                ElevatorConstants.OUTPUTRANGE_MAX_VALUE,
-                                                ClosedLoopSlot.kSlot1);
+                                                ElevatorConstants.OUTPUTRANGE_MAX_VALUE);
+                // .p(ElevatorConstants.P_VALUE_VELOCITY, ClosedLoopSlot.kSlot1)
+                // .i(ElevatorConstants.I_VALUE_VELOCITY, ClosedLoopSlot.kSlot1)
+                // .d(ElevatorConstants.D_VALUE_VELOCITY, ClosedLoopSlot.kSlot1)
+                // https://docs.revrobotics.com/revlib/spark/closed-loop/closed-loop-control-getting-started#f-parameter
+                // .velocityFF(ElevatorConstants.FEEDFORWARD_VALUE, ClosedLoopSlot.kSlot1)
+                // .outputRange(ElevatorConstants.OUTPUTRANGE_MIN_VALUE,
+                // ElevatorConstants.OUTPUTRANGE_MAX_VALUE,
+                // ClosedLoopSlot.kSlot1);
 
-                m_sharedconfig.closedLoop.maxMotion
+                m_rightconfig.closedLoop.maxMotion
                                 .maxVelocity(ElevatorConstants.MAX_VEL_RPM)
                                 .maxAcceleration(ElevatorConstants.MAX_ACCEL_RPM)
                                 .positionMode(MAXMotionPositionMode.kMAXMotionTrapezoidal)
                                 .allowedClosedLoopError(ElevatorConstants.ALLOWED_SETPOINT_ERROR);
 
                 m_rightconfig
-                                .apply(m_sharedconfig)
                                 .inverted(true)
                                 .idleMode(IdleMode.kBrake)
                                 .smartCurrentLimit(ElevatorConstants.MAX_CURRENT_LIMIT);
 
                 m_leftconfig
-                                .apply(m_sharedconfig)
                                 .idleMode(IdleMode.kBrake)
-                                .smartCurrentLimit(ElevatorConstants.MAX_CURRENT_LIMIT)
                                 .follow(m_elevatorRight, true);
 
-                m_leftconfig.softLimit
-                                .forwardSoftLimit(ElevatorConstants.ELEVATOR_FORWORD_SOFTLIMIT)
-                                .forwardSoftLimitEnabled(true)
-                                .reverseSoftLimit(ElevatorConstants.ELEVATOR_REVERSE_SOFTLIMIT)
-                                .reverseSoftLimitEnabled(true);
+                // m_leftconfig.softLimit
+                // .forwardSoftLimit(ElevatorConstants.ELEVATOR_FORWORD_SOFTLIMIT)
+                // .forwardSoftLimitEnabled(true)
+                // .reverseSoftLimit(ElevatorConstants.ELEVATOR_REVERSE_SOFTLIMIT)
+                // .reverseSoftLimitEnabled(true);
 
                 m_rightconfig.softLimit
                                 .forwardSoftLimit(ElevatorConstants.ELEVATOR_FORWORD_SOFTLIMIT)
@@ -101,6 +98,7 @@ public class Elevator extends SubsystemBase {
         }
 
         public void setPosition(double position) {
+                this.position = position;
                 m_rightClosedLoopController.setReference(position, ControlType.kMAXMotionPositionControl,
                                 ClosedLoopSlot.kSlot0);
 
@@ -126,7 +124,7 @@ public class Elevator extends SubsystemBase {
                 SmartDashboard.putNumber("Duty Cycle", m_elevatorRight.getAppliedOutput());
                 SmartDashboard.putNumber("Bus voltage", m_elevatorRight.getBusVoltage());
                 SmartDashboard.putNumber("Output current", m_elevatorRight.getOutputCurrent());
-
+                SmartDashboard.putNumber("Elevator Set Point", position);
         }
 
 }
