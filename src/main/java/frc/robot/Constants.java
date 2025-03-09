@@ -5,6 +5,7 @@
 package frc.robot;
 
 import static edu.wpi.first.units.Units.Inches;
+import static edu.wpi.first.units.Units.Meters;
 import static edu.wpi.first.units.Units.MetersPerSecond;
 import static edu.wpi.first.units.Units.MetersPerSecondPerSecond;
 import static edu.wpi.first.units.Units.Radians;
@@ -38,31 +39,37 @@ public final class Constants {
     }
 
     public static class ElevatorConstants {
-        public static final double METERS_PER_REVOLUTION = 0.1397 / 3.0;
-        public static final double P_VALUE = 1.475;
+        // private static final Distance ELEVATOR_SPROCKET_DIA = Centimeters.of(4.445);
+        // private static final double GEARBOX_RATIO = 3.0;
+        // Multipier to convert rotatons of motor to meters of travel for elevator
+        // public static final double POS_CONVERSION_FACTOR = Math.PI *
+        // ELEVATOR_SPROCKET_DIA.in(Meters) / GEARBOX_RATIO;
+        // Multiplier to convert RPM of motor to m/s of elevator;
+        // public static final double VELOCITY_CONVERSION_FACTOR = POS_CONVERSION_FACTOR
+        // / 60;
+        public static final double P_VALUE = 0.2;
         public static final double I_VALUE = 0.0;
-        public static final double D_VALUE = 0.15;
-        public static final double P_VALUE_VELOCITY = 0.5;
-        public static final double I_VALUE_VELOCITY = 0.0;
-        public static final double D_VALUE_VELOCITY = 0.0;
-        public static final double FEEDFORWARD_VALUE = 1.0 / 473.0;
+        public static final double D_VALUE = 0.0;
         public static final double OUTPUTRANGE_MIN_VALUE = -1.0;
         public static final double OUTPUTRANGE_MAX_VALUE = 1.0;
-        public static final LinearVelocity MAX_VEL = MetersPerSecond.of(0.4);
-        public static final LinearAcceleration MAX_ACCELERATION = MetersPerSecondPerSecond.of(.4);
-        public static final Distance ALLOWED_SETPOINT_ERROR = Inches.of(1);
+
+        public static final double MAX_VEL_RPM = 800;
+
+        public static final double MAX_ACCEL_RPM = MAX_VEL_RPM / 0.7;
+
+        public static final double ALLOWED_SETPOINT_ERROR = 0.3;
         public static final double ELEVATOR_FORWORD_SOFTLIMIT = 50;
         public static final double ELEVATOR_REVERSE_SOFTLIMIT = 0;
         public static final int MAX_CURRENT_LIMIT = 50;
-
+        public static final double ELEVATOR_FEEDFORWORD_CONSTANT = 0.22;
     }
 
     public static class SetPointConstants {
+        public static double LEVEL4 = (15.0);
+        public static double LEVEL3 = (11.0);
+        public static double LEVEL2 = (6.0);
+        public static double LEVEL1 = (0.0);
 
-        public static Distance LEVEL4 = Centimeters.of(84.0);
-        public static Distance LEVEL3 = Centimeters.of(42.0);
-        public static Distance LEVEL2 = Centimeters.of(21.0);
-        public static Distance LEVEL1 = Centimeters.of(0.0);
     }
 
     public static class AlgaeIntakeConstants {
@@ -100,7 +107,6 @@ public final class Constants {
             public static final double FORWORD_SOFTLIMIT = 360;
             public static final double REVERSE_SOFTLIMIT = -360;
             
-
         }
 
     }

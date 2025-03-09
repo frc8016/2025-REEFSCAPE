@@ -66,7 +66,7 @@ public class RobotContainer {
                 SmartDashboard.putData("Auto Mode", autoChooser);
 
                 NamedCommands.registerCommand("Elevator",
-                                m_Elevator.goToSetPointCommand(SetPointConstants.LEVEL4.in(Meters)));
+                                m_Elevator.goToSetPointCommand(SetPointConstants.LEVEL4));
 
                 configureBindings();
         }
@@ -134,19 +134,6 @@ public class RobotContainer {
 
                 m_Drivetrain.registerTelemetry(logger::telemeterize);
 
-        // Elevator code
-                m_operatorController.y().onTrue(
-                        m_Elevator.goToSetPointCommand(SetPointConstants.LEVEL4.in(Meters)));
-
-                m_operatorController.b().onTrue(
-                        m_Elevator.goToSetPointCommand(SetPointConstants.LEVEL3.in(Meters)));
-
-                m_operatorController.x().onTrue(
-                        m_Elevator.goToSetPointCommand(SetPointConstants.LEVEL2.in(Meters)));
-
-                m_operatorController.a().onTrue(
-                        m_Elevator.goToSetPointCommand(SetPointConstants.LEVEL1.in(Meters)));
-
         
 
                 // Coral outtake code
@@ -184,6 +171,20 @@ public class RobotContainer {
                                                 () -> m_CoralIntake.runRollers(-0.1),
                                                 () -> m_CoralIntake.runRollers(0),
                                                 m_CoralIntake));
+
+
+                m_operatorController.y().onTrue(
+                                m_Elevator.goToSetPointCommand(SetPointConstants.LEVEL4));
+
+                m_operatorController.b().onTrue(
+                                m_Elevator.goToSetPointCommand(SetPointConstants.LEVEL3));
+
+                m_operatorController.x().onTrue(
+                                m_Elevator.goToSetPointCommand(SetPointConstants.LEVEL2));
+
+                m_operatorController.a().onTrue(
+                                m_Elevator.goToSetPointCommand(SetPointConstants.LEVEL1));
+
         }
 
         public Command getAutonomousCommand() {
