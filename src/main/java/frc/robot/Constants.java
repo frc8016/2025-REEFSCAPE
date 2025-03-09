@@ -47,13 +47,13 @@ public final class Constants {
         // Multiplier to convert RPM of motor to m/s of elevator;
         // public static final double VELOCITY_CONVERSION_FACTOR = POS_CONVERSION_FACTOR
         // / 60;
-        public static final double P_VALUE = 0.0;
+        public static final double P_VALUE = 0.1;
         public static final double I_VALUE = 0.0;
         public static final double D_VALUE = 0.0;
         public static final double OUTPUTRANGE_MIN_VALUE = -1.0;
         public static final double OUTPUTRANGE_MAX_VALUE = 1.0;
 
-        public static final double MAX_VEL_RPM = 6000;
+        public static final double MAX_VEL_RPM = 600;
 
         public static final double MAX_ACCEL_RPM = MAX_VEL_RPM / 0.5;
 
