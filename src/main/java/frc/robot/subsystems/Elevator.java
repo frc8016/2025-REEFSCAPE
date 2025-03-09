@@ -63,7 +63,7 @@ public class Elevator extends SubsystemBase {
                                 .maxVelocity(ElevatorConstants.MAX_VEL_RPM)
                                 .maxAcceleration(ElevatorConstants.MAX_ACCEL_RPM)
                                 .positionMode(MAXMotionPositionMode.kMAXMotionTrapezoidal)
-                                .allowedClosedLoopError(ElevatorConstants.ALLOWED_SETPOINT_ERROR.in(Meters));
+                                .allowedClosedLoopError(ElevatorConstants.ALLOWED_SETPOINT_ERROR);
 
                 m_rightconfig
                                 .apply(m_sharedconfig)

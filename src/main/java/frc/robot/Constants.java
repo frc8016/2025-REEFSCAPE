@@ -59,7 +59,7 @@ public final class Constants {
         public static final double MAX_VEL_RPM = MAX_VEL / VELOCITY_CONVERSION_FACTOR;
         // Max acceleration in RPM/s - acceleration to max velocity in 0.5s
         public static final double MAX_ACCEL_RPM = MAX_VEL_RPM / 0.5;
-        public static final Distance ALLOWED_SETPOINT_ERROR = Inches.of(1);
+        public static final double ALLOWED_SETPOINT_ERROR = Centimeters.of(1).in(Meters) / POS_CONVERSION_FACTOR;
         public static final double ELEVATOR_FORWORD_SOFTLIMIT = 50;
         public static final double ELEVATOR_REVERSE_SOFTLIMIT = 0;
         public static final int MAX_CURRENT_LIMIT = 50;
