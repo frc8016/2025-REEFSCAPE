@@ -39,9 +39,6 @@ public class Elevator extends SubsystemBase {
         // Creates the feedforward control for the elevator
 
         public Elevator() {
-                // m_rightconfig.encoder
-                // .positionConversionFactor(ElevatorConstants.POS_CONVERSION_FACTOR)
-                // .velocityConversionFactor(ElevatorConstants.VELOCITY_CONVERSION_FACTOR);
 
                 m_rightconfig.closedLoop
                                 .feedbackSensor(FeedbackSensor.kPrimaryEncoder)
@@ -50,14 +47,6 @@ public class Elevator extends SubsystemBase {
                                 .d(ElevatorConstants.D_VALUE, ClosedLoopSlot.kSlot0)
                                 .outputRange(ElevatorConstants.OUTPUTRANGE_MIN_VALUE,
                                                 ElevatorConstants.OUTPUTRANGE_MAX_VALUE);
-                // .p(ElevatorConstants.P_VALUE_VELOCITY, ClosedLoopSlot.kSlot1)
-                // .i(ElevatorConstants.I_VALUE_VELOCITY, ClosedLoopSlot.kSlot1)
-                // .d(ElevatorConstants.D_VALUE_VELOCITY, ClosedLoopSlot.kSlot1)
-                // https://docs.revrobotics.com/revlib/spark/closed-loop/closed-loop-control-getting-started#f-parameter
-                // .velocityFF(ElevatorConstants.FEEDFORWARD_VALUE, ClosedLoopSlot.kSlot1)
-                // .outputRange(ElevatorConstants.OUTPUTRANGE_MIN_VALUE,
-                // ElevatorConstants.OUTPUTRANGE_MAX_VALUE,
-                // ClosedLoopSlot.kSlot1);
 
                 m_rightconfig.closedLoop.maxMotion
                                 .maxVelocity(ElevatorConstants.MAX_VEL_RPM)
@@ -74,12 +63,6 @@ public class Elevator extends SubsystemBase {
                                 .idleMode(IdleMode.kBrake)
                                 .follow(m_elevatorRight, true);
 
-                // m_leftconfig.softLimit
-                // .forwardSoftLimit(ElevatorConstants.ELEVATOR_FORWORD_SOFTLIMIT)
-                // .forwardSoftLimitEnabled(true)
-                // .reverseSoftLimit(ElevatorConstants.ELEVATOR_REVERSE_SOFTLIMIT)
-                // .reverseSoftLimitEnabled(true);
-
                 m_rightconfig.softLimit
                                 .forwardSoftLimit(ElevatorConstants.ELEVATOR_FORWORD_SOFTLIMIT)
                                 .forwardSoftLimitEnabled(true)
@@ -89,12 +72,6 @@ public class Elevator extends SubsystemBase {
                 m_elevatorLeft.configure(m_leftconfig, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
                 m_elevatorRight.configure(m_rightconfig, ResetMode.kResetSafeParameters,
                                 PersistMode.kPersistParameters);
-        }
-
-        public void setSpeed(double speed) {
-                m_rightClosedLoopController.setReference(speed, ControlType.kMAXMotionVelocityControl,
-                                ClosedLoopSlot.kSlot1);
-
         }
 
         public void setPosition(double position) {
@@ -111,10 +88,6 @@ public class Elevator extends SubsystemBase {
         public Command goToSetPointCommand(double position) {
                 return new InstantCommand(() -> this.setPosition(position));
 
-        }
-
-        public Command setSpeedCommand(double speed) {
-                return this.run(() -> this.setSpeed(speed));
         }
 
         @Override

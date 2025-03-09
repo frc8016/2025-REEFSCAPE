@@ -50,19 +50,13 @@ public final class Constants {
         public static final double P_VALUE = 0.2;
         public static final double I_VALUE = 0.0;
         public static final double D_VALUE = 0.0;
-        // public static final double P_VALUE_VELOCITY = 0.1;
-        /// public static final double I_VALUE_VELOCITY = 0.0;
-        // public static final double D_VALUE_VELOCITY = 0.0;
-        // public static final double FEEDFORWARD_VALUE = 1.0 / 473.0;
         public static final double OUTPUTRANGE_MIN_VALUE = -1.0;
         public static final double OUTPUTRANGE_MAX_VALUE = 1.0;
-        // Max velocity in m/s
-        // private static final double MAX_VEL = 6000;
+
         public static final double MAX_VEL_RPM = 6000;
-        // Max acceleration in RPM/s - acceleration to max velocity in 0.5s
+
         public static final double MAX_ACCEL_RPM = MAX_VEL_RPM / 0.5;
-        // public static final double ALLOWED_SETPOINT_ERROR =
-        // Centimeters.of(1).in(Meters) / POS_CONVERSION_FACTOR;
+
         public static final double ALLOWED_SETPOINT_ERROR = 0.75;
         public static final double ELEVATOR_FORWORD_SOFTLIMIT = 50;
         public static final double ELEVATOR_REVERSE_SOFTLIMIT = 0;
@@ -71,14 +65,11 @@ public final class Constants {
     }
 
     public static class SetPointConstants {
-        public static double LEVEL4 = (10);
-        public static double LEVEL3 = (10);
-        public static double LEVEL2 = (10);
+        public static double LEVEL4 = (15.0);
+        public static double LEVEL3 = (11.0);
+        public static double LEVEL2 = (6.0);
         public static double LEVEL1 = (0.0);
-        // public static Distance LEVEL4 = Centimeters.of(84.0);
-        // public static Distance LEVEL3 = Centimeters.of(42.0);
-        // public static Distance LEVEL2 = Centimeters.of(21.0);
-        // public static Distance LEVEL1 = Centimeters.of(0.0);
+
     }
 
     public static class AlgaeIntakeConstants {
