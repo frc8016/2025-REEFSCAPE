@@ -19,6 +19,7 @@ import com.revrobotics.spark.config.SparkBaseConfig.IdleMode;
 import com.revrobotics.spark.config.SparkMaxConfig;
 
 import edu.wpi.first.units.measure.Velocity;
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
@@ -90,6 +91,7 @@ public class Elevator extends SubsystemBase {
 
         }
 
+
         @Override
         public void periodic() {
                 SmartDashboard.putNumber("Encoder position", m_elevatorRight.getEncoder().getPosition());
@@ -98,6 +100,8 @@ public class Elevator extends SubsystemBase {
                 SmartDashboard.putNumber("Bus voltage", m_elevatorRight.getBusVoltage());
                 SmartDashboard.putNumber("Output current", m_elevatorRight.getOutputCurrent());
                 SmartDashboard.putNumber("Elevator Set Point", position);
+
+      
         }
 
 }
