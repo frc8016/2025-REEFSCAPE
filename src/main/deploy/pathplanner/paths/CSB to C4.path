@@ -9,7 +9,7 @@
       "prevControl": null,
       "nextControl": {
         "x": 5.867458414931379,
-        "y": 2.4404216765912605
+        "y": 2.440421676591261
       },
       "isLocked": false,
       "linkedName": "CSB"
@@ -32,12 +32,12 @@
     },
     {
       "anchor": {
-        "x": 5.784137080660937,
-        "y": 3.8572934413018483
+        "x": 5.801728813284167,
+        "y": 3.8564194533781926
       },
       "prevControl": {
-        "x": 6.064730895525302,
-        "y": 3.6502339711136575
+        "x": 6.082322628148532,
+        "y": 3.649359983190002
       },
       "nextControl": null,
       "isLocked": false,
@@ -61,7 +61,7 @@
     "rotation": 180.0
   },
   "reversed": false,
-  "folder": "bottom autos",
+  "folder": "bottom paths",
   "idealStartingState": {
     "velocity": 0,
     "rotation": 414.0
