@@ -4,6 +4,10 @@
   "holonomicMode": true,
   "pathFolders": [
     "bottom autos",
+<<<<<<< Updated upstream
+=======
+    "middle autos",
+>>>>>>> Stashed changes
     "top autos"
   ],
   "autoFolders": [],
