@@ -88,6 +88,7 @@ public final class Constants {
         public static final Angle ALLOWED_SETPOINT_ERROR = Degrees.of(1);
         public static final double ALGEAINTAKE_FORWORD_SOFTLIMIT = 1;
         public static final double ALGEAINTAKE_REVERSE_SOFTLIMIT = 0;
+        public static final int MAX_CURRENT_LIMIT = 50;
 
         public static class DeepClimbConstants {
             public static final double DEGREE_PER_REVOLUTION = 360;
