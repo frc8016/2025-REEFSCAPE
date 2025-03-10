@@ -65,9 +65,9 @@ public final class Constants {
     }
 
     public static class SetPointConstants {
-        public static double LEVEL4 = (15.0);
-        public static double LEVEL3 = (11.0);
-        public static double LEVEL2 = (6.0);
+        public static double LEVEL4 = (16);
+        public static double LEVEL3 = (9.0);
+        public static double LEVEL2 = (4.5);
         public static double LEVEL1 = (0.0);
 
     }
@@ -106,7 +106,7 @@ public final class Constants {
             public static final int MAX_CURRENT_LIMIT = 40;
             public static final double FORWORD_SOFTLIMIT = 360;
             public static final double REVERSE_SOFTLIMIT = -360;
-            
+
         }
 
     }
