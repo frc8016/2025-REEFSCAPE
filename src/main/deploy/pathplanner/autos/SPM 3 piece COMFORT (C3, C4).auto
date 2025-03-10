@@ -21,11 +21,23 @@
           "data": {
             "pathName": "CST to C4"
           }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "C4 to CST"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "CST to C11"
+          }
         }
       ]
     }
   },
   "resetOdom": true,
-  "folder": null,
+  "folder": "middle autos",
   "choreoAuto": false
 }
