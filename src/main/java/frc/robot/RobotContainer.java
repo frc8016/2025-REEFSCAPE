@@ -30,6 +30,7 @@ import frc.robot.subsystems.CommandSwerveDrivetrain;
 import frc.robot.subsystems.CoralIntake;
 import frc.robot.subsystems.DeepClimb;
 import frc.robot.subsystems.Elevator;
+import frc.robot.subsystems.Funnel;
 
 public class RobotContainer {
         private double MaxSpeed = TunerConstants.kSpeedAt12Volts.in(MetersPerSecond); // kSpeedAt12Volts desired top
@@ -50,6 +51,7 @@ public class RobotContainer {
         private final SendableChooser<Command> autoChooser;
         private final Elevator m_Elevator = new Elevator();
         private final DeepClimb m_DeepClimb = new DeepClimb();
+        private final Funnel m_Funnel = new Funnel();
 
         /* Setting up bindings for necessary control of the swerve drive platform */
         private final SwerveRequest.FieldCentric drive = new SwerveRequest.FieldCentric()
@@ -134,6 +136,14 @@ public class RobotContainer {
 
                 m_Drivetrain.registerTelemetry(logger::telemeterize);
 
+                m_swerveController.rightBumper().onTrue(
+                        new StartEndCommand(
+                                () -> m_Funnel.run(.1), 
+                                () -> m_Funnel.run(0), 
+                                m_Funnel)
+                                        .until(
+                                                m_Funnel.triggered()));
+
         
 
                 // Coral outtake code
@@ -186,6 +196,7 @@ public class RobotContainer {
                                 m_Elevator.goToSetPointCommand(SetPointConstants.LEVEL1));
 
         }
+
 
         public Command getAutonomousCommand() {
                 /* Run the path selected from the auto chooser */
