@@ -186,8 +186,8 @@ public class RobotContainer {
 
         m_operatorController.rightTrigger().whileTrue(
                 new StartEndCommand(
-                        () -> m_AlgaeIntake.goToSetPointCommand(AlgaeIntakeConstants.DOWN_POSITION),
-                        () -> m_AlgaeIntake.goToSetPointCommand(AlgaeIntakeConstants.UP_POSITION),
+                        () -> m_AlgaeIntake.setPosition(AlgaeIntakeConstants.DOWN_POSITION),
+                        () -> m_AlgaeIntake.setPosition(AlgaeIntakeConstants.UP_POSITION),
                         m_AlgaeIntake));
 
     }
