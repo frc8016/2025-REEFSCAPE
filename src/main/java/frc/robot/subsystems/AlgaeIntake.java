@@ -9,7 +9,7 @@ import static edu.wpi.first.units.Units.RotationsPerSecond;
 import java.security.AlgorithmConstraints;
 
 import com.revrobotics.RelativeEncoder;
-import com.revrobotics.servohub.ServoHub.ResetMode;
+import com.revrobotics.spark.SparkBase.ResetMode;
 import com.revrobotics.spark.ClosedLoopSlot;
 import com.revrobotics.spark.SparkBase;
 import com.revrobotics.spark.SparkBase.ControlType;
@@ -20,7 +20,6 @@ import com.revrobotics.spark.config.SparkMaxConfig;
 import com.revrobotics.spark.config.ClosedLoopConfig.FeedbackSensor;
 import com.revrobotics.spark.config.MAXMotionConfig.MAXMotionPositionMode;
 import com.revrobotics.spark.config.SparkBaseConfig.IdleMode;
-
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
@@ -34,26 +33,34 @@ public class AlgaeIntake extends SubsystemBase {
     private final SparkMax m_algaeMotor = new SparkMax(19, MotorType.kBrushless); // double check id
     private final SparkMaxConfig m_algaeMotorconfig = new SparkMaxConfig();
     private final SparkClosedLoopController m_algaeClosedLoopController = m_algaeMotor.getClosedLoopController();
-    private final DigitalInput m_beamBreak = new DigitalInput(0);
+    // private final DigitalInput m_beamBreak = new DigitalInput(0);
 
     public AlgaeIntake() {
-
+        m_algaeMotorconfig.closedLoop
+                .feedbackSensor(FeedbackSensor.kPrimaryEncoder)
+                .p(AlgaeIntakeConstants.P_VALUE)
+                .i(AlgaeIntakeConstants.I_VALUE)
+                .d(AlgaeIntakeConstants.D_VALUE)
+                .outputRange(AlgaeIntakeConstants.OUTPUTRANGE_MIN_VALUE, AlgaeIntakeConstants.OUTPUTRANGE_MAX_VALUE);
         m_algaeMotorconfig
-                .inverted(true)
                 .idleMode(IdleMode.kBrake)
                 .smartCurrentLimit(AlgaeIntakeConstants.MAX_CURRENT_LIMIT);
+
+        m_algaeMotor.configure(m_algaeMotorconfig, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
+
         // sets some softlimits
-        m_algaeMotorconfig.softLimit
-                .forwardSoftLimit(AlgaeIntakeConstants.ALGEAINTAKE_FORWORD_SOFTLIMIT)
-                .forwardSoftLimitEnabled(true)
-                .reverseSoftLimit(AlgaeIntakeConstants.ALGEAINTAKE_REVERSE_SOFTLIMIT)
-                .reverseSoftLimitEnabled(true);
+        // m_algaeMotorconfig.softLimit
+        // .forwardSoftLimit(AlgaeIntakeConstants.ALGEAINTAKE_FORWORD_SOFTLIMIT)
+        // .forwardSoftLimitEnabled(true)
+        // .reverseSoftLimit(AlgaeIntakeConstants.ALGEAINTAKE_REVERSE_SOFTLIMIT)
+        // .reverseSoftLimitEnabled(true);
 
     }
 
     // lets driverstation set a position
     public void setPosition(double position) {
-        m_algaeClosedLoopController.setReference(position, ControlType.kMAXMotionPositionControl,
+        System.out.println("POSITION" + position);
+        m_algaeClosedLoopController.setReference(position, ControlType.kPosition,
                 ClosedLoopSlot.kSlot0);
     }
 

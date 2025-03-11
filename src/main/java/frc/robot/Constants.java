@@ -73,19 +73,18 @@ public final class Constants {
     }
 
     public static class AlgaeIntakeConstants {
-        public static final double DEGREE_PER_REVOLUTION = 360;
-        public static final double VELOCITY_CONVERSHION_FACTOR = DEGREE_PER_REVOLUTION / 60;
+
         public static final double P_VALUE = 1.475;
         public static final double I_VALUE = 0.0;
         public static final double D_VALUE = 0.15;
-        public static final double MAX_VEL = 0.4; // dont use unless sure
-        public static final double MAX_ACCELERATION = MAX_VEL / .5;// dont use unless sure
         public static final Angle ALLOWED_SETPOINT_ERROR = Degrees.of(1);
         public static final double ALGEAINTAKE_FORWORD_SOFTLIMIT = 1;
         public static final double ALGEAINTAKE_REVERSE_SOFTLIMIT = 0;
-        public static final int MAX_CURRENT_LIMIT = 50;
-        public static final Double UP_POSITION = 10.0;
-        public static final Double DOWN_POSITION = 0.0;
+        public static final int MAX_CURRENT_LIMIT = 30;
+        public static final Double UP_POSITION = 0.9;
+        public static final Double DOWN_POSITION = 0.1;
+        public static final Double OUTPUTRANGE_MIN_VALUE = -1.0;
+        public static final Double OUTPUTRANGE_MAX_VALUE = 1.0;
     }
 
     public static class DeepClimbConstants {

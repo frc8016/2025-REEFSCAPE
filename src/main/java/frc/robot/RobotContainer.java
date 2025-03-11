@@ -9,6 +9,8 @@ import static edu.wpi.first.units.Units.MetersPerSecond;
 import static edu.wpi.first.units.Units.RadiansPerSecond;
 import static edu.wpi.first.units.Units.RotationsPerSecond;
 
+import java.security.AlgorithmConstraints;
+
 import com.ctre.phoenix6.swerve.SwerveModule.DriveRequestType;
 import com.ctre.phoenix6.swerve.SwerveRequest;
 import com.pathplanner.lib.auto.AutoBuilder;
@@ -48,7 +50,7 @@ public class RobotContainer {
     public final CoralIntake m_CoralIntake = new CoralIntake();
     public final CommandSwerveDrivetrain m_Drivetrain = TunerConstants.createDrivetrain();
     private final Telemetry logger = new Telemetry(MaxSpeed);
-    // private final AlgaeIntake m_AlgaeIntake = new AlgaeIntake();
+    public final AlgaeIntake m_AlgaeIntake = new AlgaeIntake();
     /* Path follower */
     private final SendableChooser<Command> autoChooser;
     private final Elevator m_Elevator = new Elevator();
@@ -182,8 +184,11 @@ public class RobotContainer {
         m_operatorController.a().onTrue(
                 m_Elevator.goToSetPointCommand(SetPointConstants.LEVEL1));
 
-        // m_operatorController.rightTrigger().onTrue(
-        // m_AlgaeIntake.goToSetPointCommand(AlgaeIntakeConstants.UP_POSITION));
+        m_operatorController.rightTrigger().whileTrue(
+                new StartEndCommand(
+                        () -> m_AlgaeIntake.goToSetPointCommand(AlgaeIntakeConstants.DOWN_POSITION),
+                        () -> m_AlgaeIntake.goToSetPointCommand(AlgaeIntakeConstants.UP_POSITION),
+                        m_AlgaeIntake));
 
     }
 
