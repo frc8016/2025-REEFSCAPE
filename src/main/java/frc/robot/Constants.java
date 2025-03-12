@@ -67,7 +67,7 @@ public final class Constants {
     public static class SetPointConstants {
         public static double LEVEL4 = (16);
         public static double LEVEL3 = (9.0);
-        public static double LEVEL2 = (4.5);
+        public static double LEVEL2 = (1.0);
         public static double LEVEL1 = (0.0);
 
     }
@@ -82,7 +82,7 @@ public final class Constants {
         public static final double ALGEAINTAKE_REVERSE_SOFTLIMIT = 0;
         public static final int MAX_CURRENT_LIMIT = 30;
         public static final Double UP_POSITION = 0.9;
-        public static final Double DOWN_POSITION = 0.1;
+        public static final Double DOWN_POSITION = 0.0;
         public static final Double OUTPUTRANGE_MIN_VALUE = -1.0;
         public static final Double OUTPUTRANGE_MAX_VALUE = 1.0;
     }
