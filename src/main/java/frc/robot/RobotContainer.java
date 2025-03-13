@@ -167,19 +167,28 @@ public class RobotContainer {
                         m_CoralIntake));
 
         m_operatorController.y().onTrue(
-                m_Elevator.goToSetPointCommand(SetPointConstants.LEVEL5));
-
-        m_operatorController.b().onTrue(
                 m_Elevator.goToSetPointCommand(SetPointConstants.LEVEL4));
 
-        m_operatorController.x().onTrue(
+        m_operatorController.b().onTrue(
                 m_Elevator.goToSetPointCommand(SetPointConstants.LEVEL3));
 
-        m_operatorController.leftTrigger().onTrue(
+        m_operatorController.x().onTrue(
                 m_Elevator.goToSetPointCommand(SetPointConstants.LEVEL2));
 
         m_operatorController.a().onTrue(
                 m_Elevator.goToSetPointCommand(SetPointConstants.LEVEL1));
+
+        m_operatorController.povUp().onTrue(
+                m_Elevator.goToSetPointCommand(SetPointConstants.LEVEL4_A));
+
+        m_operatorController.povRight().onTrue(
+                m_Elevator.goToSetPointCommand(SetPointConstants.LEVEL3_A));
+
+        m_operatorController.povUpLeft().onTrue(
+                m_Elevator.goToSetPointCommand(SetPointConstants.LEVEL2_A));
+
+        m_operatorController.povDown().onTrue(
+                m_Elevator.goToSetPointCommand(SetPointConstants.LEVEL1_A));
 
         m_operatorController.rightTrigger().whileTrue(
                 new StartEndCommand(
