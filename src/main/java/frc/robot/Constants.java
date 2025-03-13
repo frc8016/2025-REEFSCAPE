@@ -61,7 +61,7 @@ public final class Constants {
         public static final double ELEVATOR_FORWORD_SOFTLIMIT = 50;
         public static final double ELEVATOR_REVERSE_SOFTLIMIT = 0;
         public static final int MAX_CURRENT_LIMIT = 50;
-        public static final double ELEVATOR_FEEDFORWORD_CONSTANT = 0.22;
+        public static final double ELEVATOR_FEEDFORWORD_CONSTANT = 0.12;
     }
 
     public static class SetPointConstants {
@@ -75,7 +75,7 @@ public final class Constants {
 
     public static class AlgaeIntakeConstants {
 
-        public static final double P_VALUE = 0.1;
+        public static final double P_VALUE = 0.05;
         public static final double I_VALUE = 0.0;
         public static final double D_VALUE = 0.15;
         public static final Angle ALLOWED_SETPOINT_ERROR = Degrees.of(1);
