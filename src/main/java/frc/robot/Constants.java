@@ -61,7 +61,7 @@ public final class Constants {
         public static final double ELEVATOR_FORWORD_SOFTLIMIT = 50;
         public static final double ELEVATOR_REVERSE_SOFTLIMIT = 0;
         public static final int MAX_CURRENT_LIMIT = 50;
-        public static final double ELEVATOR_FEEDFORWORD_CONSTANT = 0.12;
+        public static final double ELEVATOR_FEEDFORWORD_CONSTANT = 0.1;
     }
 
     public static class SetPointConstants {
@@ -69,11 +69,6 @@ public final class Constants {
         public static double LEVEL3 = (9.0);
         public static double LEVEL2 = (4.5);
         public static double LEVEL1 = (0.0);
-
-        public static double LEVEL4_A = (17.0);
-        public static double LEVEL3_A = (10.0);
-        public static double LEVEL2_A = (5.5);
-        public static double LEVEL1_A = (1.0);
 
     }
 
@@ -86,7 +81,7 @@ public final class Constants {
         public static final double ALGEAINTAKE_FORWORD_SOFTLIMIT = 1;
         public static final double ALGEAINTAKE_REVERSE_SOFTLIMIT = 0;
         public static final int MAX_CURRENT_LIMIT = 30;
-        public static final Double UP_POSITION = 3.0;
+        public static final Double UP_POSITION = 5.0;
         public static final Double DOWN_POSITION = 0.0;
         public static final Double OUTPUTRANGE_MIN_VALUE = -1.0;
         public static final Double OUTPUTRANGE_MAX_VALUE = 1.0;
