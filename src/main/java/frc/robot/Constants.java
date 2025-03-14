@@ -61,7 +61,7 @@ public final class Constants {
         public static final double ELEVATOR_FORWORD_SOFTLIMIT = 50;
         public static final double ELEVATOR_REVERSE_SOFTLIMIT = 0;
         public static final int MAX_CURRENT_LIMIT = 50;
-        public static final double ELEVATOR_FEEDFORWORD_CONSTANT = 0.1;
+        public static final double ELEVATOR_FEEDFORWORD_CONSTANT = 0.2;
     }
 
     public static class SetPointConstants {
