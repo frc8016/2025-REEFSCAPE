@@ -1,0 +1,43 @@
+{
+  "version": "2025.0",
+  "command": {
+    "type": "sequential",
+    "data": {
+      "commands": [
+        {
+          "type": "path",
+          "data": {
+            "pathName": "SPT to C12"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "C12 to CST"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "CST to C11"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "C11 to CST"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "CST to C3"
+          }
+        }
+      ]
+    }
+  },
+  "resetOdom": true,
+  "folder": "top autos",
+  "choreoAuto": false
+}

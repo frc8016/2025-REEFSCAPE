@@ -1,0 +1,43 @@
+{
+  "version": "2025.0",
+  "command": {
+    "type": "sequential",
+    "data": {
+      "commands": [
+        {
+          "type": "path",
+          "data": {
+            "pathName": "SPB to C7"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "C7 to CSB"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "CSB to C8"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "C8 to CSB"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "CSB to C6"
+          }
+        }
+      ]
+    }
+  },
+  "resetOdom": true,
+  "folder": "bottom autos",
+  "choreoAuto": false
+}
