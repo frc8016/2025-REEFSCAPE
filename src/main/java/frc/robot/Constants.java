@@ -107,4 +107,8 @@ public final class Constants {
 
     }
 
+    public static class DriveSpeedConstants {
+        public static final double SLOW_SPEED_DIVISOR = 3;
+    }
+
 }

@@ -28,6 +28,8 @@ import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.sysid.SysIdRoutine.Direction;
 import frc.robot.Constants.AlgaeIntakeConstants;
 import frc.robot.Constants.SetPointConstants;
+import frc.robot.commands.SlowModeCommand;
+import frc.robot.Constants.DriveSpeedConstants;
 import frc.robot.generated.TunerConstants;
 import frc.robot.subsystems.AlgaeIntake;
 import frc.robot.subsystems.CommandSwerveDrivetrain;
@@ -120,6 +122,9 @@ public class RobotContainer {
                 new StartEndCommand(() -> m_DeepClimb.runRight(.5),
                         () -> m_DeepClimb.runRight(0), m_DeepClimb));
 
+        m_swerveController.rightBumper().whileTrue(
+                new SlowModeCommand(this::setMaxSpeed, this::setMaxAngularRate, this.MaxSpeed, this.MaxAngularRate));
+
         // Run SysId routines when holding back/start and X/Y.
         // Note that each routine should be run exactly once in a single log.
         // m_swerveController.back().and(m_swerveController.y())
@@ -189,5 +194,13 @@ public class RobotContainer {
     public Command getAutonomousCommand() {
         /* Run the path selected from the auto chooser */
         return autoChooser.getSelected();
+    }
+
+    public void setMaxSpeed(double speed) {
+        this.MaxSpeed = speed;
+    }
+
+    public void setMaxAngularRate(double angularRate) {
+        this.MaxAngularRate = angularRate;
     }
 }
