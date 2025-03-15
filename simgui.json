@@ -24,6 +24,13 @@
       }
     }
   },
+  "NetworkTables": {
+    "transitory": {
+      "DriveState": {
+        "open": true
+      }
+    }
+  },
   "NetworkTables Info": {
     "visible": true
   }
