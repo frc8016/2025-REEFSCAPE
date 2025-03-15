@@ -4,7 +4,6 @@
 
 package frc.robot;
 
-
 import edu.wpi.first.apriltag.AprilTagFieldLayout;
 import edu.wpi.first.apriltag.AprilTagFields;
 import edu.wpi.first.math.geometry.Transform3d;
@@ -18,8 +17,6 @@ import edu.wpi.first.math.geometry.Rotation3d;
 import static edu.wpi.first.units.Units.Degrees;
 
 import edu.wpi.first.units.measure.Angle;
-
-
 
 /**
  * The Constants class provides a convenient place for teams to hold robot-wide
@@ -107,11 +104,9 @@ public final class Constants {
 
     }
 
-
     public static class DriveSpeedConstants {
         public static final double SLOW_SPEED_DIVISOR = 3;
     }
-
 
     public static class VisionConstants {
         public static final boolean USE_VISION = false; // IMPORTANT we set this to true when useing vision and faluse
@@ -138,5 +133,4 @@ public final class Constants {
         public static final Matrix<N3, N1> SINGLE_TAG_STD_DEVS = VecBuilder.fill(1, 1, 2);
         public static final Matrix<N3, N1> MULTI_TAG_STD_DEVS = VecBuilder.fill(0.15, 0.15, 0.5);
     }
-
 }
