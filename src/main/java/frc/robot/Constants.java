@@ -61,11 +61,11 @@ public final class Constants {
         public static final double ELEVATOR_FORWORD_SOFTLIMIT = 50;
         public static final double ELEVATOR_REVERSE_SOFTLIMIT = 0;
         public static final int MAX_CURRENT_LIMIT = 50;
-        public static final double ELEVATOR_FEEDFORWORD_CONSTANT = 0.22;
+        public static final double ELEVATOR_FEEDFORWORD_CONSTANT = 0.2;
     }
 
     public static class SetPointConstants {
-        public static double LEVEL4 = (16);
+        public static double LEVEL4 = (16.0);
         public static double LEVEL3 = (9.0);
         public static double LEVEL2 = (4.5);
         public static double LEVEL1 = (0.0);
@@ -73,41 +73,38 @@ public final class Constants {
     }
 
     public static class AlgaeIntakeConstants {
-        public static final double DEGREE_PER_REVOLUTION = 360;
-        public static final double VELOCITY_CONVERSHION_FACTOR = DEGREE_PER_REVOLUTION / 60;
-        public static final double P_VALUE = 1.475;
+
+        public static final double P_VALUE = 0.05;
         public static final double I_VALUE = 0.0;
         public static final double D_VALUE = 0.15;
-        public static final double P_VALUE_VELOCITY = 0.5;
+        public static final Angle ALLOWED_SETPOINT_ERROR = Degrees.of(1);
+        public static final double ALGEAINTAKE_FORWORD_SOFTLIMIT = 1;
+        public static final double ALGEAINTAKE_REVERSE_SOFTLIMIT = 0;
+        public static final int MAX_CURRENT_LIMIT = 30;
+        public static final Double UP_POSITION = 5.0;
+        public static final Double DOWN_POSITION = 0.0;
+        public static final Double OUTPUTRANGE_MIN_VALUE = -1.0;
+        public static final Double OUTPUTRANGE_MAX_VALUE = 1.0;
+    }
+
+    public static class DeepClimbConstants {
+        public static final double DEGREE_PER_REVOLUTION = 360;
+        public static final double VELOCITY_CONVERSHION_FACTOR = DEGREE_PER_REVOLUTION / 60;
+        public static final double P_VALUE = .3;
+        public static final double I_VALUE = 0.00001;
+        public static final double D_VALUE = 0.2;
+        public static final double P_VALUE_VELOCITY = 0.1;
         public static final double I_VALUE_VELOCITY = 0.0;
         public static final double D_VALUE_VELOCITY = 0.0;
         public static final double OUTPUTRANGE_MIN_VALUE = 0.0;
         public static final double OUTPUTRANGE_MAX_VALUE = 0.0;
-        public static final double MAX_VEL = 0.4; // dont use unless sure
-        public static final double MAX_ACCELERATION = MAX_VEL / .5;// dont use unless sure
+        public static final double MAX_VEL = 0.4;
+        public static final double MAX_ACCELERATION = MAX_VEL / .5;
         public static final Angle ALLOWED_SETPOINT_ERROR = Degrees.of(1);
-        public static final double ALGEAINTAKE_FORWORD_SOFTLIMIT = 1;
-        public static final double ALGEAINTAKE_REVERSE_SOFTLIMIT = 0;
-
-        public static class DeepClimbConstants {
-            public static final double DEGREE_PER_REVOLUTION = 360;
-            public static final double VELOCITY_CONVERSHION_FACTOR = DEGREE_PER_REVOLUTION / 60;
-            public static final double P_VALUE = .3;
-            public static final double I_VALUE = 0.00001;
-            public static final double D_VALUE = 0.2;
-            public static final double P_VALUE_VELOCITY = 0.1;
-            public static final double I_VALUE_VELOCITY = 0.0;
-            public static final double D_VALUE_VELOCITY = 0.0;
-            public static final double OUTPUTRANGE_MIN_VALUE = 0.0;
-            public static final double OUTPUTRANGE_MAX_VALUE = 0.0;
-            public static final double MAX_VEL = 0.4;
-            public static final double MAX_ACCELERATION = MAX_VEL / .5;
-            public static final Angle ALLOWED_SETPOINT_ERROR = Degrees.of(1);
-            public static final int MAX_CURRENT_LIMIT = 40;
-            public static final double FORWORD_SOFTLIMIT = 360;
-            public static final double REVERSE_SOFTLIMIT = -360;
-
-        }
+        public static final int MAX_CURRENT_LIMIT = 40;
+        public static final double FORWORD_SOFTLIMIT = 360;
+        public static final double REVERSE_SOFTLIMIT = -360;
 
     }
+
 }
