@@ -28,6 +28,7 @@ import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.sysid.SysIdRoutine.Direction;
 import frc.robot.Constants.AlgaeIntakeConstants;
 import frc.robot.Constants.SetPointConstants;
+import frc.robot.Constants.DriveSpeedConstants;
 import frc.robot.generated.TunerConstants;
 import frc.robot.subsystems.AlgaeIntake;
 import frc.robot.subsystems.CommandSwerveDrivetrain;
@@ -119,6 +120,17 @@ public class RobotContainer {
         m_swerveController.y().whileTrue(
                 new StartEndCommand(() -> m_DeepClimb.runRight(.5),
                         () -> m_DeepClimb.runRight(0), m_DeepClimb));
+
+        m_swerveController.rightBumper().whileTrue(
+                new StartEndCommand(
+                        () -> {
+                            this.MaxSpeed = this.MaxSpeed / DriveSpeedConstants.SLOW_SPEED_DIVISOR;
+                            this.MaxAngularRate = this.MaxAngularRate / DriveSpeedConstants.SLOW_SPEED_DIVISOR;
+                        },
+                        () -> {
+                            this.MaxSpeed = TunerConstants.kSpeedAt12Volts.in(MetersPerSecond);
+                            this.MaxAngularRate = RotationsPerSecond.of(0.75).in(RadiansPerSecond);
+                        }));
 
         // Run SysId routines when holding back/start and X/Y.
         // Note that each routine should be run exactly once in a single log.
