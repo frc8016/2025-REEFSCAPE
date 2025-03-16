@@ -16,6 +16,8 @@ import edu.wpi.first.math.geometry.Rotation3d;
 
 import static edu.wpi.first.units.Units.Degrees;
 
+import com.ctre.phoenix.motorcontrol.Faults;
+
 import edu.wpi.first.units.measure.Angle;
 
 /**
@@ -105,7 +107,8 @@ public final class Constants {
     }
 
     public static class VisionConstants {
-        public static final boolean USE_VISION = true;
+        public static final boolean USE_VISION = false; // IMPORTANT we set this to true when useing vision and faluse
+                                                        // when we dont (this will effect all vision uses)
         public static final String CAMERA_NAME = "YOUR CAMERA NAME";
         // Cam mounted facing forward, half a meter forward of center, half a meter up
         // from center.
