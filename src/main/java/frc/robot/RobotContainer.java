@@ -74,6 +74,10 @@ public class RobotContainer {
                 m_Elevator.goToSetPointWithWaitCommand(SetPointConstants.LEVEL2));
         NamedCommands.registerCommand("elevatorLevel1",
                 m_Elevator.goToSetPointWithWaitCommand(SetPointConstants.LEVEL1));
+        NamedCommands.registerCommand("intakeCoral",
+                m_CoralIntake.intakeCommand());
+        NamedCommands.registerCommand("outtakeCoral",
+                m_CoralIntake.outCommand().withTimeout(1));
         autoChooser = AutoBuilder.buildAutoChooser("Tests");
         SmartDashboard.putData("Auto Mode", autoChooser);
 
@@ -143,19 +147,7 @@ public class RobotContainer {
         // Coral outtake code
         // RUns multiple commands in order
         m_operatorController.leftBumper().toggleOnTrue(
-                new SequentialCommandGroup(
-                        // runs rollers at .1 speed until the beam is broken
-                        new StartEndCommand(
-                                () -> m_CoralIntake.runRollers(.1),
-                                () -> m_CoralIntake.runRollers(.1),
-                                m_CoralIntake)
-                                .until(m_CoralIntake.isBroken()),
-                        // runs rollers at .07 speed until beak is restored
-                        new StartEndCommand(
-                                () -> m_CoralIntake.runRollers(.07),
-                                () -> m_CoralIntake.runRollers(0),
-                                m_CoralIntake)
-                                .until(m_CoralIntake.notBroken())));
+                m_CoralIntake.intakeCommand());
 
         // change to start end commands
         // m_operatorController.leftBumper().whileTrue(
@@ -165,10 +157,7 @@ public class RobotContainer {
         // m_CoralIntake));
 
         m_operatorController.rightBumper().whileTrue(
-                new StartEndCommand(
-                        () -> m_CoralIntake.runRollers(0.2),
-                        () -> m_CoralIntake.runRollers(0),
-                        m_CoralIntake));
+                m_CoralIntake.outCommand());
 
         m_operatorController.y().onTrue(
                 m_Elevator.goToSetPointCommand(SetPointConstants.LEVEL4));
