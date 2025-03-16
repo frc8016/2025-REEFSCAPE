@@ -5,21 +5,27 @@
     "data": {
       "commands": [
         {
-          "type": "wait",
+          "type": "path",
           "data": {
-            "waitTime": 2.0
+            "pathName": "SPT to C12"
           }
         },
         {
           "type": "named",
           "data": {
-            "name": "Elevator"
+            "name": "elevatorLevel4"
           }
         },
         {
-          "type": "wait",
+          "type": "named",
           "data": {
-            "waitTime": 2.0
+            "name": "elevatorLevel1"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "C12 to CST"
           }
         }
       ]
