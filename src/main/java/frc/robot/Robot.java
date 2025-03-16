@@ -7,22 +7,34 @@ package frc.robot;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
-import frc.robot.Constants.AlgaeIntakeConstants;
+import static frc.robot.Constants.VisionConstants.*;
+import frc.robot.subsystems.Vision;
 
 public class Robot extends TimedRobot {
     private Command m_autonomousCommand;
-
+    private Vision m_Vision;
     private RobotContainer m_robotContainer;
 
     @Override
     public void robotInit() {
         m_robotContainer = new RobotContainer();
-        // m_robotContainer.m_AlgaeIntake.goToSetPointCommand(AlgaeIntakeConstants.UP_POSITION);
+        m_Vision = new Vision();
     }
 
     @Override
     public void robotPeriodic() {
         CommandScheduler.getInstance().run();
+        if (USE_VISION) {
+            // Correct pose estimate with vision measurements
+            var visionEst = m_Vision.getEstimatedGlobalPose();
+            visionEst.ifPresent(
+                    est -> {
+                        // Change our trust in the measurement based on the tags we can see
+                        var estStdDevs = m_Vision.getEstimationStdDevs();
+                        m_robotContainer.m_Drivetrain.addVisionMeasurement(
+                                est.estimatedPose.toPose2d(), est.timestampSeconds, estStdDevs);
+                    });
+        }
     }
 
     @Override
