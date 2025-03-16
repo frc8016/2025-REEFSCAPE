@@ -67,12 +67,15 @@ public class RobotContainer {
             .withDriveRequestType(DriveRequestType.OpenLoopVoltage);
 
     public RobotContainer() {
+
+        NamedCommands.registerCommand("elevatorLevel4",
+                m_Elevator.goToSetPointWithWaitCommand(SetPointConstants.LEVEL4));
+        NamedCommands.registerCommand("elevatorLevel2",
+                m_Elevator.goToSetPointWithWaitCommand(SetPointConstants.LEVEL2));
+        NamedCommands.registerCommand("elevatorLevel1",
+                m_Elevator.goToSetPointWithWaitCommand(SetPointConstants.LEVEL1));
         autoChooser = AutoBuilder.buildAutoChooser("Tests");
         SmartDashboard.putData("Auto Mode", autoChooser);
-
-        NamedCommands.registerCommand("elevatorLevel4", m_Elevator.goToSetPointWithWaitCommand(SetPointConstants.LEVEL4));
-        NamedCommands.registerCommand("elevatorLevel2", m_Elevator.goToSetPointWithWaitCommand(SetPointConstants.LEVEL2));
-        NamedCommands.registerCommand("elevatorLevel1", m_Elevator.goToSetPointWithWaitCommand(SetPointConstants.LEVEL1));
 
         configureBindings();
     }
