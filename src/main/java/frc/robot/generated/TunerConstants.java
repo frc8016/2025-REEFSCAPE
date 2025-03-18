@@ -288,5 +288,4 @@ public class TunerConstants {
                     odometryStandardDeviation, visionStandardDeviation, modules);
         }
     }
-    
 }
