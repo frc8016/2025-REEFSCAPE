@@ -11,9 +11,33 @@
           }
         },
         {
+          "type": "named",
+          "data": {
+            "name": "elevatorLevel4"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "outtakeCoral"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "elevatorLevel1"
+          }
+        },
+        {
           "type": "path",
           "data": {
             "pathName": "C12 to CST"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "intakeCoral"
           }
         },
         {
@@ -23,9 +47,33 @@
           }
         },
         {
+          "type": "named",
+          "data": {
+            "name": "elevatorLevel4"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "outtakeCoral"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "elevatorLevel1"
+          }
+        },
+        {
           "type": "path",
           "data": {
             "pathName": "C11 to CST"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "intakeCoral"
           }
         },
         {
@@ -35,9 +83,33 @@
           }
         },
         {
+          "type": "named",
+          "data": {
+            "name": "elevatorLevel2"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "outtakeCoral"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "elevatorLevel1"
+          }
+        },
+        {
           "type": "path",
           "data": {
             "pathName": "C1 to CST"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "intakeCoral"
           }
         }
       ]
