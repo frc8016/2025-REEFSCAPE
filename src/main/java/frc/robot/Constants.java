@@ -16,8 +16,6 @@ import edu.wpi.first.math.geometry.Rotation3d;
 
 import static edu.wpi.first.units.Units.Degrees;
 
-import com.ctre.phoenix.motorcontrol.Faults;
-
 import edu.wpi.first.units.measure.Angle;
 
 /**
@@ -104,6 +102,10 @@ public final class Constants {
         public static final double FORWORD_SOFTLIMIT = 360;
         public static final double REVERSE_SOFTLIMIT = -360;
 
+    }
+
+    public static class DriveSpeedConstants {
+        public static final double SLOW_SPEED_DIVISOR = 3;
     }
 
     public static class VisionConstants {
