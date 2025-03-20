@@ -36,7 +36,7 @@ public class DeepClimb extends SubsystemBase {
     private final SparkMaxConfig m_climbLeftConfig = new SparkMaxConfig();
     private final SparkMaxConfig m_climbRightConfig = new SparkMaxConfig();
     private final SparkClosedLoopController m_leftClosedLoopController = m_climbLeft.getClosedLoopController();
-    private final DigitalInput m_limitSwitch = new DigitalInput(4);
+    private final DigitalInput m_limitSwitch = new DigitalInput(3);
 
     public DeepClimb() {
 
@@ -107,6 +107,12 @@ public class DeepClimb extends SubsystemBase {
         m_climbLeft.set(speed);
         m_climbRight.set(speed);
     }
+    public void release(double speed){
+        m_climbLeft.set(speed);
+        m_climbRight.set(speed);
+        m_climb21.set(speed);
+
+    }
 
     public void run21(double speed) {
         m_climb21.set(speed);
@@ -118,7 +124,7 @@ public class DeepClimb extends SubsystemBase {
     }
 
     public BooleanSupplier stopClimb(){
-        return (() -> m_limitSwitch.get() == true);
+        return (() -> m_limitSwitch.get() == false);
     }
 
 @Override 
