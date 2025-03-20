@@ -106,21 +106,31 @@ public class RobotContainer {
                 new StartEndCommand(
                        () -> m_DeepClimb.run(.2), 
                        () -> m_DeepClimb.run(0), 
-                                m_DeepClimb).until(m_DeepClimb.stopClimb())
-                                
-                                );
+                                m_DeepClimb).until(m_DeepClimb.stopClimb()));
         m_swerveController.leftTrigger().whileTrue(
                 new StartEndCommand(
-                        () -> m_DeepClimb.run(-.2), 
-                        () -> m_DeepClimb.run(0), 
+                        () -> m_DeepClimb.release(-.2), 
+                        () -> m_DeepClimb.release(0), 
                         m_DeepClimb));
+
         m_swerveController.rightBumper().onTrue(
                 new StartEndCommand(
-                       () -> m_Funnel.run(.2), 
+                       () -> m_Funnel.run(-.1), 
                        () -> m_Funnel.run(0), 
                        m_Funnel).until(m_Funnel.triggered())
         );
-        
+        m_swerveController.x().whileTrue(
+                new StartEndCommand(
+                       () -> m_DeepClimb.run21(.05), 
+                       () -> m_DeepClimb.run21(0), 
+                       m_DeepClimb)
+        );
+        m_swerveController.y().whileTrue(
+                new StartEndCommand(
+                       () -> m_DeepClimb.run21(-.05), 
+                       () -> m_DeepClimb.run21(0), 
+                       m_DeepClimb)
+        );
 
        
 
