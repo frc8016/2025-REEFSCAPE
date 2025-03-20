@@ -12,10 +12,14 @@ import com.revrobotics.spark.config.SparkBaseConfig.IdleMode;
 import static edu.wpi.first.units.Units.Degree;
 import static edu.wpi.first.units.Units.Degrees;
 
+import java.util.function.BooleanSupplier;
+
 import com.revrobotics.spark.ClosedLoopSlot;
 import com.revrobotics.spark.SparkClosedLoopController;
 import com.revrobotics.spark.SparkMax;
 
+import edu.wpi.first.wpilibj.DigitalInput;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.DeepClimbConstants;
@@ -26,10 +30,13 @@ import com.revrobotics.spark.config.SparkMaxConfig;
 public class DeepClimb extends SubsystemBase {
     private final SparkMax m_climbLeft = new SparkMax(18, MotorType.kBrushless);
     private final SparkMax m_climbRight = new SparkMax(17, MotorType.kBrushless);
+    private final SparkMax m_climb21 = new SparkMax(21, MotorType.kBrushless);
+    private final SparkMaxConfig m_21config = new SparkMaxConfig();
     private final SparkMaxConfig m_sharedclimbconfig = new SparkMaxConfig();
     private final SparkMaxConfig m_climbLeftConfig = new SparkMaxConfig();
     private final SparkMaxConfig m_climbRightConfig = new SparkMaxConfig();
     private final SparkClosedLoopController m_leftClosedLoopController = m_climbLeft.getClosedLoopController();
+    private final DigitalInput m_limitSwitch = new DigitalInput(4);
 
     public DeepClimb() {
 
@@ -63,6 +70,10 @@ public class DeepClimb extends SubsystemBase {
                 .smartCurrentLimit(DeepClimbConstants.MAX_CURRENT_LIMIT);
         // .follow(m_climbLeft, false);
 
+        m_21config
+                .idleMode(IdleMode.kBrake);
+                m_21config.smartCurrentLimit(DeepClimbConstants.MAX_CURRENT_LIMIT);
+
         // m_climbLeftConfig.softLimit
         // .forwardSoftLimit(DeepClimbConstants.FORWORD_SOFTLIMIT)
         // .forwardSoftLimitEnabled(true)
@@ -92,13 +103,28 @@ public class DeepClimb extends SubsystemBase {
         return this.runOnce(() -> this.setPosition(position));
     }
 
-    public void runLeft(double speed) {
+    public void run(double speed) {
         m_climbLeft.set(speed);
         m_climbRight.set(speed);
     }
 
-    public void runRight(double speed) {
+    public void run21(double speed) {
+        m_climb21.set(speed);
 
     }
 
+    public boolean getLimitSwitch(){
+        return m_limitSwitch.get();
+    }
+
+    public BooleanSupplier stopClimb(){
+        return (() -> m_limitSwitch.get() == true);
+    }
+
+@Override 
+    public void periodic(){
+        getLimitSwitch();
+        SmartDashboard.putBoolean("Climb Triggered", getLimitSwitch());
+
+    }
 }
