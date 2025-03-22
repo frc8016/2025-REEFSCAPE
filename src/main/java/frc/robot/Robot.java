@@ -20,7 +20,15 @@ public class Robot extends TimedRobot {
     public void robotInit() {
         m_robotContainer = new RobotContainer();
         // m_Vision = new Vision();
-        CameraServer.startAutomaticCapture();
+        CameraServer.enableLogging();
+        
+        // Initialize camera with specific settings
+        camera = CameraServer.startAutomaticCapture(0);
+        camera.setResolution(320, 240);  // Lower resolution first
+        camera.setFPS(30);
+        
+        // Set connection strategy to keep stream open
+        camera.setConnectionStrategy(ConnectionStrategy.kKeepOpen);
     }
 
     @Override
