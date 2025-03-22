@@ -9,7 +9,6 @@ import com.revrobotics.spark.config.ClosedLoopConfig.FeedbackSensor;
 import com.revrobotics.spark.config.MAXMotionConfig.MAXMotionPositionMode;
 import com.revrobotics.spark.config.SparkBaseConfig.IdleMode;
 
-import static edu.wpi.first.units.Units.Degree;
 import static edu.wpi.first.units.Units.Degrees;
 
 import java.util.function.BooleanSupplier;
@@ -23,9 +22,6 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.DeepClimbConstants;
-import frc.robot.Constants.ElevatorConstants;
-
-import com.revrobotics.spark.config.SparkMaxConfig;
 
 public class DeepClimb extends SubsystemBase {
     private final SparkMax m_climbLeft = new SparkMax(18, MotorType.kBrushless);
@@ -72,7 +68,7 @@ public class DeepClimb extends SubsystemBase {
 
         m_21config
                 .idleMode(IdleMode.kBrake);
-                m_21config.smartCurrentLimit(DeepClimbConstants.MAX_CURRENT_LIMIT);
+        m_21config.smartCurrentLimit(DeepClimbConstants.MAX_CURRENT_LIMIT);
 
         // m_climbLeftConfig.softLimit
         // .forwardSoftLimit(DeepClimbConstants.FORWORD_SOFTLIMIT)
@@ -107,7 +103,8 @@ public class DeepClimb extends SubsystemBase {
         m_climbLeft.set(speed);
         m_climbRight.set(speed);
     }
-    public void release(double speed){
+
+    public void release(double speed) {
         m_climbLeft.set(speed);
         m_climbRight.set(speed);
         m_climb21.set(speed);
@@ -119,16 +116,16 @@ public class DeepClimb extends SubsystemBase {
 
     }
 
-    public boolean getLimitSwitch(){
+    public boolean getLimitSwitch() {
         return m_limitSwitch.get();
     }
 
-    public BooleanSupplier stopClimb(){
+    public BooleanSupplier stopClimb() {
         return (() -> m_limitSwitch.get() == false);
     }
 
-@Override 
-    public void periodic(){
+    @Override
+    public void periodic() {
         getLimitSwitch();
         SmartDashboard.putBoolean("Climb Triggered", getLimitSwitch());
 
