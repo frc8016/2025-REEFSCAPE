@@ -3,13 +3,13 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 8.045,
-        "y": 7.284
+        "x": 7.728452641333059,
+        "y": 7.240915825839165
       },
       "prevControl": null,
       "nextControl": {
-        "x": 7.045,
-        "y": 7.284
+        "x": 6.728452641333059,
+        "y": 7.240915825839165
       },
       "isLocked": false,
       "linkedName": "SPT"

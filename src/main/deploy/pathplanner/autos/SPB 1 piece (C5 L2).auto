@@ -1,0 +1,43 @@
+{
+  "version": "2025.0",
+  "command": {
+    "type": "sequential",
+    "data": {
+      "commands": [
+        {
+          "type": "path",
+          "data": {
+            "pathName": "SPB to C5"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "elevatorLevel2"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "outtakeCoral"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "elevatorLevel1"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "C5 back out"
+          }
+        }
+      ]
+    }
+  },
+  "resetOdom": true,
+  "folder": "bottom autos",
+  "choreoAuto": false
+}
