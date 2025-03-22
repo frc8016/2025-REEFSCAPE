@@ -18,23 +18,23 @@ public class Robot extends TimedRobot {
     @Override
     public void robotInit() {
         m_robotContainer = new RobotContainer();
-        m_Vision = new Vision();
+        // m_Vision = new Vision();
     }
 
     @Override
     public void robotPeriodic() {
         CommandScheduler.getInstance().run();
-        if (USE_VISION) {
-            // Correct pose estimate with vision measurements
-            var visionEst = m_Vision.getEstimatedGlobalPose();
-            visionEst.ifPresent(
-                    est -> {
-                        // Change our trust in the measurement based on the tags we can see
-                        var estStdDevs = m_Vision.getEstimationStdDevs();
-                        m_robotContainer.m_Drivetrain.addVisionMeasurement(
-                                est.estimatedPose.toPose2d(), est.timestampSeconds, estStdDevs);
-                    });
-        }
+        // if (USE_VISION) {
+        // // Correct pose estimate with vision measurements
+        // var visionEst = m_Vision.getEstimatedGlobalPose();
+        // visionEst.ifPresent(
+        // est -> {
+        // // Change our trust in the measurement based on the tags we can see
+        // var estStdDevs = m_Vision.getEstimationStdDevs();
+        // m_robotContainer.m_Drivetrain.addVisionMeasurement(
+        // est.estimatedPose.toPose2d(), est.timestampSeconds, estStdDevs);
+        // });
+        // }
     }
 
     @Override
