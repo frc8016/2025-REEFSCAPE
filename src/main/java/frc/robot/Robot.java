@@ -20,12 +20,12 @@ public class Robot extends TimedRobot {
     public void robotInit() {
         m_robotContainer = new RobotContainer();
         // m_Vision = new Vision();
-        CameraServer.startAutomaticCapture();
+        //CameraServer.startAutomaticCapture();
     }
 
     @Override
     public void robotPeriodic() {
-        CommandScheduler.getInstance().run();
+        //CommandScheduler.getInstance().run();
         // if (USE_VISION) {
         // // Correct pose estimate with vision measurements
         // var visionEst = m_Vision.getEstimatedGlobalPose();
