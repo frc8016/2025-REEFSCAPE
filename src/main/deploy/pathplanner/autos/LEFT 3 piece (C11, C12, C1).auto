@@ -7,7 +7,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "SPT to C3"
+            "pathName": "SPT to C12"
           }
         },
         {
@@ -31,43 +31,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "C3 to CST"
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "intakeCoral"
-          }
-        },
-        {
-          "type": "path",
-          "data": {
-            "pathName": "CST to C4"
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "elevatorLevel4"
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "outtakeCoral"
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "elevatorLevel1"
-          }
-        },
-        {
-          "type": "path",
-          "data": {
-            "pathName": "C4 to CST"
+            "pathName": "C12 to CST"
           }
         },
         {
@@ -80,6 +44,42 @@
           "type": "path",
           "data": {
             "pathName": "CST to C11"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "elevatorLevel4"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "outtakeCoral"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "elevatorLevel1"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "C11 to CST"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "intakeCoral"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "CST to C1"
           }
         },
         {

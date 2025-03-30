@@ -7,7 +7,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "SPM to C3"
+            "pathName": "SPB to C6"
           }
         },
         {
@@ -31,7 +31,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "C3 to CST"
+            "pathName": "C6 to CSB"
           }
         },
         {
@@ -43,7 +43,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "CST to C4"
+            "pathName": "CSB to C8"
           }
         },
         {
@@ -67,7 +67,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "C4 to CST"
+            "pathName": "C8 to CSB"
           }
         },
         {
@@ -79,7 +79,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "CST to C11"
+            "pathName": "CSB to C7"
           }
         },
         {
@@ -104,6 +104,6 @@
     }
   },
   "resetOdom": true,
-  "folder": "middle autos",
+  "folder": "bottom autos",
   "choreoAuto": false
 }
