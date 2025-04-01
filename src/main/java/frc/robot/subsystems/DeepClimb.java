@@ -142,6 +142,7 @@ public class DeepClimb extends SubsystemBase {
 @Override 
     public void periodic(){
         getLimitSwitch();
+        getPosition();
         position();
         SmartDashboard.putBoolean("Climb Triggered", getLimitSwitch());
         SmartDashboard.putBoolean("Climb Position", position());
