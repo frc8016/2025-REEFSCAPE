@@ -65,7 +65,9 @@ public class CoralIntake extends SubsystemBase {
     public void periodic() {
         isBroken();
         SmartDashboard.putBoolean("Beam Break ", isBeamBroken());
-        SmartDashboard.putBoolean("bb", getAsBoolean());
+     
+
+       
     }
 
 }

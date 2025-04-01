@@ -31,7 +31,8 @@ public class Funnel extends SubsystemBase{
 
     @Override
         public void periodic() {
-               SmartDashboard.putBoolean("Limit Switch", !m_limitSwitch.get());
-      
+               SmartDashboard.putBoolean("Funnel", !m_limitSwitch.get());
+
+              
         }
 }
