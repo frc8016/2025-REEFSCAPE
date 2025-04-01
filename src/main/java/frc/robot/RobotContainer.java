@@ -104,7 +104,7 @@ public class RobotContainer {
 /*Deep climb code */
         m_swerveController.rightTrigger().whileTrue(
                 new StartEndCommand(
-                       () -> m_DeepClimb.run(.2), 
+                       () -> m_DeepClimb.run(.5), 
                        () -> m_DeepClimb.run(0), 
                                 m_DeepClimb).until(m_DeepClimb.stopClimb()));
         m_swerveController.leftTrigger().whileTrue(
@@ -119,18 +119,7 @@ public class RobotContainer {
                        () -> m_Funnel.run(0), 
                        m_Funnel).until(m_Funnel.triggered())
         );
-        m_swerveController.x().whileTrue(
-                new StartEndCommand(
-                       () -> m_DeepClimb.run21(.05), 
-                       () -> m_DeepClimb.run21(0), 
-                       m_DeepClimb)
-        );
-        m_swerveController.y().whileTrue(
-                new StartEndCommand(
-                       () -> m_DeepClimb.run21(-.05), 
-                       () -> m_DeepClimb.run21(0), 
-                       m_DeepClimb)
-        );
+       
 
        
 

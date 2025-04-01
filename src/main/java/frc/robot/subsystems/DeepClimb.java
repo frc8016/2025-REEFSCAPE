@@ -119,6 +119,18 @@ public class DeepClimb extends SubsystemBase {
 
     }
 
+    public double getPosition(){
+        return m_climb21.getEncoder().getPosition();
+    }
+    
+    public boolean position(){
+        if (getPosition() == -5){
+            return true;
+
+        }
+                return false;
+    }
+
     public boolean getLimitSwitch(){
         return m_limitSwitch.get();
     }
@@ -130,7 +142,10 @@ public class DeepClimb extends SubsystemBase {
 @Override 
     public void periodic(){
         getLimitSwitch();
+        position();
         SmartDashboard.putBoolean("Climb Triggered", getLimitSwitch());
+        SmartDashboard.putBoolean("Climb Position", position());
+
 
     }
 }
