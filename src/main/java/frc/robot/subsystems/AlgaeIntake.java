@@ -72,8 +72,11 @@ public class AlgaeIntake extends SubsystemBase {
 
     @Override
     public void periodic() {
-        SmartDashboard.putNumber("Algea Position", m_algaeMotor.getEncoder().getPosition());
-        SmartDashboard.putNumber("Algae Velocity", m_algaeMotor.getEncoder().getVelocity());
+        SmartDashboard.putNumber("Algea Position ", m_algaeMotor.getEncoder().getPosition());
+        //SmartDashboard.putNumber("Algae Velocity", m_algaeMotor.getEncoder().getVelocity());
+        SmartDashboard.putNumber("AlgeaTemp ", m_algaeMotor.getMotorTemperature());
+
+       
     }
 
 }
