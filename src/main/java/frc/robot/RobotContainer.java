@@ -143,6 +143,10 @@ public class RobotContainer {
 
         m_operatorController.a().onTrue(
                 m_Elevator.goToSetPointCommand(SetPointConstants.LEVEL1));
+        m_operatorController.povUp().onTrue(
+                m_Elevator.goToSetPointCommand(SetPointConstants.TROUGH));
+        
+        
 
         m_operatorController.rightTrigger().whileTrue(
                 new StartEndCommand(
