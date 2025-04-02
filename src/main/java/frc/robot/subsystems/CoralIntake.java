@@ -11,7 +11,7 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import edu.wpi.first.wpilibj2.command.StartEndCommand;
 
-public class CoralIntake extends SubsystemBase {
+  public class CoralIntake extends SubsystemBase {
     private final SparkMax m_outtakeLeft = new SparkMax(14, MotorType.kBrushless);
     private final SparkMax m_outtakeRight = new SparkMax(16, MotorType.kBrushless);
     private final DigitalInput m_beamBreak = new DigitalInput(0);
