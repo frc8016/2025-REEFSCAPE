@@ -16,13 +16,10 @@ import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
-import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import edu.wpi.first.wpilibj2.command.StartEndCommand;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import frc.robot.Constants.AlgaeIntakeConstants;
 import frc.robot.Constants.SetPointConstants;
-import frc.robot.commands.SlowModeCommand;
-import frc.robot.Constants.DriveSpeedConstants;
 import frc.robot.generated.TunerConstants;
 import frc.robot.subsystems.AlgaeIntake;
 import frc.robot.subsystems.CommandSwerveDrivetrain;
@@ -106,12 +103,13 @@ public class RobotContainer {
                 new StartEndCommand(
                        () -> m_DeepClimb.run(.5), 
                        () -> m_DeepClimb.run(0), 
-                                m_DeepClimb).until(m_DeepClimb.stopClimb()));
+                                m_DeepClimb).until(m_DeepClimb.stopClimbIn()));
+
         m_swerveController.leftTrigger().whileTrue(
                 new StartEndCommand(
-                        () -> m_DeepClimb.release(-.2), 
+                        () -> m_DeepClimb.release(-.3), 
                         () -> m_DeepClimb.release(0), 
-                        m_DeepClimb));
+                        m_DeepClimb).until(m_DeepClimb.stopClimbOut()));
 
         m_swerveController.rightBumper().onTrue(
                 new StartEndCommand(

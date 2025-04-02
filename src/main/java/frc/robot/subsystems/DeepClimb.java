@@ -9,7 +9,6 @@ import com.revrobotics.spark.config.ClosedLoopConfig.FeedbackSensor;
 import com.revrobotics.spark.config.MAXMotionConfig.MAXMotionPositionMode;
 import com.revrobotics.spark.config.SparkBaseConfig.IdleMode;
 
-import static edu.wpi.first.units.Units.Degree;
 import static edu.wpi.first.units.Units.Degrees;
 
 import java.util.function.BooleanSupplier;
@@ -18,14 +17,10 @@ import com.revrobotics.spark.ClosedLoopSlot;
 import com.revrobotics.spark.SparkClosedLoopController;
 import com.revrobotics.spark.SparkMax;
 
-import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.DeepClimbConstants;
-import frc.robot.Constants.ElevatorConstants;
-
-import com.revrobotics.spark.config.SparkMaxConfig;
 
 public class DeepClimb extends SubsystemBase {
     private final SparkMax m_climbLeft = new SparkMax(18, MotorType.kBrushless);
@@ -36,8 +31,6 @@ public class DeepClimb extends SubsystemBase {
     private final SparkMaxConfig m_climbLeftConfig = new SparkMaxConfig();
     private final SparkMaxConfig m_climbRightConfig = new SparkMaxConfig();
     private final SparkClosedLoopController m_leftClosedLoopController = m_climbLeft.getClosedLoopController();
-    private final DigitalInput m_limitSwitch = new DigitalInput(3);
-
     public DeepClimb() {
 
         m_sharedclimbconfig.encoder
@@ -123,24 +116,46 @@ public class DeepClimb extends SubsystemBase {
         return m_climb21.getEncoder().getPosition();
     }
     
+    public boolean checkPositionOut(){
+        if(m_climb21.getEncoder().getPosition() <= -
+        5){
+            return true; }
+        else return false; }
+
+    public boolean checkPositionIn(){
+        if(m_climb21.getEncoder().getPosition() >= -.65){
+            return true; }
+        else return false;
+    }              
     
+    public BooleanSupplier stopClimbIn(){
+        return(() -> checkPositionIn());
 
-    public boolean getLimitSwitch(){
-        return m_limitSwitch.get();
     }
 
-    public BooleanSupplier stopClimb(){
-        return (() -> m_limitSwitch.get() == false);
+    public BooleanSupplier stopClimbOut(){
+        return(() -> checkPositionOut());
     }
+
+   
+
 
 @Override 
     public void periodic(){
-        getLimitSwitch();
+        
         getPosition();
 
-        SmartDashboard.putBoolean("Climb Triggered ", !getLimitSwitch());
+        checkPositionIn();
+        checkPositionOut();
+
+    
+
+
 
         SmartDashboard.putNumber("Climb Position ", m_climb21.getEncoder().getPosition());
+
+        SmartDashboard.putBoolean("Climb out", checkPositionOut());
+        SmartDashboard.putBoolean("Climb in", checkPositionIn());
 
         
 
