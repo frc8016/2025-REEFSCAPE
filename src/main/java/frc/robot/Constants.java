@@ -59,7 +59,7 @@ public final class Constants {
         public static double LEVEL3 = (9.0);
         public static double LEVEL2 = (4.5);
         public static double TROUGH = (2.0);
-        
+
         public static double LEVEL1 = (0.0);
 
     }
@@ -106,10 +106,10 @@ public final class Constants {
     public static class VisionConstants {
         public static final boolean USE_VISION = false; // IMPORTANT we set this to true when useing vision and faluse
                                                         // when we dont (this will effect all vision uses)
-        public static final String CAMERA_NAME = "YOUR CAMERA NAME";
+        public static final String CAMERA_NAME = "Camera Module v1 ";
         // Cam mounted facing forward, half a meter forward of center, half a meter up
         // from center.
-        public static final Transform3d ROBOT_TO_CAM = new Transform3d(new Translation3d(0.5, 0.0, 0.5),
+        public static final Transform3d ROBOT_TO_CAM = new Transform3d(new Translation3d(0.31, 0.9271, 0.18),
                 new Rotation3d(0, 0, 0));
         // TODO: put in
         // camra postion
