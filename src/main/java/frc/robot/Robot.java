@@ -35,7 +35,9 @@ public class Robot extends TimedRobot {
                         var estStdDevs = m_Vision.getEstimationStdDevs();
                         m_robotContainer.m_Drivetrain.addVisionMeasurement(
                                 est.estimatedPose.toPose2d(), est.timestampSeconds, estStdDevs);
+                        System.out.println(visionEst);
                     });
+
         }
     }
 
