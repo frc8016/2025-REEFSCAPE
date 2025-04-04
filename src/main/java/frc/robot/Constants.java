@@ -104,8 +104,8 @@ public final class Constants {
     }
 
     public static class VisionConstants {
-        public static final boolean USE_VISION = false; // IMPORTANT we set this to true when useing vision and faluse
-                                                        // when we dont (this will effect all vision uses)
+        public static final boolean USE_VISION = true; // IMPORTANT we set this to true when useing vision and faluse
+                                                       // when we dont (this will effect all vision uses)
         public static final String CAMERA_NAME = "Camera Module v1 ";
         // Cam mounted facing forward, half a meter forward of center, half a meter up
         // from center.
