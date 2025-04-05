@@ -117,13 +117,12 @@ public class DeepClimb extends SubsystemBase {
     }
     
     public boolean checkPositionOut(){
-        if(m_climb21.getEncoder().getPosition() <= -
-        5){
+        if(m_climb21.getEncoder().getPosition() <= - 5){
             return true; }
         else return false; }
 
     public boolean checkPositionIn(){
-        if(m_climb21.getEncoder().getPosition() >= -.65){
+        if(m_climb21.getEncoder().getPosition() >= -.9){
             return true; }
         else return false;
     }              
@@ -137,7 +136,28 @@ public class DeepClimb extends SubsystemBase {
         return(() -> checkPositionOut());
     }
 
-   
+    public boolean checkSlowPositionOut(){
+        if(m_climb21.getEncoder().getPosition() <= - 4){
+            return true; }
+        else return false; }
+
+    public boolean checkSlowPositionIn(){
+        if(m_climb21.getEncoder().getPosition() >= -1.5){
+            return true; }
+        else return false;
+    }  
+    
+    public BooleanSupplier slowClimbIn(){
+        return(() -> checkSlowPositionIn());
+
+    }
+
+    public BooleanSupplier slowClimbOut(){
+        return(() -> checkSlowPositionOut());
+    }
+
+
+        
 
 
 @Override 
