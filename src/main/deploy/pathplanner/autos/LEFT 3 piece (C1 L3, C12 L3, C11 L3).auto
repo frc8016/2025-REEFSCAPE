@@ -1,0 +1,109 @@
+{
+  "version": "2025.0",
+  "command": {
+    "type": "sequential",
+    "data": {
+      "commands": [
+        {
+          "type": "path",
+          "data": {
+            "pathName": "SPT to C1 L3"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "elevatorLevel3"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "outtakeCoral"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "elevatorLevel1"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "C1 L3 to CST"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "intakeCoral"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "CST to C12 L3"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "elevatorLevel3"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "outtakeCoral"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "elevatorLevel1"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "C12 L3 to CST"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "intakeCoral"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "CST to C11 L3"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "elevatorLevel3"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "outtakeCoral"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "elevatorLevel1"
+          }
+        }
+      ]
+    }
+  },
+  "resetOdom": true,
+  "folder": "top autos",
+  "choreoAuto": false
+}
