@@ -16,6 +16,7 @@ import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import edu.wpi.first.wpilibj2.command.StartEndCommand;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import frc.robot.Constants.AlgaeIntakeConstants;
@@ -100,16 +101,29 @@ public class RobotContainer {
         m_swerveController.leftBumper().onTrue(m_Drivetrain.runOnce(() -> m_Drivetrain.seedFieldCentric()));
 /*Deep climb code */
         m_swerveController.rightTrigger().whileTrue(
-                new StartEndCommand(
+                new SequentialCommandGroup(
+                        new StartEndCommand(
                        () -> m_DeepClimb.run(.5), 
                        () -> m_DeepClimb.run(0), 
-                                m_DeepClimb).until(m_DeepClimb.stopClimbIn()));
+                                m_DeepClimb).until(m_DeepClimb.slowClimbIn()),
+                        new StartEndCommand(
+                                () -> m_DeepClimb.run(.2), 
+                                () -> m_DeepClimb.run(0), m_DeepClimb).until(m_DeepClimb.stopClimbIn())));
+                
+
 
         m_swerveController.leftTrigger().whileTrue(
-                new StartEndCommand(
-                        () -> m_DeepClimb.release(-.3), 
+                new SequentialCommandGroup(
+                        new StartEndCommand(
+                        () -> m_DeepClimb.release(-.5 ), 
                         () -> m_DeepClimb.release(0), 
-                        m_DeepClimb).until(m_DeepClimb.stopClimbOut()));
+                        m_DeepClimb).until(m_DeepClimb.slowClimbOut()),
+                        new StartEndCommand(
+                                
+                        () -> m_DeepClimb.release(-.2), 
+                        () -> m_DeepClimb.release(0), 
+                        m_DeepClimb).until(m_DeepClimb.stopClimbOut())));
+                
 
         m_swerveController.rightBumper().onTrue(
                 new StartEndCommand(
