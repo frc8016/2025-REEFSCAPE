@@ -47,7 +47,7 @@ public final class Constants {
 
         public static final double MAX_ACCEL_RPM = MAX_VEL_RPM / 0.7;
 
-        public static final double ALLOWED_SETPOINT_ERROR = 0.3;
+        public static final double ALLOWED_SETPOINT_ERROR = 0.1;
         public static final double ELEVATOR_FORWORD_SOFTLIMIT = 50;
         public static final double ELEVATOR_REVERSE_SOFTLIMIT = 0;
         public static final int MAX_CURRENT_LIMIT = 50;
@@ -110,7 +110,7 @@ public final class Constants {
         // Cam mounted facing forward, half a meter forward of center, half a meter up
         // from center.
         public static final Transform3d ROBOT_TO_CAM = new Transform3d(new Translation3d(0.1334, -0.305, 0.9271),
-                new Rotation3d(0, 0, 0));
+                new Rotation3d(0.017, 0, 0));
         // TODO: put in
         // camra postion
 
