@@ -26,9 +26,10 @@ public class Robot extends TimedRobot {
     @Override
     public void robotPeriodic() {
         CommandScheduler.getInstance().run();
-        if (USE_VISION && isAutonomous()) {
+        if (USE_VISION) {
             // Correct pose estimate with vision measurements
             var visionEst = m_Vision.getEstimatedGlobalPose();
+            System.out.println(visionEst);
             visionEst.ifPresent(
                     est -> {
                         // Change our trust in the measurement based on the tags we can see
