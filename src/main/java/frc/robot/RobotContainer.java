@@ -105,11 +105,13 @@ public class RobotContainer {
                        () -> m_DeepClimb.run(0), 
                                 m_DeepClimb).until(m_DeepClimb.stopClimbIn()));
 
+
         m_swerveController.leftTrigger().whileTrue(
                 new StartEndCommand(
-                        () -> m_DeepClimb.release(-.3), 
+                        () -> m_DeepClimb.release(-.5), 
                         () -> m_DeepClimb.release(0), 
                         m_DeepClimb).until(m_DeepClimb.stopClimbOut()));
+
 
         m_swerveController.rightBumper().onTrue(
                 new StartEndCommand(
