@@ -110,7 +110,7 @@ public final class Constants {
         // Cam mounted facing forward, half a meter forward of center, half a meter up
         // from center.
         public static final Transform3d ROBOT_TO_CAM = new Transform3d(new Translation3d(0.3, 0.26, 0.23),
-                new Rotation3d(0, 0, 0));
+                new Rotation3d(0, 0, -0.785398));
         // TODO: put in
         // camra postion
 
