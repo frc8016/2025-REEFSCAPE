@@ -3,13 +3,13 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 7.62610317043187,
-        "y": 0.80570470620724
+        "x": 7.7499314046889785,
+        "y": 0.7780307398713455
       },
       "prevControl": null,
       "nextControl": {
-        "x": 6.827680923400983,
-        "y": 1.339799171260959
+        "x": 6.951509157658092,
+        "y": 1.3121252049250645
       },
       "isLocked": false,
       "linkedName": "SPB"
@@ -48,7 +48,7 @@
   "folder": "bottom paths",
   "idealStartingState": {
     "velocity": 0,
-    "rotation": 133.86054901396687
+    "rotation": 180.0
   },
   "useDefaultConstraints": true
 }

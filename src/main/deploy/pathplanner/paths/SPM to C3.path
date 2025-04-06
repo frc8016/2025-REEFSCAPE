@@ -3,13 +3,13 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 7.747431864411539,
-        "y": 4.02423175056059
+        "x": 7.6000335261284295,
+        "y": 4.010028411801602
       },
       "prevControl": null,
       "nextControl": {
-        "x": 6.577461283598047,
-        "y": 4.142751603048676
+        "x": 6.430062945314937,
+        "y": 4.128548264289689
       },
       "isLocked": false,
       "linkedName": "SPM"
@@ -48,7 +48,7 @@
   "folder": "middle paths",
   "idealStartingState": {
     "velocity": 0,
-    "rotation": 180.0
+    "rotation": -135.0
   },
   "useDefaultConstraints": true
 }
