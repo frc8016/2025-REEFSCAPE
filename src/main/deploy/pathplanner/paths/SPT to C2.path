@@ -3,13 +3,13 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 7.611719974878849,
-        "y": 7.2602809649372855
+        "x": 7.744623644796607,
+        "y": 7.281296451393033
       },
       "prevControl": null,
       "nextControl": {
-        "x": 6.807832077695845,
-        "y": 6.696257805170574
+        "x": 6.940735747613603,
+        "y": 6.717273291626322
       },
       "isLocked": false,
       "linkedName": "SPT"
@@ -48,7 +48,7 @@
   "folder": "top paths",
   "idealStartingState": {
     "velocity": 0,
-    "rotation": -135.30954876846198
+    "rotation": -90.0
   },
   "useDefaultConstraints": true
 }
