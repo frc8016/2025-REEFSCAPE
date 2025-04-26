@@ -2,13 +2,8 @@ package frc.robot.subsystems;
 
 import static frc.robot.Constants.VisionConstants.*;
 
-import edu.wpi.first.math.Matrix;
-import edu.wpi.first.math.VecBuilder;
-import edu.wpi.first.math.numbers.N1;
-import edu.wpi.first.math.numbers.N3;
 import edu.wpi.first.wpilibj.smartdashboard.Field2d;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-
 import java.util.List;
 import java.util.Optional;
 import org.photonvision.EstimatedRobotPose;
@@ -17,20 +12,19 @@ import org.photonvision.PhotonPoseEstimator;
 import org.photonvision.PhotonPoseEstimator.PoseStrategy;
 import org.photonvision.targeting.PhotonPipelineResult;
 
-import com.ctre.phoenix6.swerve.SwerveDrivetrain;
 
 public class Vision {
 
     private final PhotonCamera lowerLeftCamera;
     private final PhotonPoseEstimator lowerLeftPoseEstimator;
-    private SwerveDrivetrain swerveDrivetrain;
+    private CommandSwerveDrivetrain swerveDrivetrain;
     Field2d field2DLowerLeft = new Field2d();
 
     public Vision(CommandSwerveDrivetrain swerveDrivetrainIn) {
         lowerLeftCamera = new PhotonCamera(LOWER_LEFT_CAMERA_NAME);
-
         lowerLeftPoseEstimator = new PhotonPoseEstimator(TAG_LAYOUT, PoseStrategy.MULTI_TAG_PNP_ON_COPROCESSOR, ROBOT_TO_CAM);
         lowerLeftPoseEstimator.setMultiTagFallbackStrategy(PoseStrategy.LOWEST_AMBIGUITY);
+
         swerveDrivetrain = swerveDrivetrainIn;
         SmartDashboard.putData("photonPose Lower Left", field2DLowerLeft);
     }
