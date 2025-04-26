@@ -21,6 +21,7 @@ import edu.wpi.first.wpilibj2.command.StartEndCommand;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import frc.robot.Constants.AlgaeIntakeConstants;
 import frc.robot.Constants.SetPointConstants;
+import frc.robot.commands.PathfindToScore;
 import frc.robot.generated.TunerConstants;
 import frc.robot.subsystems.AlgaeIntake;
 import frc.robot.subsystems.CommandSwerveDrivetrain;
@@ -98,7 +99,8 @@ public class RobotContainer {
                         -m_swerveController.getLeftX()))));
 
         // reset the field-centric heading on left bumper press
-        m_swerveController.leftBumper().onTrue(m_Drivetrain.runOnce(() -> m_Drivetrain.seedFieldCentric()));
+        // m_swerveController.leftBumper().onTrue(m_Drivetrain.runOnce(() -> m_Drivetrain.seedFieldCentric()));
+        m_swerveController.leftBumper().onTrue(new PathfindToScore());
 /*Deep climb code */
         m_swerveController.rightTrigger().whileTrue(
                 new SequentialCommandGroup(
