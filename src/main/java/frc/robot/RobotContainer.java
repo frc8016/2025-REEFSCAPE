@@ -20,6 +20,7 @@ import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import edu.wpi.first.wpilibj2.command.StartEndCommand;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import frc.robot.Constants.AlgaeIntakeConstants;
+import frc.robot.Constants.PathfindToScoreConstants.Direction;
 import frc.robot.Constants.SetPointConstants;
 import frc.robot.commands.PathfindToScore;
 import frc.robot.generated.TunerConstants;
@@ -48,7 +49,6 @@ public class RobotContainer {
     private final Funnel m_Funnel = new Funnel();
     private final SendableChooser<Command> autoChooser;
     private final Telemetry logger = new Telemetry(MaxSpeed);
-
 
     /* Setting up bindings for necessary control of the swerve drive platform */
     private final SwerveRequest.FieldCentric drive = new SwerveRequest.FieldCentric()
@@ -93,14 +93,17 @@ public class RobotContainer {
                 ));
 
         m_swerveController.a().whileTrue(m_Drivetrain.applyRequest(() -> brake));
-
+        
         m_swerveController.b().whileTrue(m_Drivetrain.applyRequest(() -> point
                 .withModuleDirection(new Rotation2d(-m_swerveController.getLeftY(),
                         -m_swerveController.getLeftX()))));
 
         // reset the field-centric heading on left bumper press
         // m_swerveController.leftBumper().onTrue(m_Drivetrain.runOnce(() -> m_Drivetrain.seedFieldCentric()));
-        m_swerveController.leftBumper().onTrue(new PathfindToScore());
+
+        m_swerveController.leftBumper().whileTrue(new PathfindToScore(m_Drivetrain, Direction.LEFT).createPathfindToScoreCommand());
+        m_swerveController.rightBumper().whileTrue(new PathfindToScore(m_Drivetrain, Direction.RIGHT).createPathfindToScoreCommand());
+
 /*Deep climb code */
         m_swerveController.rightTrigger().whileTrue(
                 new SequentialCommandGroup(
@@ -127,12 +130,12 @@ public class RobotContainer {
                         m_DeepClimb).until(m_DeepClimb.stopClimbOut())));
                 
 
-        m_swerveController.rightBumper().onTrue(
-                new StartEndCommand(
-                       () -> m_Funnel.run(-.1), 
-                       () -> m_Funnel.run(0), 
-                       m_Funnel).until(m_Funnel.triggered())
-        );
+        // m_swerveController.rightBumper().onTrue(
+        //         new StartEndCommand(
+        //                () -> m_Funnel.run(-.1), 
+        //                () -> m_Funnel.run(0), 
+        //                m_Funnel).until(m_Funnel.triggered())
+        // );
        
 
        
