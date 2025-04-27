@@ -51,7 +51,7 @@ public final class Constants {
     }
 
     public static class SetPointConstants {
-        public static double LEVEL4 = (16);
+        public static double LEVEL4 = (16.0);
         public static double LEVEL3 = (9.0);
         public static double LEVEL2 = (4.5);
         public static double TROUGH = (2.0);
