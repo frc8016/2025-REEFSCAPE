@@ -8,15 +8,11 @@ import edu.wpi.first.apriltag.AprilTagFieldLayout;
 import edu.wpi.first.apriltag.AprilTagFields;
 import edu.wpi.first.math.geometry.Transform3d;
 import edu.wpi.first.math.geometry.Translation3d;
-import edu.wpi.first.math.numbers.N1;
-import edu.wpi.first.math.numbers.N3;
-import edu.wpi.first.math.Matrix;
-import edu.wpi.first.math.VecBuilder;
+import edu.wpi.first.math.util.Units;
 import edu.wpi.first.math.geometry.Rotation3d;
+import edu.wpi.first.units.measure.Angle;
 
 import static edu.wpi.first.units.Units.Degrees;
-
-import edu.wpi.first.units.measure.Angle;
 
 /**
  * The Constants class provides a convenient place for teams to hold robot-wide
@@ -106,26 +102,27 @@ public final class Constants {
     public static class VisionConstants {
         public static final boolean USE_VISION = true; // IMPORTANT we set this to true when useing vision and faluse
                                                        // when we dont (this will effect all vision uses)
-        public static final String CAMERA_NAME = "Camera_Module_v1";
-        // Cam mounted facing forward, half a meter forward of center, half a meter up
-        // from center.
-        public static final Transform3d ROBOT_TO_CAM = new Transform3d(new Translation3d(0.3, 0.26, 0.23),
-                new Rotation3d(0, 0, -0.785398));
-        // TODO: put in
-        // camra postion
+        public static final double VISION_MAX_DIST = 3;
+        public static final double MAX_TAG_AMBIGUITY = 0.15;
+
+        // public static final String LOWER_LEFT_CAMERA_NAME = "Camera_Module_v1";
+        public static final String LOWER_LEFT_CAMERA_NAME = "Arducam_OV2311_USB_Camera";
+
+        public static final Transform3d ROBOT_TO_CAM = new Transform3d(
+            new Translation3d(
+                Units.inchesToMeters(12.75), // x: forward positive
+                Units.inchesToMeters(10.5), // y: left positive
+                Units.inchesToMeters(8.5)), // z: up positive
+            new Rotation3d(
+                Units.degreesToRadians(0), 
+                Units.degreesToRadians(0), 
+                Units.degreesToRadians(-45))
+        );
 
         // The layout of the AprilTags on the field
         public static final AprilTagFieldLayout TAG_LAYOUT = AprilTagFieldLayout
                 .loadField(AprilTagFields.kDefaultField);
 
-        // The standard deviations of our vision estimated poses, which affect
-        // correction rate
-        // (Fake values. Experiment and determine estimation noise on an actual robot.)
-        // public static final Matrix<N3, N1> SINGLE_TAG_STD_DEVS = VecBuilder.fill(4,
-        // 4, 8);
-        // public static final Matrix<N3, N1> MULTI_TAG_STD_DEVS = VecBuilder.fill(0.5,
-        // 0.5, 1);
-        public static final Matrix<N3, N1> SINGLE_TAG_STD_DEVS = VecBuilder.fill(1, 1, 2);
-        public static final Matrix<N3, N1> MULTI_TAG_STD_DEVS = VecBuilder.fill(0.15, 0.15, 0.5);
+        // public static final Matrix<N3, N1> SINGLE_TAG_STD_DEVS = VecBuilder.fill(1, 1, 2);
     }
 }
