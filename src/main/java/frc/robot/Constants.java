@@ -51,7 +51,7 @@ public final class Constants {
     }
 
     public static class SetPointConstants {
-        public static double LEVEL4 = (16.0);
+        public static double LEVEL4 = (16);
         public static double LEVEL3 = (9.0);
         public static double LEVEL2 = (4.5);
         public static double TROUGH = (2.0);
@@ -105,14 +105,14 @@ public final class Constants {
         public static final double VISION_MAX_DIST = 3;
         public static final double MAX_TAG_AMBIGUITY = 0.15;
 
-        public static final String LOWER_LEFT_CAMERA_NAME = "Camera_Module_v1";
-        // public static final String LOWER_LEFT_CAMERA_NAME = "Arducam_OV2311_USB_Camera";
+        // public static final String LOWER_LEFT_CAMERA_NAME = "Camera_Module_v1";
+        public static final String LOWER_LEFT_CAMERA_NAME = "Arducam_OV2311_USB_Camera";
 
         public static final Transform3d ROBOT_TO_CAM = new Transform3d(
             new Translation3d(
-                Units.inchesToMeters(11.811), // x: forward positive
-                Units.inchesToMeters(10.23622), // y: left positive
-                Units.inchesToMeters(9.055118)), // z: up positive
+                Units.inchesToMeters(12.75), // x: forward positive
+                Units.inchesToMeters(10.5), // y: left positive
+                Units.inchesToMeters(8.5)), // z: up positive
             new Rotation3d(
                 Units.degreesToRadians(0), 
                 Units.degreesToRadians(0), 

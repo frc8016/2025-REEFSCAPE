@@ -19,6 +19,7 @@ public class Vision {
     private final PhotonPoseEstimator lowerLeftPoseEstimator;
     private CommandSwerveDrivetrain swerveDrivetrain;
     Field2d field2DLowerLeft = new Field2d();
+    Field2d field2DRobot = new Field2d();
 
     public Vision(CommandSwerveDrivetrain swerveDrivetrainIn) {
         lowerLeftCamera = new PhotonCamera(LOWER_LEFT_CAMERA_NAME);
@@ -27,11 +28,13 @@ public class Vision {
 
         swerveDrivetrain = swerveDrivetrainIn;
         SmartDashboard.putData("photonPose Lower Left", field2DLowerLeft);
+        SmartDashboard.putData("robotPose", field2DRobot);
     }
 
     public void updateVision() {
         // add new cameras to process here
         processPipelineForCamera(USE_VISION, lowerLeftCamera, lowerLeftPoseEstimator, field2DLowerLeft, VISION_MAX_DIST);
+        field2DRobot.setRobotPose(swerveDrivetrain.getState().Pose);
     }
 
     public void processPipelineForCamera(boolean useCamera, PhotonCamera camera, PhotonPoseEstimator estimator,
