@@ -9,10 +9,17 @@ import edu.wpi.first.apriltag.AprilTagFields;
 import edu.wpi.first.math.geometry.Transform3d;
 import edu.wpi.first.math.geometry.Translation3d;
 import edu.wpi.first.math.util.Units;
+import edu.wpi.first.math.geometry.Pose2d;
+import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.geometry.Rotation3d;
 import edu.wpi.first.units.measure.Angle;
 
 import static edu.wpi.first.units.Units.Degrees;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import com.pathplanner.lib.path.PathConstraints;
 
 /**
  * The Constants class provides a convenient place for teams to hold robot-wide
@@ -124,5 +131,38 @@ public final class Constants {
                 .loadField(AprilTagFields.kDefaultField);
 
         // public static final Matrix<N3, N1> SINGLE_TAG_STD_DEVS = VecBuilder.fill(1, 1, 2);
+    }
+
+    public static class PathfindToScoreConstants {
+        public static final Map<Pose2d, String> BLUE_SCORING_POSITIONS = new HashMap<>(14) {{
+            put(new Pose2d(2.116, 6.692, new Rotation2d()), "CST");
+            put(new Pose2d(2.066, 1.379, new Rotation2d()), "CSB");
+            put(new Pose2d(5.414, 5.607, new Rotation2d()), "P1");
+            put(new Pose2d(6.339, 4.037, new Rotation2d()), "P2");
+            put(new Pose2d(5.484, 2.487, new Rotation2d()), "P3");
+            put(new Pose2d(3.582, 3.582, new Rotation2d()), "P4");
+            put(new Pose2d(2.646, 4.030, new Rotation2d()), "P5");
+            put(new Pose2d(3.609, 5.629, new Rotation2d()), "P6");
+        }};
+
+        public static final Map<Pose2d, String> RED_SCORING_POSITIONS = new HashMap<>(14) {{
+            put(new Pose2d(15.432, 1.360, new Rotation2d()), "CST");
+            put(new Pose2d(15.482, 6.673, new Rotation2d()), "CSB");
+            put(new Pose2d(12.134, 2.445, new Rotation2d()), "P1");
+            put(new Pose2d(11.209, 4.015, new Rotation2d()), "P2");
+            put(new Pose2d(12.064, 5.565, new Rotation2d()), "P3");
+            put(new Pose2d(13.966, 4.470, new Rotation2d()), "P4");
+            put(new Pose2d(14.902, 4.022, new Rotation2d()), "P5");
+            put(new Pose2d(13.939, 2.423, new Rotation2d()), "P6");
+        }};
+
+        public enum Direction {
+            LEFT,
+            RIGHT
+        }
+
+        public static PathConstraints constraints = new PathConstraints(
+        5.210, 7.1,
+        Units.degreesToRadians(540), Units.degreesToRadians(1851));
     }
 }

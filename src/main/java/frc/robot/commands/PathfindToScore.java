@@ -5,57 +5,81 @@
 package frc.robot.commands;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
+import java.util.function.Supplier;
+
+import static frc.robot.Constants.PathfindToScoreConstants.*;
 
 import org.json.simple.parser.ParseException;
-
 import com.pathplanner.lib.auto.AutoBuilder;
-import com.pathplanner.lib.path.PathConstraints;
 import com.pathplanner.lib.path.PathPlannerPath;
 import com.pathplanner.lib.util.FileVersionException;
-
-import edu.wpi.first.math.util.Units;
+import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.DriverStation.Alliance;
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.Commands;
+import edu.wpi.first.wpilibj2.command.DeferredCommand;
+import frc.robot.Constants.PathfindToScoreConstants.Direction;
+import frc.robot.subsystems.CommandSwerveDrivetrain;
 
 
-public class PathfindToScore extends Command {
+public class PathfindToScore {
+    CommandSwerveDrivetrain swerveDrivetrain;
+    Direction direction;
 
-    PathPlannerPath path;
-    public String pathName = "pathfind_to_C1";
-    Command pathfindingCommand;
+    Supplier<Command> pathfindToScoreCommandSupplier = () -> {
+        String pathName = constructPathName(getClosestPoseName(), direction);
+        Optional<PathPlannerPath> maybePath = loadPath(pathName);
 
-    public PathfindToScore () {
+        
+        if (maybePath.isPresent()) {
+            return AutoBuilder.pathfindThenFollowPath(
+                maybePath.get(),
+                constraints
+            );
+        } else {
+            return Commands.none();
+        }
+    };
+
+    public PathfindToScore(CommandSwerveDrivetrain swerveDrivetrainIn, Direction directionIn) {
+        swerveDrivetrain = swerveDrivetrainIn;
+        direction = directionIn;
+    }
+
+    public Command createPathfindToScoreCommand() {
+        return new DeferredCommand(pathfindToScoreCommandSupplier, Set.of(swerveDrivetrain));
+    }
+
+    private String getClosestPoseName() {
+        Pose2d pose = swerveDrivetrain.getState().Pose.nearest(new ArrayList<>(getLineupPoseMap().keySet()));
+        return getLineupPoseMap().get(pose);
+    }
+
+    private Map<Pose2d, String> getLineupPoseMap() {
+        if (DriverStation.getAlliance().orElse(Alliance.Blue) == Alliance.Red) {
+            return RED_SCORING_POSITIONS;
+        } else {
+            return BLUE_SCORING_POSITIONS;
+        }
+    }
+
+    private Optional<PathPlannerPath> loadPath(String pathName) {
         try {
-            path = PathPlannerPath.fromPathFile(pathName);
+            return Optional.of(PathPlannerPath.fromPathFile(pathName));
         } catch (FileVersionException | IOException | ParseException e) {
             System.out.println("error in loading path");
             e.printStackTrace();
-        }
-
-        if (DriverStation.getAlliance().orElse(Alliance.Blue) == Alliance.Red) {
-            path = path.flipPath();
+            return Optional.empty();
         }
     }
 
-    PathConstraints constraints = new PathConstraints(
-        5.210, 7.1,
-        Units.degreesToRadians(180), Units.degreesToRadians(-120));
-
-    @Override
-    public void initialize() {
-        pathfindingCommand = AutoBuilder.pathfindThenFollowPath(
-            path,
-            constraints);
-
-        pathfindingCommand.initialize();
-        System.out.println(this.path);
-    }
-
-    @Override
-    public void schedule() {
-        super.schedule();
-        pathfindingCommand.schedule();
-        System.out.println("COMMAND WAS SCHEDULED");
+    private String constructPathName(String pointName, Direction direction) {
+        String directionString = direction == Direction.LEFT ? "L" : "R";
+        return "pathfind_to_" + pointName + "_" + directionString;
     }
 }
