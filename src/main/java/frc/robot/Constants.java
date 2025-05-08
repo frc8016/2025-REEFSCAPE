@@ -135,8 +135,8 @@ public final class Constants {
 
     public static class PathfindToScoreConstants {
         public static final Map<Pose2d, String> BLUE_SCORING_POSITIONS = new HashMap<>(14) {{
-            put(new Pose2d(2.116, 6.692, new Rotation2d()), "CST");
-            put(new Pose2d(2.066, 1.379, new Rotation2d()), "CSB");
+            // put(new Pose2d(2.116, 6.692, new Rotation2d()), "CST");
+            // put(new Pose2d(2.066, 1.379, new Rotation2d()), "CSB");
             put(new Pose2d(5.414, 5.607, new Rotation2d()), "P1");
             put(new Pose2d(6.339, 4.037, new Rotation2d()), "P2");
             put(new Pose2d(5.484, 2.487, new Rotation2d()), "P3");
@@ -146,8 +146,8 @@ public final class Constants {
         }};
 
         public static final Map<Pose2d, String> RED_SCORING_POSITIONS = new HashMap<>(14) {{
-            put(new Pose2d(15.432, 1.360, new Rotation2d()), "CST");
-            put(new Pose2d(15.482, 6.673, new Rotation2d()), "CSB");
+            // put(new Pose2d(15.432, 1.360, new Rotation2d()), "CST");
+            // put(new Pose2d(15.482, 6.673, new Rotation2d()), "CSB");
             put(new Pose2d(12.134, 2.445, new Rotation2d()), "P1");
             put(new Pose2d(11.209, 4.015, new Rotation2d()), "P2");
             put(new Pose2d(12.064, 5.565, new Rotation2d()), "P3");
