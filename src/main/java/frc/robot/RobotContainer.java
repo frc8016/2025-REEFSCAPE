@@ -86,8 +86,8 @@ public class RobotContainer {
         m_Drivetrain.setDefaultCommand(
                 // Drivetrain will execute this command periodically
                 m_Drivetrain.applyRequest(() -> drive
-                        .withVelocityX(m_swerveController.getLeftY() * MaxSpeed) // Drive forward with negative Y (forward)
-                        .withVelocityY(m_swerveController.getLeftX() * MaxSpeed) // Drive leftwith negative X (left)
+                        .withVelocityX(-m_swerveController.getLeftY() * MaxSpeed) // Drive forward with negative Y (forward)
+                        .withVelocityY(-m_swerveController.getLeftX() * MaxSpeed) // Drive leftwith negative X (left)
                         .withRotationalRate(-m_swerveController.getRightX() * MaxAngularRate) // Drive counterclockwise with negative X (left)
                 ));
 
