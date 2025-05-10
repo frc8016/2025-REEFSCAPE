@@ -130,12 +130,12 @@ public class RobotContainer {
                         m_DeepClimb).until(m_DeepClimb.stopClimbOut())));
                 
 
-        // m_swerveController.rightBumper().onTrue(
-        //         new StartEndCommand(
-        //                () -> m_Funnel.run(-.1), 
-        //                () -> m_Funnel.run(0), 
-        //                m_Funnel).until(m_Funnel.triggered())
-        // );
+        m_swerveController.x().onTrue(
+                new StartEndCommand(
+                       () -> m_Funnel.run(-.1), 
+                       () -> m_Funnel.run(0), 
+                       m_Funnel).until(m_Funnel.triggered())
+        );
        
 
        
