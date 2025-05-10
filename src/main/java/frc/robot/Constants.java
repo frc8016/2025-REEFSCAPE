@@ -112,8 +112,8 @@ public final class Constants {
         public static final double VISION_MAX_DIST = 3;
         public static final double MAX_TAG_AMBIGUITY = 0.15;
 
-        public static final String LOWER_RIGHT_CAMERA_NAME = "INSERT CAMERA NAME";
-        public static final String LOWER_LEFT_CAMERA_NAME = "INSERT CAMERA NAME";
+        // public static final String LOWER_RIGHT_CAMERA_NAME = "INSERT CAMERA NAME";
+        public static final String LOWER_LEFT_CAMERA_NAME = "Arducam_OV2311_USB_Camera";
 
         public static final Transform3d LOWER_RIGHT_CAMERA_POSE = new Transform3d(
             new Translation3d(
