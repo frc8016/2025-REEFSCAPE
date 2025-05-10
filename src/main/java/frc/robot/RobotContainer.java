@@ -101,11 +101,11 @@ public class RobotContainer {
         // reset the field-centric heading on left bumper press
         // m_swerveController.leftBumper().onTrue(m_Drivetrain.runOnce(() -> m_Drivetrain.seedFieldCentric()));
 
-        m_swerveController.leftBumper().whileTrue(new PathfindToScore(m_Drivetrain, Direction.LEFT).createPathfindToScoreCommand());
-        m_swerveController.rightBumper().whileTrue(new PathfindToScore(m_Drivetrain, Direction.RIGHT).createPathfindToScoreCommand());
+        m_swerveController.leftTrigger().whileTrue(new PathfindToScore(m_Drivetrain, Direction.LEFT).createPathfindToScoreCommand());
+        m_swerveController.rightTrigger().whileTrue(new PathfindToScore(m_Drivetrain, Direction.RIGHT).createPathfindToScoreCommand());
 
 /*Deep climb code */
-        m_swerveController.rightTrigger().whileTrue(
+        m_swerveController.rightBumper().whileTrue(
                 new SequentialCommandGroup(
                         new StartEndCommand(
                        () -> m_DeepClimb.run(.5), 
@@ -117,7 +117,7 @@ public class RobotContainer {
                 
 
 
-        m_swerveController.leftTrigger().whileTrue(
+        m_swerveController.leftBumper().whileTrue(
                 new SequentialCommandGroup(
                         new StartEndCommand(
                         () -> m_DeepClimb.release(-.5 ), 
