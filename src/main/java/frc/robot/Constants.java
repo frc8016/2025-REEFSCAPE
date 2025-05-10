@@ -112,10 +112,21 @@ public final class Constants {
         public static final double VISION_MAX_DIST = 3;
         public static final double MAX_TAG_AMBIGUITY = 0.15;
 
-        // public static final String LOWER_LEFT_CAMERA_NAME = "Camera_Module_v1";
-        public static final String LOWER_LEFT_CAMERA_NAME = "Arducam_OV2311_USB_Camera";
+        public static final String LOWER_RIGHT_CAMERA_NAME = "INSERT CAMERA NAME";
+        public static final String LOWER_LEFT_CAMERA_NAME = "INSERT CAMERA NAME";
 
-        public static final Transform3d ROBOT_TO_CAM = new Transform3d(
+        public static final Transform3d LOWER_RIGHT_CAMERA_POSE = new Transform3d(
+            new Translation3d(
+                Units.inchesToMeters(0), // x: forward positive
+                Units.inchesToMeters(0), // y: left positive
+                Units.inchesToMeters(0)), // z: up positive
+            new Rotation3d(
+                Units.degreesToRadians(0), 
+                Units.degreesToRadians(0), 
+                Units.degreesToRadians(0))
+        );
+
+        public static final Transform3d LOWER_LEFT_CAMERA_POSE = new Transform3d(
             new Translation3d(
                 Units.inchesToMeters(12.75), // x: forward positive
                 Units.inchesToMeters(10.5), // y: left positive
@@ -135,8 +146,8 @@ public final class Constants {
 
     public static class PathfindToScoreConstants {
         public static final Map<Pose2d, String> BLUE_SCORING_POSITIONS = new HashMap<>(14) {{
-            put(new Pose2d(2.116, 6.692, new Rotation2d()), "CST");
-            put(new Pose2d(2.066, 1.379, new Rotation2d()), "CSB");
+            // put(new Pose2d(2.116, 6.692, new Rotation2d()), "CST");
+            // put(new Pose2d(2.066, 1.379, new Rotation2d()), "CSB");
             put(new Pose2d(5.414, 5.607, new Rotation2d()), "P1");
             put(new Pose2d(6.339, 4.037, new Rotation2d()), "P2");
             put(new Pose2d(5.484, 2.487, new Rotation2d()), "P3");
@@ -146,8 +157,8 @@ public final class Constants {
         }};
 
         public static final Map<Pose2d, String> RED_SCORING_POSITIONS = new HashMap<>(14) {{
-            put(new Pose2d(15.432, 1.360, new Rotation2d()), "CST");
-            put(new Pose2d(15.482, 6.673, new Rotation2d()), "CSB");
+            // put(new Pose2d(15.432, 1.360, new Rotation2d()), "CST");
+            // put(new Pose2d(15.482, 6.673, new Rotation2d()), "CSB");
             put(new Pose2d(12.134, 2.445, new Rotation2d()), "P1");
             put(new Pose2d(11.209, 4.015, new Rotation2d()), "P2");
             put(new Pose2d(12.064, 5.565, new Rotation2d()), "P3");
