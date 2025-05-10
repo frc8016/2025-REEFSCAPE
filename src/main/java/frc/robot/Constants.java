@@ -112,10 +112,21 @@ public final class Constants {
         public static final double VISION_MAX_DIST = 3;
         public static final double MAX_TAG_AMBIGUITY = 0.15;
 
-        // public static final String LOWER_LEFT_CAMERA_NAME = "Camera_Module_v1";
-        public static final String LOWER_LEFT_CAMERA_NAME = "Arducam_OV2311_USB_Camera";
+        public static final String LOWER_RIGHT_CAMERA_NAME = "INSERT CAMERA NAME";
+        public static final String LOWER_LEFT_CAMERA_NAME = "INSERT CAMERA NAME";
 
-        public static final Transform3d ROBOT_TO_CAM = new Transform3d(
+        public static final Transform3d LOWER_RIGHT_CAMERA_POSE = new Transform3d(
+            new Translation3d(
+                Units.inchesToMeters(0), // x: forward positive
+                Units.inchesToMeters(0), // y: left positive
+                Units.inchesToMeters(0)), // z: up positive
+            new Rotation3d(
+                Units.degreesToRadians(0), 
+                Units.degreesToRadians(0), 
+                Units.degreesToRadians(0))
+        );
+
+        public static final Transform3d LOWER_LEFT_CAMERA_POSE = new Transform3d(
             new Translation3d(
                 Units.inchesToMeters(12.75), // x: forward positive
                 Units.inchesToMeters(10.5), // y: left positive
