@@ -99,7 +99,7 @@ public class RobotContainer {
                         -m_swerveController.getLeftX()))));
 
         // reset the field-centric heading on left bumper press
-        // m_swerveController.leftBumper().onTrue(m_Drivetrain.runOnce(() -> m_Drivetrain.seedFieldCentric()));
+        m_swerveController.y().onTrue(m_Drivetrain.runOnce(() -> m_Drivetrain.seedFieldCentric()));
 
         m_swerveController.leftTrigger().whileTrue(new PathfindToScore(m_Drivetrain, Direction.LEFT).createPathfindToScoreCommand());
         m_swerveController.rightTrigger().whileTrue(new PathfindToScore(m_Drivetrain, Direction.RIGHT).createPathfindToScoreCommand());
