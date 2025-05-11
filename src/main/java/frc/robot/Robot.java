@@ -6,6 +6,7 @@ package frc.robot;
 
 //import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import com.pathplanner.lib.commands.PathfindingCommand;
@@ -28,6 +29,11 @@ public class Robot extends TimedRobot {
     public void robotPeriodic() {
         CommandScheduler.getInstance().run();
         vision.updateVision();
+        
+
+        for (int i = 0; i < 4; ++i) {
+            SmartDashboard.putNumber("swerve " + i, m_robotContainer.m_Drivetrain.getState().ModuleStates[i].angle.getRotations());
+        }
     }
 
     @Override
