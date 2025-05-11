@@ -8,6 +8,7 @@ package frc.robot;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
+import com.pathplanner.lib.commands.PathfindingCommand;
 import frc.robot.subsystems.Vision;
 
 public class Robot extends TimedRobot {
@@ -19,6 +20,8 @@ public class Robot extends TimedRobot {
     public void robotInit() {
         m_robotContainer = new RobotContainer();
         vision = new Vision(m_robotContainer.m_Drivetrain);
+        PathfindingCommand.warmupCommand().schedule();
+        // CameraServer.startAutomaticCapture();
     }
 
     @Override

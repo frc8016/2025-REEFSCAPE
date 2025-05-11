@@ -1,0 +1,54 @@
+{
+  "version": "2025.0",
+  "waypoints": [
+    {
+      "anchor": {
+        "x": 2.646015474900583,
+        "y": 4.030213332158317
+      },
+      "prevControl": null,
+      "nextControl": {
+        "x": 3.141922327334562,
+        "y": 3.8456758529891855
+      },
+      "isLocked": false,
+      "linkedName": "C9 C10 align point"
+    },
+    {
+      "anchor": {
+        "x": 3.1287328341595786,
+        "y": 3.854998801392017
+      },
+      "prevControl": {
+        "x": 2.633202519049407,
+        "y": 4.032289090791035
+      },
+      "nextControl": null,
+      "isLocked": false,
+      "linkedName": "C9"
+    }
+  ],
+  "rotationTargets": [],
+  "constraintZones": [],
+  "pointTowardsZones": [],
+  "eventMarkers": [],
+  "globalConstraints": {
+    "maxVelocity": 3.0,
+    "maxAcceleration": 3.0,
+    "maxAngularVelocity": 540.0,
+    "maxAngularAcceleration": 720.0,
+    "nominalVoltage": 12.0,
+    "unlimited": false
+  },
+  "goalEndState": {
+    "velocity": 0,
+    "rotation": 0.0
+  },
+  "reversed": false,
+  "folder": "Auto line up paths",
+  "idealStartingState": {
+    "velocity": 0.0,
+    "rotation": 0.0
+  },
+  "useDefaultConstraints": true
+}
