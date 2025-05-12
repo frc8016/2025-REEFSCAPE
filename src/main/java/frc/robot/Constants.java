@@ -112,18 +112,18 @@ public final class Constants {
         public static final double VISION_MAX_DIST = 3;
         public static final double MAX_TAG_AMBIGUITY = 0.15;
 
-        public static final String LOWER_RIGHT_CAMERA_NAME = "INSERT CAMERA NAME";
-        public static final String LOWER_LEFT_CAMERA_NAME = "INSERT CAMERA NAME";
+        public static final String LOWER_RIGHT_CAMERA_NAME = "ArducamOV2311Cam1";
+        public static final String LOWER_LEFT_CAMERA_NAME = "ArducamOV2311Cam2";
 
         public static final Transform3d LOWER_RIGHT_CAMERA_POSE = new Transform3d(
             new Translation3d(
-                Units.inchesToMeters(0), // x: forward positive
-                Units.inchesToMeters(0), // y: left positive
-                Units.inchesToMeters(0)), // z: up positive
+                Units.inchesToMeters(12.75), // x: forward positive
+                Units.inchesToMeters(-10.5), // y: left positive
+                Units.inchesToMeters(8.5)), // z: up positive
             new Rotation3d(
                 Units.degreesToRadians(0), 
                 Units.degreesToRadians(0), 
-                Units.degreesToRadians(0))
+                Units.degreesToRadians(45))
         );
 
         public static final Transform3d LOWER_LEFT_CAMERA_POSE = new Transform3d(
