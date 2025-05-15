@@ -7,7 +7,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "SPM to C4"
+            "pathName": "SPM to C5"
           }
         },
         {
@@ -31,7 +31,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "C4 to CSB"
+            "pathName": "C5 to CSB"
           }
         },
         {
@@ -43,7 +43,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "CSB to C7"
+            "pathName": "CSB to C6"
           }
         },
         {
@@ -67,37 +67,13 @@
         {
           "type": "path",
           "data": {
-            "pathName": "C7 to CSB"
+            "pathName": "C6 to CSB"
           }
         },
         {
           "type": "named",
           "data": {
             "name": "intakeCoral"
-          }
-        },
-        {
-          "type": "path",
-          "data": {
-            "pathName": "CSB to C8"
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "elevatorLevel2"
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "outtakeCoral"
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "elevatorLevel1"
           }
         }
       ]

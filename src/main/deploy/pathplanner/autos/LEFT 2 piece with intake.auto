@@ -43,7 +43,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "CST to C12"
+            "pathName": "CST to C1"
           }
         },
         {
@@ -62,6 +62,18 @@
           "type": "named",
           "data": {
             "name": "elevatorLevel1"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "C1 to CST"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "intakeCoral"
           }
         }
       ]

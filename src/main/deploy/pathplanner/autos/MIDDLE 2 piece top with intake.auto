@@ -7,7 +7,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "SPB to C6"
+            "pathName": "SPM to C2"
           }
         },
         {
@@ -31,7 +31,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "C6 to CSB"
+            "pathName": "C2 to CST"
           }
         },
         {
@@ -43,7 +43,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "CSB to C8"
+            "pathName": "CST to C1"
           }
         },
         {
@@ -67,43 +67,19 @@
         {
           "type": "path",
           "data": {
-            "pathName": "C8 to CSB"
+            "pathName": "C1 to CST"
           }
         },
         {
           "type": "named",
           "data": {
             "name": "intakeCoral"
-          }
-        },
-        {
-          "type": "path",
-          "data": {
-            "pathName": "CSB to C7"
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "elevatorLevel2"
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "outtakeCoral"
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "elevatorLevel1"
           }
         }
       ]
     }
   },
   "resetOdom": true,
-  "folder": "bottom autos",
+  "folder": "middle autos",
   "choreoAuto": false
 }
