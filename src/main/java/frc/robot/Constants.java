@@ -112,49 +112,63 @@ public final class Constants {
         public static final double VISION_MAX_DIST = 3;
         public static final double MAX_TAG_AMBIGUITY = 0.15;
 
-        // public static final String LOWER_LEFT_CAMERA_NAME = "Camera_Module_v1";
-        public static final String LOWER_LEFT_CAMERA_NAME = "Arducam_OV2311_USB_Camera";
+        public static final String LOWER_RIGHT_CAMERA_NAME = "ArducamOV2311Cam1";
+        public static final String LOWER_LEFT_CAMERA_NAME = "ArducamOV2311Cam2";
 
-        public static final Transform3d ROBOT_TO_CAM = new Transform3d(
-            new Translation3d(
-                Units.inchesToMeters(12.75), // x: forward positive
-                Units.inchesToMeters(10.5), // y: left positive
-                Units.inchesToMeters(8.5)), // z: up positive
-            new Rotation3d(
-                Units.degreesToRadians(0), 
-                Units.degreesToRadians(0), 
-                Units.degreesToRadians(-45))
-        );
+        public static final Transform3d LOWER_RIGHT_CAMERA_POSE = new Transform3d(
+                new Translation3d(
+                        Units.inchesToMeters(12.5), // x: forward positive
+                        Units.inchesToMeters(-10.75), // y: left positive
+                        Units.inchesToMeters(9)), // z: up positive
+                new Rotation3d(
+                        Units.degreesToRadians(0),
+                        Units.degreesToRadians(0),
+                        Units.degreesToRadians(45)));
+
+        public static final Transform3d LOWER_LEFT_CAMERA_POSE = new Transform3d(
+                new Translation3d(
+                        Units.inchesToMeters(12.625), // x: forward positive
+                        Units.inchesToMeters(10.25), // y: left positive
+                        Units.inchesToMeters(9)), // z: up positive
+                new Rotation3d(
+                        Units.degreesToRadians(0),
+                        Units.degreesToRadians(0),
+                        Units.degreesToRadians(-45)));
 
         // The layout of the AprilTags on the field
         public static final AprilTagFieldLayout TAG_LAYOUT = AprilTagFieldLayout
                 .loadField(AprilTagFields.kDefaultField);
 
-        // public static final Matrix<N3, N1> SINGLE_TAG_STD_DEVS = VecBuilder.fill(1, 1, 2);
+        // public static final Matrix<N3, N1> SINGLE_TAG_STD_DEVS = VecBuilder.fill(1,
+        // 1, 2);
     }
 
     public static class PathfindToScoreConstants {
-        public static final Map<Pose2d, String> BLUE_SCORING_POSITIONS = new HashMap<>(14) {{
-            // put(new Pose2d(2.116, 6.692, new Rotation2d()), "CST");
-            // put(new Pose2d(2.066, 1.379, new Rotation2d()), "CSB");
-            put(new Pose2d(5.414, 5.607, new Rotation2d()), "P1");
-            put(new Pose2d(6.339, 4.037, new Rotation2d()), "P2");
-            put(new Pose2d(5.484, 2.487, new Rotation2d()), "P3");
-            put(new Pose2d(3.582, 3.582, new Rotation2d()), "P4");
-            put(new Pose2d(2.646, 4.030, new Rotation2d()), "P5");
-            put(new Pose2d(3.609, 5.629, new Rotation2d()), "P6");
-        }};
+        public static final Map<Pose2d, String> BLUE_SCORING_POSITIONS = new HashMap<>(14) {
+            {
+                // put(new Pose2d(2.116, 6.692, new Rotation2d()), "CST");
+                // put(new Pose2d(2.066, 1.379, new Rotation2d()), "CSB");
+                put(new Pose2d(5.414, 5.607, new Rotation2d()), "P1");
+                put(new Pose2d(6.339, 4.037, new Rotation2d()), "P2");
+                put(new Pose2d(5.484, 2.487, new Rotation2d()), "P3");
+                put(new Pose2d(3.582, 3.582, new Rotation2d()), "P4");
+                put(new Pose2d(2.646, 4.030, new Rotation2d()), "P5");
+                put(new Pose2d(3.609, 5.629, new Rotation2d()), "P6");
+            }
+        };
 
-        public static final Map<Pose2d, String> RED_SCORING_POSITIONS = new HashMap<>(14) {{
-            // put(new Pose2d(15.432, 1.360, new Rotation2d()), "CST");
-            // put(new Pose2d(15.482, 6.673, new Rotation2d()), "CSB");
-            put(new Pose2d(12.134, 2.445, new Rotation2d()), "P1");
-            put(new Pose2d(11.209, 4.015, new Rotation2d()), "P2");
-            put(new Pose2d(12.064, 5.565, new Rotation2d()), "P3");
-            put(new Pose2d(13.966, 4.470, new Rotation2d()), "P4");
-            put(new Pose2d(14.902, 4.022, new Rotation2d()), "P5");
-            put(new Pose2d(13.939, 2.423, new Rotation2d()), "P6");
-        }};
+        public static final Map<Pose2d, String> RED_SCORING_POSITIONS = new HashMap<>(14) {
+            {
+                // put(new Pose2d(15.432, 1.360, new Rotation2d()), "CST");
+                // put(new Pose2d(15.482, 6.673, new Rotation2d()), "CSB");
+                put(new Pose2d(12.134, 2.445, new Rotation2d()), "P1");
+                put(new Pose2d(11.209, 4.015, new Rotation2d()), "P2");
+                put(new Pose2d(12.064, 5.565, new Rotation2d()), "P3");
+                put(new Pose2d(13.966, 4.470, new Rotation2d()), "P4");
+                put(new Pose2d(14.902, 4.022, new Rotation2d()), "P5");
+                put(new Pose2d(13.939, 2.423, new Rotation2d()), "P6");
+            }
+        };
 
         public enum Direction {
             LEFT,
@@ -162,7 +176,7 @@ public final class Constants {
         }
 
         public static PathConstraints constraints = new PathConstraints(
-        5.210, 7.1,
-        Units.degreesToRadians(540), Units.degreesToRadians(1851));
+                5.210, 7.1,
+                Units.degreesToRadians(540), Units.degreesToRadians(1851));
     }
 }
