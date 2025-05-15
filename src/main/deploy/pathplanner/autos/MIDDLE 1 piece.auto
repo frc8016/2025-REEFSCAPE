@@ -15,6 +15,18 @@
           "data": {
             "name": "elevatorLevel2"
           }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "outtakeCoral"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "elevatorLevel1"
+          }
         }
       ]
     }
