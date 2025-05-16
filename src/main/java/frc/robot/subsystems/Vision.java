@@ -50,7 +50,7 @@ public class Vision {
         List<PhotonPipelineResult> cameraPipeline = camera.getAllUnreadResults();
 
         for (var pipelineResult : cameraPipeline) {
-            Optional<EstimatedRobotPose> estPose = lowerLeftPoseEstimator.update(pipelineResult);
+            Optional<EstimatedRobotPose> estPose = estimator.update(pipelineResult);
 
             if (estPose.isPresent()) {
                 photonField.setRobotPose(estPose.get().estimatedPose.toPose2d());
