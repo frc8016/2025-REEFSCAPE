@@ -7,7 +7,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "SPT to C2"
+            "pathName": "SPM to C2"
           }
         },
         {
@@ -43,7 +43,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "CST to C1 L2"
+            "pathName": "CST to C1"
           }
         },
         {
@@ -63,11 +63,23 @@
           "data": {
             "name": "elevatorLevel1"
           }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "C1 to CST"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "intakeCoral"
+          }
         }
       ]
     }
   },
   "resetOdom": true,
-  "folder": "top autos",
+  "folder": "middle autos",
   "choreoAuto": false
 }

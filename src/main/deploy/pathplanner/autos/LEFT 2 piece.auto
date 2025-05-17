@@ -7,49 +7,13 @@
         {
           "type": "path",
           "data": {
-            "pathName": "SPT to C12"
+            "pathName": "SPT to C2"
           }
         },
         {
           "type": "named",
           "data": {
-            "name": "elevatorLevel4"
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "outtakeCoral"
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "elevatorLevel1"
-          }
-        },
-        {
-          "type": "path",
-          "data": {
-            "pathName": "C12 to CST"
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "intakeCoral"
-          }
-        },
-        {
-          "type": "path",
-          "data": {
-            "pathName": "CST to C11"
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "elevatorLevel4"
+            "name": "elevatorLevel2"
           }
         },
         {
@@ -67,7 +31,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "C11 to CST"
+            "pathName": "C2 to CST"
           }
         },
         {
@@ -85,7 +49,7 @@
         {
           "type": "named",
           "data": {
-            "name": "elevatorLevel4"
+            "name": "elevatorLevel2"
           }
         },
         {

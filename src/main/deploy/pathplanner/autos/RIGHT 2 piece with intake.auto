@@ -7,13 +7,13 @@
         {
           "type": "path",
           "data": {
-            "pathName": "SPM to C3"
+            "pathName": "SPB to C6"
           }
         },
         {
           "type": "named",
           "data": {
-            "name": "elevatorLevel4"
+            "name": "elevatorLevel2"
           }
         },
         {
@@ -31,7 +31,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "C3 to CST"
+            "pathName": "C6 to CSB"
           }
         },
         {
@@ -43,13 +43,13 @@
         {
           "type": "path",
           "data": {
-            "pathName": "CST to C11"
+            "pathName": "CSB to C5"
           }
         },
         {
           "type": "named",
           "data": {
-            "name": "elevatorLevel4"
+            "name": "elevatorLevel2"
           }
         },
         {
@@ -67,43 +67,19 @@
         {
           "type": "path",
           "data": {
-            "pathName": "C11 to CST"
+            "pathName": "C5 to CSB"
           }
         },
         {
           "type": "named",
           "data": {
             "name": "intakeCoral"
-          }
-        },
-        {
-          "type": "path",
-          "data": {
-            "pathName": "CST to C12"
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "elevatorLevel4"
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "outtakeCoral"
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "elevatorLevel1"
           }
         }
       ]
     }
   },
   "resetOdom": true,
-  "folder": "middle autos",
+  "folder": "bottom autos",
   "choreoAuto": false
 }
