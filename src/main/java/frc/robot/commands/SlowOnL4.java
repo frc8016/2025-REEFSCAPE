@@ -9,28 +9,32 @@ import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.Constants.DriveSpeedConstants;
 
 
-public class SlowModeCommand extends Command {
-    private Consumer<Double> setSpeed;
+public class SlowOnL4 extends Command {
+    private Consumer<Double> slowSpeed;
     private Consumer<Double> setAngularRate;
     private double defaultSpeed;
     private double defaultAngularRate;
+    private double elevatorLevel;
+    private double slowSpeedMultiplyer;
 
-    public SlowModeCommand(Consumer<Double> setSpeed, Consumer<Double> setAngularRate, double defaultSpeed, double defaultAngularRate) {
-        this.setSpeed = setSpeed;
-        this.setAngularRate = setAngularRate;
+    public SlowOnL4(double defaultSpeed, double defaultAngularRate, double elevatorLevel) {
+        this.elevatorLevel = elevatorLevel;
         this.defaultSpeed = defaultSpeed;
         this.defaultAngularRate = defaultAngularRate;
     }
 
     @Override
     public void initialize() {
-        this.setSpeed.accept(defaultSpeed / DriveSpeedConstants.SLOW_SPEED_DIVISOR);
-        this.setAngularRate.accept(defaultAngularRate / DriveSpeedConstants.SLOW_SPEED_DIVISOR);
+        if (elevatorLevel > 10) {
+            slowSpeedMultiplyer = (8 - (elevatorLevel - 10)) / 8;
+        }
+        this.slowSpeed.accept(defaultSpeed * slowSpeedMultiplyer);
+        this.setAngularRate.accept(defaultAngularRate * slowSpeedMultiplyer);
     }
 
     @Override
     public void end(boolean interrupted) {
-        this.setSpeed.accept(defaultSpeed);
+        this.slowSpeed.accept(defaultSpeed);
         this.setAngularRate.accept(defaultAngularRate);
     }
 }
