@@ -6,7 +6,6 @@ package frc.robot.commands;
 
 import java.util.function.Consumer;
 import edu.wpi.first.wpilibj2.command.Command;
-import frc.robot.Constants.DriveSpeedConstants;
 
 
 public class SlowOnL4 extends Command {
@@ -27,9 +26,13 @@ public class SlowOnL4 extends Command {
     public void initialize() {
         if (elevatorLevel > 10) {
             slowSpeedMultiplyer = (8 - (elevatorLevel - 10)) / 8;
+            this.slowSpeed.accept(defaultSpeed * slowSpeedMultiplyer);
+            this.setAngularRate.accept(defaultAngularRate * slowSpeedMultiplyer);
+        } else {
+            this.slowSpeed.accept(defaultSpeed);
+            this.setAngularRate.accept(defaultAngularRate);
         }
-        this.slowSpeed.accept(defaultSpeed * slowSpeedMultiplyer);
-        this.setAngularRate.accept(defaultAngularRate * slowSpeedMultiplyer);
+        
     }
 
     @Override

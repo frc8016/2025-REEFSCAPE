@@ -102,10 +102,6 @@ public final class Constants {
 
     }
 
-    public static class DriveSpeedConstants {
-        public static final double SLOW_SPEED_DIVISOR = 3;
-    }
-
     public static class VisionConstants {
         public static final boolean USE_VISION = true; // IMPORTANT we set this to true when useing vision and faluse
                                                        // when we dont (this will effect all vision uses)

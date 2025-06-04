@@ -38,7 +38,7 @@ public class Elevator extends SubsystemBase {
         private final SparkMaxConfig m_leftconfig = new SparkMaxConfig();
         private final SparkMaxConfig m_rightconfig = new SparkMaxConfig();
         private final SparkClosedLoopController m_rightClosedLoopController = m_elevatorRight.getClosedLoopController();
-        private double position;
+        public double position;
         // Creates the feedforward control for the elevator
 
         public Elevator() {
