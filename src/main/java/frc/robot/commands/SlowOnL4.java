@@ -28,9 +28,11 @@ public class SlowOnL4 extends Command {
             slowSpeedMultiplyer = (8 - (elevatorLevel - 10)) / 8;
             this.slowSpeed.accept(defaultSpeed * slowSpeedMultiplyer);
             this.setAngularRate.accept(defaultAngularRate * slowSpeedMultiplyer);
+            System.out.println("slowed down by "+ slowSpeedMultiplyer);
         } else {
             this.slowSpeed.accept(defaultSpeed);
             this.setAngularRate.accept(defaultAngularRate);
+            System.out.println("FULL SPEED AHEAD");
         }
         
     }
