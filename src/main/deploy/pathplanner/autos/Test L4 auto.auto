@@ -1,0 +1,56 @@
+{
+  "version": "2025.0",
+  "command": {
+    "type": "sequential",
+    "data": {
+      "commands": [
+        {
+          "type": "path",
+          "data": {
+            "pathName": "Test L4 pt1"
+          }
+        },
+        {
+          "type": "sequential",
+          "data": {
+            "commands": [
+              {
+                "type": "named",
+                "data": {
+                  "name": "elevatorLevel3"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "elevatorLevel4"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "outtakeCoral"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "elevatorLevel1"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "Test L4 pt2"
+          }
+        }
+      ]
+    }
+  },
+  "resetOdom": true,
+  "folder": null,
+  "choreoAuto": false
+}
