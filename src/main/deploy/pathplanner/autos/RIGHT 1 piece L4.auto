@@ -7,7 +7,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "Test L4 pt1"
+            "pathName": "SPB to C6 L4"
           }
         },
         {
@@ -44,13 +44,13 @@
         {
           "type": "path",
           "data": {
-            "pathName": "Test L4 pt2"
+            "pathName": "C6 back out L4"
           }
         }
       ]
     }
   },
   "resetOdom": true,
-  "folder": null,
+  "folder": "bottom autos",
   "choreoAuto": false
 }

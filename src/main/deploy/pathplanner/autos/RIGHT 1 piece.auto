@@ -7,7 +7,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "SPB to C5"
+            "pathName": "SPB to C6"
           }
         },
         {
@@ -31,7 +31,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "C5 back out"
+            "pathName": "C6 back out"
           }
         }
       ]

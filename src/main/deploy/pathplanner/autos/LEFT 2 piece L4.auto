@@ -1,0 +1,111 @@
+{
+  "version": "2025.0",
+  "command": {
+    "type": "sequential",
+    "data": {
+      "commands": [
+        {
+          "type": "path",
+          "data": {
+            "pathName": "SPT to C1 L4"
+          }
+        },
+        {
+          "type": "sequential",
+          "data": {
+            "commands": [
+              {
+                "type": "named",
+                "data": {
+                  "name": "elevatorLevel3"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "elevatorLevel4"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "outtakeCoral"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "elevatorLevel1"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "C1 to CST L4"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "intakeCoral"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "CST to C11 L4"
+          }
+        },
+        {
+          "type": "sequential",
+          "data": {
+            "commands": [
+              {
+                "type": "named",
+                "data": {
+                  "name": "elevatorLevel3"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "elevatorLevel4"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "outtakeCoral"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "elevatorLevel1"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "C11 to CST L4"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "intakeCoral"
+          }
+        }
+      ]
+    }
+  },
+  "resetOdom": true,
+  "folder": "top autos",
+  "choreoAuto": false
+}

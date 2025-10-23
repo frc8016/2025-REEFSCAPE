@@ -3,29 +3,29 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 3.609,
-        "y": 5.629
+        "x": 1.5721176431763004,
+        "y": 0.6966478327328514
       },
       "prevControl": null,
       "nextControl": {
-        "x": 3.9817838250609685,
-        "y": 5.265862640197477
+        "x": 2.083542377084963,
+        "y": 1.1229358910348275
       },
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "CSB"
     },
     {
       "anchor": {
-        "x": 3.9389957821556396,
-        "y": 5.296461638667069
+        "x": 3.94,
+        "y": 2.754
       },
       "prevControl": {
-        "x": 3.5775659403734377,
-        "y": 5.657615014206982
+        "x": 2.988959406509521,
+        "y": 1.9053993064026806
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "C12 L4"
+      "linkedName": "C7 L4"
     }
   ],
   "rotationTargets": [],
@@ -42,13 +42,13 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": -59.99999999999999
+    "rotation": 420.00000000000006
   },
   "reversed": false,
-  "folder": "Auto line up paths",
+  "folder": "bottom L4 paths",
   "idealStartingState": {
-    "velocity": 0.0,
-    "rotation": -59.99999999999999
+    "velocity": 0,
+    "rotation": 414.0
   },
   "useDefaultConstraints": true
 }
