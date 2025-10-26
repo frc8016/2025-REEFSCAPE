@@ -7,7 +7,43 @@
         {
           "type": "path",
           "data": {
-            "pathName": "SPB to C5"
+            "pathName": "SPB to C6"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "elevatorLevel2"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "outtakeCoral"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "elevatorLevel1"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "C6 to CSB"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "intakeCoral"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "CSB to C5"
           }
         },
         {
@@ -38,30 +74,6 @@
           "type": "named",
           "data": {
             "name": "intakeCoral"
-          }
-        },
-        {
-          "type": "path",
-          "data": {
-            "pathName": "CSB to C6 lower"
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "elevatorLevel2"
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "outtakeCoral"
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "elevatorLevel1"
           }
         }
       ]

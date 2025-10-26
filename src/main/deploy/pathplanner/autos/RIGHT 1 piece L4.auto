@@ -7,13 +7,26 @@
         {
           "type": "path",
           "data": {
-            "pathName": "SPB to C6"
+            "pathName": "SPB to C6 L4"
           }
         },
         {
-          "type": "named",
+          "type": "sequential",
           "data": {
-            "name": "elevatorLevel2"
+            "commands": [
+              {
+                "type": "named",
+                "data": {
+                  "name": "elevatorLevel3"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "elevatorLevel4"
+                }
+              }
+            ]
           }
         },
         {
@@ -31,7 +44,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "C6 back out"
+            "pathName": "C6 back out L4"
           }
         }
       ]

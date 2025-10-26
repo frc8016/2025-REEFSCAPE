@@ -66,6 +66,8 @@ public class RobotContainer {
 
         NamedCommands.registerCommand("elevatorLevel4",
                 m_Elevator.goToSetPointWithWaitCommand(SetPointConstants.LEVEL4));
+        NamedCommands.registerCommand("elevatorLevel3",
+                m_Elevator.goToSetPointWithWaitCommand(SetPointConstants.LEVEL3));
         NamedCommands.registerCommand("elevatorLevel2",
                 m_Elevator.goToSetPointWithWaitCommand(SetPointConstants.LEVEL2));
         NamedCommands.registerCommand("elevatorLevel1",

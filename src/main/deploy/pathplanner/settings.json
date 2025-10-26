@@ -4,8 +4,11 @@
   "holonomicMode": true,
   "pathFolders": [
     "Auto line up paths",
+    "bottom L4 paths",
     "bottom paths",
+    "middle L4 paths",
     "middle paths",
+    "top L4 paths",
     "top paths"
   ],
   "autoFolders": [

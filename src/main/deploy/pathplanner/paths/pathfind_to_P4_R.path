@@ -12,20 +12,20 @@
         "y": 2.7675116467366445
       },
       "isLocked": false,
-      "linkedName": "C7 C8 align point"
+      "linkedName": null
     },
     {
       "anchor": {
-        "x": 3.940293993090048,
-        "y": 2.7544960332427615
+        "x": 3.94,
+        "y": 2.754
       },
       "prevControl": {
-        "x": 3.5702257330468754,
-        "y": 2.4057162912376246
+        "x": 3.5695861761605716,
+        "y": 2.4048945730747615
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "C7 L4"
     }
   ],
   "rotationTargets": [],
